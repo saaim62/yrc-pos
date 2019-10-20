@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/_45sdp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/light_screen_background">
+
+        <com.yrc.pos.core.views.YrcTextView
+            android:id="@+id/textView_currentLocation"
+            style="@style/CurrentLocationTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="left|center_vertical"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="Select Ticket"
+            app:fontType="Bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.yrc.pos.core.views.YrcButton
+            android:id="@+id/button_Adult"
+            style="@style/MenuButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_marginHorizontal="@dimen/_55sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Adult"
+            app:fontType="Regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_currentLocation" />
+
+        <com.yrc.pos.core.views.YrcButton
+            android:id="@+id/button_Over65"
+            style="@style/MenuButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_marginHorizontal="@dimen/_55sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:text="Over65"
+            app:fontType="Regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_Adult" />
+
+        <com.yrc.pos.core.views.YrcButton
+            android:id="@+id/button_1822"
+            style="@style/MenuButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_marginHorizontal="@dimen/_55sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:text="18-22"
+            app:fontType="Regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_Over65" />
+
+        <com.yrc.pos.core.views.YrcButton
+            android:id="@+id/button_racegoer"
+            style="@style/MenuButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_marginHorizontal="@dimen/_55sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:text="Racegoer"
+            app:fontType="Regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_1822" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
