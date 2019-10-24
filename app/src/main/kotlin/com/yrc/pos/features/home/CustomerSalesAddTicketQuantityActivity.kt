@@ -67,6 +67,10 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
     fun onCrossButtonClicked(view: View) {
         Toast.makeText(this, "onCrossButtonClicked", Toast.LENGTH_SHORT).show()
         //todo clear all tickets and return to back screen
+
+        val obj = HomeFragment()
+        obj.doThis()
+        finish()
     }
 
     fun onCashButtonClicked(view: View) {
