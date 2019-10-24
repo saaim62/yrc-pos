@@ -2,6 +2,7 @@ package com.yrc.pos.features.home
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.yrc.pos.R
 import com.yrc.pos.core.YrcBaseActivity
 import kotlinx.android.synthetic.main.activity_customer_sales_add_ticket_quantity.*
@@ -39,21 +40,37 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
                 .plus(countRacegoerTickets).toString().plus(" ")
                 .plus(
                     "x Ticket $".plus(" ")
-                        .plus(countAdultTickets.times(20)
-                            .plus(countOver65Tickets.times(30))
-                            .plus(count1822Tickets.times(40))
-                            .plus(countRacegoerTickets.times(50))
-                    )
+                        .plus(
+                            countAdultTickets.times(20)
+                                .plus(countOver65Tickets.times(30))
+                                .plus(count1822Tickets.times(40))
+                                .plus(countRacegoerTickets.times(50))
+                        )
                 )
         }
     }
 
+    fun onPlusButtonClicked(view: View) {
+        onBackPressed()
+    }
+
+    fun onMinusButtonClicked(view: View) {
+        Toast.makeText(this, "onMinusButtonClicked", Toast.LENGTH_SHORT).show()
+        //todo get selected ticket and removed its count or set count to 0
+    }
+
+    fun onMultiplyButtonClicked(view: View) {
+        Toast.makeText(this, "onMultiplyButtonClicked", Toast.LENGTH_SHORT).show()
+        //todo get selected ticket and increase its count
+    }
+
     fun onCrossButtonClicked(view: View) {
-        finish()
+        Toast.makeText(this, "onCrossButtonClicked", Toast.LENGTH_SHORT).show()
+        //todo clear all tickets and return to back screen
     }
 
     fun onCashButtonClicked(view: View) {
-        finish()
+        Toast.makeText(this, "Printing tickets...", Toast.LENGTH_SHORT).show()
     }
 
 }
