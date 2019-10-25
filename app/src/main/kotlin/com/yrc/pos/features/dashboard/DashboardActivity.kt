@@ -71,7 +71,7 @@ class DashboardActivity : YrcBaseActivity(), NavigationView.OnNavigationItemSele
         if (resId > 0) {
             imageViewUserPhoto.setImageResource(resId)
         } else {
-            imageViewUserPhoto.setImageResource(R.drawable.female_avatar_1)
+            imageViewUserPhoto.setImageResource(R.drawable.ic_action_name)
         }
     }
 
@@ -94,22 +94,22 @@ class DashboardActivity : YrcBaseActivity(), NavigationView.OnNavigationItemSele
         drawerLayout.closeDrawers()
 
         when (menuItem.itemId) {
-            R.id.item_manage_profile -> {
-                moveToProfileScreen()
-            }
+//            R.id.item_manage_profile -> {
+//                moveToProfileScreen()
+//            }
             R.id.item_sign_out -> {
                 Session.clearSession()
                 moveToLoginScreen()
             }
-            R.id.item_support -> {
-                showSupportDialog()
-            }
-            R.id.item_faqs -> {
-                Toast.makeText(this, "Feature coming soon..", Toast.LENGTH_SHORT).show()
-            }
-            R.id.item_rate_us -> {
-                Toast.makeText(this, "Feature coming soon..", Toast.LENGTH_SHORT).show()
-            }
+//            R.id.item_support -> {
+//                showSupportDialog()
+//            }
+//            R.id.item_faqs -> {
+//                Toast.makeText(this, "Feature coming soon..", Toast.LENGTH_SHORT).show()
+//            }
+//            R.id.item_rate_us -> {
+//                Toast.makeText(this, "Feature coming soon..", Toast.LENGTH_SHORT).show()
+//            }
         }
         return true
     }

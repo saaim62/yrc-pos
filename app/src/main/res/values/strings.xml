@@ -53,7 +53,6 @@
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="counter_text">%1$d/12</string>
-    <string name="individual">INDIVIDUAL</string>
     <string name="session_not_available">Session not available!</string>
 
     <!--Dashboard Screen Content-->
@@ -61,11 +60,7 @@
     <string name="nav_header_title">Steven Clarkson</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="title_search">Search</string>
-    <string name="manage_profile">Manage Profile</string>
     <string name="sign_out">Sign Out</string>
-    <string name="support">Support</string>
-    <string name="rate_us">Rate Us</string>
-    <string name="faqs">FAQ\'s</string>
     <string name="call_or_email_us">Email or Call Us</string>
 
     <!--API Module Content-->

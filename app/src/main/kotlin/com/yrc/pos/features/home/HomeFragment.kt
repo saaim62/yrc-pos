@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.yrc.pos.R
 import com.yrc.pos.core.YrcBaseFragment
+import com.yrc.pos.core.listeners.OnCrossButtonClickListener
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : YrcBaseFragment() {
+class HomeFragment : YrcBaseFragment(), OnCrossButtonClickListener {
 
     private var countAdultTickets = 0
     private var countOver65Tickets = 0
@@ -93,23 +93,12 @@ class HomeFragment : YrcBaseFragment() {
         }
     }
 
-    fun doThis(){
-        //does something amazing!
+    override fun onCrossClicked() {
         countAdultTickets = 0
         countOver65Tickets = 0
         count1822Tickets = 0
         countRacegoerTickets = 0
     }
-
-//    override fun onResume() {
-//        super.onResume()
-//        if (true){
-//        countAdultTickets = 0
-//        countOver65Tickets = 0
-//        count1822Tickets = 0
-//        countRacegoerTickets = 0
-//        }
-//    }
 
     companion object {
         const val TICKET_ADULTS = "ticket_adults"

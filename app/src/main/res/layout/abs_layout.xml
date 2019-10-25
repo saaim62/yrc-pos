@@ -6,12 +6,6 @@
         android:layout_gravity="center"
         android:orientation="horizontal">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="@dimen/_26sdp"
-            android:layout_height="@dimen/_26sdp"
-            android:layout_gravity="center"
-            android:src="@drawable/flag_uae" />
-
     <com.yrc.pos.core.views.YrcTextView
             android:id="@+id/textViewTitle"
             style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
@@ -21,7 +15,7 @@
             android:layout_marginLeft="@dimen/_25sdp"
             android:gravity="center"
             android:textAllCaps="true"
-            android:text="@string/individual"
+            android:text="YRC POS"
             android:textColor="@color/colorWhite"
             app:fontType="Regular"/>
 

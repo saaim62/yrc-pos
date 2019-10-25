@@ -4,7 +4,6 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
-import android.text.InputType
 import android.text.TextWatcher
 import android.text.format.DateUtils
 import android.view.LayoutInflater
@@ -18,7 +17,6 @@ import com.yrc.pos.core.Constants
 import com.yrc.pos.core.YrcBaseFragment
 import com.yrc.pos.core.YrcUtils
 import com.yrc.pos.core.enums.DialogTheme
-import com.yrc.pos.core.enums.IdentityType
 import com.yrc.pos.core.listeners.DialogButtonClickListener
 import com.yrc.pos.core.listeners.OnAvatarClickListener
 import com.yrc.pos.core.providers.AlertDialogProvider
