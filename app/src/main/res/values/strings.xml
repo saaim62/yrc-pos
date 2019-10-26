@@ -56,10 +56,8 @@
     <string name="session_not_available">Session not available!</string>
 
     <!--Dashboard Screen Content-->
-    <string name="title_home">Home</string>
     <string name="nav_header_title">Steven Clarkson</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="title_search">Search</string>
     <string name="sign_out">Sign Out</string>
     <string name="call_or_email_us">Email or Call Us</string>
 

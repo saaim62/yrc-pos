@@ -2,37 +2,37 @@ package com.yrc.pos.features.dashboard
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.navigation.NavigationView
 import com.yrc.pos.R
 import com.yrc.pos.core.Constants
 import com.yrc.pos.core.YrcBaseActivity
 import com.yrc.pos.core.YrcFrameActivity
 import com.yrc.pos.core.Tags
-import com.yrc.pos.core.session.Session
+import com.yrc.pos.core.bus.RxBus
+import com.yrc.pos.core.bus.RxEvent
 import com.yrc.pos.core.session.User
 import com.yrc.pos.core.views.YrcTextView
 import com.yrc.pos.features.login.LoginActivity
 import com.yrc.pos.features.profile.ProfileFragment
 import com.yrc.pos.features.support.SupportDialog
+import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.content_main.*
 
-class DashboardActivity : YrcBaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var drawerLayout: DrawerLayout
+class DashboardActivity : YrcBaseActivity() {
+
+    private var countAdultTickets = 0
+    private var countOver65Tickets = 0
+    private var count1822Tickets = 0
+    private var countRacegoerTickets = 0
+
     private lateinit var textViewHeaderTitle: YrcTextView
+
+    private lateinit var disposable: Disposable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,19 +44,29 @@ class DashboardActivity : YrcBaseActivity(), NavigationView.OnNavigationItemSele
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setCustomView(R.layout.abs_layout)
         supportActionBar!!.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.header_background))
-        textViewHeaderTitle = supportActionBar!!.customView.findViewById<YrcTextView>(R.id.textViewTitle)
-
-        bottom_nav_view.setupWithNavController(findNavController(R.id.nav_host_fragment))
-        navigationDrawerView.setupWithNavController(findNavController(R.id.nav_host_fragment))
-
-        drawerLayout = findViewById(R.id.drawer_layout)
-        NavigationUI.setupActionBarWithNavController(this, findNavController(R.id.nav_host_fragment), drawerLayout)
-        navigationDrawerView.setNavigationItemSelectedListener(this)
+        textViewHeaderTitle = supportActionBar!!.customView.findViewById(R.id.textViewTitle)
 
         setNavigationDrawerHeaderData()
+
+        setAdultButtonListener()
+        setOver65ButtonListener()
+        set1822ButtonListener()
+        setRacegoerButtonListener()
+
+        disposable = RxBus.listen(RxEvent.doThis::class.java).subscribe {
+            countAdultTickets = 0
+            countOver65Tickets = 0
+            count1822Tickets = 0
+            countRacegoerTickets = 0
+        }
     }
 
-    fun setNavigationDrawerHeaderData() {
+    override fun onDestroy() {
+        super.onDestroy()
+        if (!disposable.isDisposed) disposable.dispose()
+    }
+
+    private fun setNavigationDrawerHeaderData() {
 
         val headerView = navigationDrawerView.getHeaderView(0)
         val textViewUserName = headerView.findViewById(R.id.textView_userName) as YrcTextView
@@ -67,7 +77,7 @@ class DashboardActivity : YrcBaseActivity(), NavigationView.OnNavigationItemSele
             textViewHeaderTitle.text = getString(R.string.welcome) + Constants.SPACE_STRING + User.getUserName()
         }
 
-        var resId = resources.getIdentifier(User.getUserProfile()!!.avatar, "drawable", this.packageName)
+        val resId = resources.getIdentifier(User.getUserProfile()!!.avatar, "drawable", this.packageName)
         if (resId > 0) {
             imageViewUserPhoto.setImageResource(resId)
         } else {
@@ -75,44 +85,73 @@ class DashboardActivity : YrcBaseActivity(), NavigationView.OnNavigationItemSele
         }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(drawerLayout) || super.onSupportNavigateUp()
-    }
-
-    override fun onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
+    private fun setAdultButtonListener() {
+        button_Adult.setOnClickListener {
+            val intent = Intent(this, CustomerSalesAddTicketQuantityActivity::class.java)
+            countAdultTickets += 1
+            intent.putExtra(TICKET_ADULTS, countAdultTickets)
+            countOver65Tickets
+            intent.putExtra(TICKET_OVER65, countOver65Tickets)
+            count1822Tickets
+            intent.putExtra(TICKET_1822, count1822Tickets)
+            countRacegoerTickets
+            intent.putExtra(TICKET_RACEGOER, countRacegoerTickets)
+            startActivity(intent)
         }
     }
 
-    override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
-
-        menuItem.isChecked = true
-        drawerLayout.closeDrawers()
-
-        when (menuItem.itemId) {
-//            R.id.item_manage_profile -> {
-//                moveToProfileScreen()
-//            }
-            R.id.item_sign_out -> {
-                Session.clearSession()
-                moveToLoginScreen()
-            }
-//            R.id.item_support -> {
-//                showSupportDialog()
-//            }
-//            R.id.item_faqs -> {
-//                Toast.makeText(this, "Feature coming soon..", Toast.LENGTH_SHORT).show()
-//            }
-//            R.id.item_rate_us -> {
-//                Toast.makeText(this, "Feature coming soon..", Toast.LENGTH_SHORT).show()
-//            }
+    private fun setOver65ButtonListener() {
+        button_Over65.setOnClickListener {
+            val intent = Intent(this, CustomerSalesAddTicketQuantityActivity::class.java)
+            countAdultTickets
+            intent.putExtra(TICKET_ADULTS, countAdultTickets)
+            countOver65Tickets += 1
+            intent.putExtra(TICKET_OVER65, countOver65Tickets)
+            count1822Tickets
+            intent.putExtra(TICKET_1822, count1822Tickets)
+            countRacegoerTickets
+            intent.putExtra(TICKET_RACEGOER, countRacegoerTickets)
+            startActivity(intent)
         }
-        return true
     }
+
+    private fun set1822ButtonListener() {
+        button_1822.setOnClickListener {
+            val intent = Intent(this, CustomerSalesAddTicketQuantityActivity::class.java)
+            countAdultTickets
+            intent.putExtra(TICKET_ADULTS, countAdultTickets)
+            countOver65Tickets
+            intent.putExtra(TICKET_OVER65, countOver65Tickets)
+            count1822Tickets += 1
+            intent.putExtra(TICKET_1822, count1822Tickets)
+            countRacegoerTickets
+            intent.putExtra(TICKET_RACEGOER, countRacegoerTickets)
+            startActivity(intent)
+        }
+    }
+
+    private fun setRacegoerButtonListener() {
+        button_racegoer.setOnClickListener {
+            val intent = Intent(this, CustomerSalesAddTicketQuantityActivity::class.java)
+            countAdultTickets
+            intent.putExtra(TICKET_ADULTS, countAdultTickets)
+            countOver65Tickets
+            intent.putExtra(TICKET_OVER65, countOver65Tickets)
+            count1822Tickets
+            intent.putExtra(TICKET_1822, count1822Tickets)
+            countRacegoerTickets += 1
+            intent.putExtra(TICKET_RACEGOER, countRacegoerTickets)
+            startActivity(intent)
+        }
+    }
+
+    fun doThis() {
+        countAdultTickets = 0
+        countOver65Tickets = 0
+        count1822Tickets = 0
+        countRacegoerTickets = 0
+    }
+
 
     private fun moveToProfileScreen() {
         val bundle = Bundle()
@@ -132,4 +171,12 @@ class DashboardActivity : YrcBaseActivity(), NavigationView.OnNavigationItemSele
     private fun showSupportDialog() {
         SupportDialog().show(supportFragmentManager.beginTransaction(), Tags.SupportDialogFragment)
     }
+
+    companion object {
+        @JvmStatic val TICKET_ADULTS = "ticket_adults"
+        @JvmStatic val TICKET_OVER65 = "ticket_over65"
+        @JvmStatic val TICKET_1822 = "ticket_1822"
+        @JvmStatic val TICKET_RACEGOER = "ticket_racegoer"
+    }
+
 }

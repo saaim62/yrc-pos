@@ -63,6 +63,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.0-alpha01'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.0-RC4'
 
     // Web APIs Dependencies
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'

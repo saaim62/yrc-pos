@@ -76,7 +76,7 @@
                 android:name="com.yrc.pos.core.YrcFrameActivity"
                 android:screenOrientation="portrait" />
         <activity
-            android:name="com.yrc.pos.features.home.CustomerSalesAddTicketQuantityActivity"
+            android:name="com.yrc.pos.features.dashboard.CustomerSalesAddTicketQuantityActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
     </application>
