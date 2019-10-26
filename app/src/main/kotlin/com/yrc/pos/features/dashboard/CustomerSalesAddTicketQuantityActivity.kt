@@ -65,6 +65,7 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
     fun onMultiplyButtonClicked(view: View) {
         Toast.makeText(this, "onMultiplyButtonClicked", Toast.LENGTH_SHORT).show()
         //todo get selected ticket and increase its count
+        RxBus.publish(RxEvent.doThis("onMultiplyButtonClicked"))
     }
 
     fun onCrossButtonClicked(view: View) {
@@ -75,7 +76,8 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
     }
 
     fun onCashButtonClicked(view: View) {
-        Toast.makeText(this, "Printing tickets...", Toast.LENGTH_SHORT).show()
+        RxBus.publish(RxEvent.doThis("onCashButtonClicked"))
+        finish()
     }
 
 }

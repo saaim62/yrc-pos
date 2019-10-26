@@ -3,6 +3,7 @@ package com.yrc.pos.features.dashboard
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
@@ -54,10 +55,18 @@ class DashboardActivity : YrcBaseActivity() {
         setRacegoerButtonListener()
 
         disposable = RxBus.listen(RxEvent.doThis::class.java).subscribe {
-            countAdultTickets = 0
-            countOver65Tickets = 0
-            count1822Tickets = 0
-            countRacegoerTickets = 0
+            when {
+                it.buttonName == "onCrossButtonClicked" -> {
+                    countAdultTickets = 0
+                    countOver65Tickets = 0
+                    count1822Tickets = 0
+                    countRacegoerTickets = 0
+                }
+                it.buttonName == "onCashButtonClicked" -> Toast.makeText(this, "Printing tickets...", Toast.LENGTH_SHORT).show()
+                it.buttonName == "onMultiplyButtonClicked" -> {
+                    Toast.makeText(this, "Multiplying", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
