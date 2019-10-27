@@ -22,7 +22,9 @@ import com.yrc.pos.features.support.SupportDialog
 import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.content_main.*
-
+import android.view.Menu
+import android.view.MenuItem
+import com.yrc.pos.core.session.Session
 
 class DashboardActivity : YrcBaseActivity() {
 
@@ -33,7 +35,8 @@ class DashboardActivity : YrcBaseActivity() {
 
     private lateinit var textViewHeaderTitle: YrcTextView
 
-    private lateinit var disposable: Disposable
+    private lateinit var disposableClearAllTickets: Disposable
+    private lateinit var disposableMultiplyTicket: Disposable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +47,12 @@ class DashboardActivity : YrcBaseActivity() {
 
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setCustomView(R.layout.abs_layout)
-        supportActionBar!!.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.header_background))
+        supportActionBar!!.setBackgroundDrawable(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.header_background
+            )
+        )
         textViewHeaderTitle = supportActionBar!!.customView.findViewById(R.id.textViewTitle)
 
         setNavigationDrawerHeaderData()
@@ -54,24 +62,26 @@ class DashboardActivity : YrcBaseActivity() {
         set1822ButtonListener()
         setRacegoerButtonListener()
 
-        disposable = RxBus.listen(RxEvent.doThis::class.java).subscribe {
+        disposableClearAllTickets = RxBus.listen(RxEvent.buttonFunction::class.java).subscribe {
+            countAdultTickets = 0
+            countOver65Tickets = 0
+            count1822Tickets = 0
+            countRacegoerTickets = 0
+            Toast.makeText(this, "Cleared all selections and reset", Toast.LENGTH_SHORT).show()
+        }
+        disposableMultiplyTicket = RxBus.listen(RxEvent.setTicketCount::class.java).subscribe {
             when {
-                it.buttonName == "onCrossButtonClicked" -> {
-                    countAdultTickets = 0
-                    countOver65Tickets = 0
-                    count1822Tickets = 0
-                    countRacegoerTickets = 0
-                    Toast.makeText(this, "Cleared all selections", Toast.LENGTH_SHORT).show()
+                it.ticketName == TICKET_ADULTS -> {
+                    countAdultTickets = it.count
                 }
-                it.buttonName == "onCashButtonClicked" -> {
-                    countAdultTickets = 0
-                    countOver65Tickets = 0
-                    count1822Tickets = 0
-                    countRacegoerTickets = 0
-                    Toast.makeText(this, "Printing tickets...", Toast.LENGTH_SHORT).show()
+                it.ticketName == TICKET_OVER65 -> {
+                    countOver65Tickets = it.count
                 }
-                it.buttonName == "onMultiplyButtonClicked" -> {
-                    Toast.makeText(this, "Multiplying", Toast.LENGTH_SHORT).show()
+                it.ticketName == TICKET_1822 -> {
+                    count1822Tickets = it.count
+                }
+                it.ticketName == TICKET_RACEGOER -> {
+                    countRacegoerTickets = it.count
                 }
             }
         }
@@ -79,7 +89,8 @@ class DashboardActivity : YrcBaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        if (!disposable.isDisposed) disposable.dispose()
+        if (!disposableClearAllTickets.isDisposed) disposableClearAllTickets.dispose()
+        if (!disposableMultiplyTicket.isDisposed) disposableMultiplyTicket.dispose()
     }
 
     private fun setNavigationDrawerHeaderData() {
@@ -90,10 +101,12 @@ class DashboardActivity : YrcBaseActivity() {
 
         if (User.getUserName()!!.isNotEmpty()) {
             textViewUserName.text = User.getUserName()
-            textViewHeaderTitle.text = getString(R.string.welcome) + Constants.SPACE_STRING + User.getUserName()
+            textViewHeaderTitle.text =
+                getString(R.string.welcome) + Constants.SPACE_STRING + User.getUserName()
         }
 
-        val resId = resources.getIdentifier(User.getUserProfile()!!.avatar, "drawable", this.packageName)
+        val resId =
+            resources.getIdentifier(User.getUserProfile()!!.avatar, "drawable", this.packageName)
         if (resId > 0) {
             imageViewUserPhoto.setImageResource(resId)
         } else {
@@ -161,18 +174,13 @@ class DashboardActivity : YrcBaseActivity() {
         }
     }
 
-    fun doThis() {
-        countAdultTickets = 0
-        countOver65Tickets = 0
-        count1822Tickets = 0
-        countRacegoerTickets = 0
-    }
-
-
     private fun moveToProfileScreen() {
         val bundle = Bundle()
         bundle.putString(YrcFrameActivity.FRAGMENT_NAME_STRING, ProfileFragment::class.java.name)
-        bundle.putString(YrcFrameActivity.ACTIVITY_TITLE, resources.getString(R.string.edit_profile))
+        bundle.putString(
+            YrcFrameActivity.ACTIVITY_TITLE,
+            resources.getString(R.string.edit_profile)
+        )
         bundle.putBoolean(YrcFrameActivity.INFLATE_OPTIONS_MENU, true)
         startActivity(Intent(applicationContext, YrcFrameActivity::class.java).putExtras(bundle))
     }
@@ -188,11 +196,30 @@ class DashboardActivity : YrcBaseActivity() {
         SupportDialog().show(supportFragmentManager.beginTransaction(), Tags.SupportDialogFragment)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu_dashboard, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item!!.itemId == R.id.item_sign_out) {
+            Session.clearSession()
+            moveToLoginScreen()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     companion object {
-        @JvmStatic val TICKET_ADULTS = "ticket_adults"
-        @JvmStatic val TICKET_OVER65 = "ticket_over65"
-        @JvmStatic val TICKET_1822 = "ticket_1822"
-        @JvmStatic val TICKET_RACEGOER = "ticket_racegoer"
+        @JvmStatic
+        val TICKET_ADULTS = "ticket_adults"
+        @JvmStatic
+        val TICKET_OVER65 = "ticket_over65"
+        @JvmStatic
+        val TICKET_1822 = "ticket_1822"
+        @JvmStatic
+        val TICKET_RACEGOER = "ticket_racegoer"
     }
 
 }
