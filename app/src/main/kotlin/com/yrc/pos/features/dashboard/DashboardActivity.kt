@@ -61,8 +61,15 @@ class DashboardActivity : YrcBaseActivity() {
                     countOver65Tickets = 0
                     count1822Tickets = 0
                     countRacegoerTickets = 0
+                    Toast.makeText(this, "Cleared all selections", Toast.LENGTH_SHORT).show()
                 }
-                it.buttonName == "onCashButtonClicked" -> Toast.makeText(this, "Printing tickets...", Toast.LENGTH_SHORT).show()
+                it.buttonName == "onCashButtonClicked" -> {
+                    countAdultTickets = 0
+                    countOver65Tickets = 0
+                    count1822Tickets = 0
+                    countRacegoerTickets = 0
+                    Toast.makeText(this, "Printing tickets...", Toast.LENGTH_SHORT).show()
+                }
                 it.buttonName == "onMultiplyButtonClicked" -> {
                     Toast.makeText(this, "Multiplying", Toast.LENGTH_SHORT).show()
                 }

@@ -69,14 +69,12 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
     }
 
     fun onCrossButtonClicked(view: View) {
-        Toast.makeText(this, "onCrossButtonClicked", Toast.LENGTH_SHORT).show()
         //todo clear all tickets and return to back screen
         RxBus.publish(RxEvent.doThis("onCrossButtonClicked"))
         finish()
     }
 
     fun onCashButtonClicked(view: View) {
-        RxBus.publish(RxEvent.doThis("onCashButtonClicked"))
         finish()
     }
 
