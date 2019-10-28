@@ -126,7 +126,7 @@
         android:scrollHorizontally="true"
         android:singleLine="true"
         android:textColor="@color/colorGreenLight"
-        android:textSize="@dimen/_19sdp"
+        android:textSize="@dimen/_30sdp"
         app:fontType="Bold"
         app:layout_constraintBottom_toTopOf="@+id/button_minus"
         app:layout_constraintEnd_toEndOf="parent"

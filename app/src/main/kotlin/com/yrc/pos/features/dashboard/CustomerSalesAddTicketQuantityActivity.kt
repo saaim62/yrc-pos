@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.yrc.pos.R
+import com.yrc.pos.core.Prices
 import com.yrc.pos.core.YrcBaseActivity
 import com.yrc.pos.core.bus.RxBus
 import com.yrc.pos.core.bus.RxEvent
@@ -56,22 +57,42 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
             }
             1 -> {
                 countAdultTickets -= 1
-                RxBus.publish(RxEvent.setTicketCount(DashboardActivity.TICKET_ADULTS, countAdultTickets))
+                RxBus.publish(
+                    RxEvent.setTicketCount(
+                        DashboardActivity.TICKET_ADULTS,
+                        countAdultTickets
+                    )
+                )
                 updateUi()
             }
             2 -> {
                 countOver65Tickets -= 1
-                RxBus.publish(RxEvent.setTicketCount(DashboardActivity.TICKET_OVER65, countOver65Tickets))
+                RxBus.publish(
+                    RxEvent.setTicketCount(
+                        DashboardActivity.TICKET_OVER65,
+                        countOver65Tickets
+                    )
+                )
                 updateUi()
             }
             3 -> {
                 count1822Tickets -= 1
-                RxBus.publish(RxEvent.setTicketCount(DashboardActivity.TICKET_1822, count1822Tickets))
+                RxBus.publish(
+                    RxEvent.setTicketCount(
+                        DashboardActivity.TICKET_1822,
+                        count1822Tickets
+                    )
+                )
                 updateUi()
             }
             4 -> {
                 countRacegoerTickets -= 1
-                RxBus.publish(RxEvent.setTicketCount(DashboardActivity.TICKET_RACEGOER, countRacegoerTickets))
+                RxBus.publish(
+                    RxEvent.setTicketCount(
+                        DashboardActivity.TICKET_RACEGOER,
+                        countRacegoerTickets
+                    )
+                )
                 updateUi()
             }
         }
@@ -84,22 +105,42 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
             }
             1 -> {
                 countAdultTickets += 1
-                RxBus.publish(RxEvent.setTicketCount(DashboardActivity.TICKET_ADULTS, countAdultTickets))
+                RxBus.publish(
+                    RxEvent.setTicketCount(
+                        DashboardActivity.TICKET_ADULTS,
+                        countAdultTickets
+                    )
+                )
                 updateUi()
             }
             2 -> {
                 countOver65Tickets += 1
-                RxBus.publish(RxEvent.setTicketCount(DashboardActivity.TICKET_OVER65, countOver65Tickets))
+                RxBus.publish(
+                    RxEvent.setTicketCount(
+                        DashboardActivity.TICKET_OVER65,
+                        countOver65Tickets
+                    )
+                )
                 updateUi()
             }
             3 -> {
                 count1822Tickets += 1
-                RxBus.publish(RxEvent.setTicketCount(DashboardActivity.TICKET_1822, count1822Tickets))
+                RxBus.publish(
+                    RxEvent.setTicketCount(
+                        DashboardActivity.TICKET_1822,
+                        count1822Tickets
+                    )
+                )
                 updateUi()
             }
             4 -> {
                 countRacegoerTickets += 1
-                RxBus.publish(RxEvent.setTicketCount(DashboardActivity.TICKET_RACEGOER, countRacegoerTickets))
+                RxBus.publish(
+                    RxEvent.setTicketCount(
+                        DashboardActivity.TICKET_RACEGOER,
+                        countRacegoerTickets
+                    )
+                )
                 updateUi()
             }
         }
@@ -119,32 +160,32 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
         if (countAdultTickets != 0)
             button_adult.visibility = View.VISIBLE
         button_adult.text = countAdultTickets.toString().plus(" ")
-            .plus("x Adult £".plus(" ").plus(countAdultTickets.times(20)))
+            .plus("x Adult £".plus(" ").plus(countAdultTickets.times(Prices.PRICE_ADULT)))
 
         if (countOver65Tickets != 0)
             button_over65.visibility = View.VISIBLE
         button_over65.text = countOver65Tickets.toString().plus(" ")
-            .plus("x Over65 £".plus(" ").plus(countOver65Tickets.times(30)))
+            .plus("x Over65 £".plus(" ").plus(countOver65Tickets.times(Prices.PRICE_OVER65)))
 
         if (count1822Tickets != 0)
             button_1822.visibility = View.VISIBLE
         button_1822.text = count1822Tickets.toString().plus(" ")
-            .plus("x 18-22 £".plus(" ").plus(count1822Tickets.times(40)))
+            .plus("x 18-22 £".plus(" ").plus(count1822Tickets.times(Prices.PRICE_1822)))
 
         if (countRacegoerTickets != 0)
             button_racegoer.visibility = View.VISIBLE
         button_racegoer.text = countRacegoerTickets.toString().plus(" ")
-            .plus("x Racegoer £".plus(" ").plus(countRacegoerTickets.times(50)))
+            .plus("x Racegoer £".plus(" ").plus(countRacegoerTickets.times(Prices.PRICE_RACEGOER)))
 
         textView_ticket.text = countAdultTickets.plus(countOver65Tickets).plus(count1822Tickets)
             .plus(countRacegoerTickets).toString().plus(" ")
             .plus(
                 "x Ticket £".plus(" ")
                     .plus(
-                        countAdultTickets.times(20)
-                            .plus(countOver65Tickets.times(30))
-                            .plus(count1822Tickets.times(40))
-                            .plus(countRacegoerTickets.times(50))
+                        countAdultTickets.times(Prices.PRICE_ADULT)
+                            .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
+                            .plus(count1822Tickets.times(Prices.PRICE_1822))
+                            .plus(countRacegoerTickets.times(Prices.PRICE_RACEGOER))
                     )
             )
 

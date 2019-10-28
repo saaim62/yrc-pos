@@ -8,10 +8,6 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.yrc.pos.R
-import com.yrc.pos.core.Constants
-import com.yrc.pos.core.YrcBaseActivity
-import com.yrc.pos.core.YrcFrameActivity
-import com.yrc.pos.core.Tags
 import com.yrc.pos.core.bus.RxBus
 import com.yrc.pos.core.bus.RxEvent
 import com.yrc.pos.core.session.User
@@ -24,7 +20,10 @@ import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.content_main.*
 import android.view.Menu
 import android.view.MenuItem
+import com.yrc.pos.core.*
 import com.yrc.pos.core.session.Session
+import kotlinx.android.synthetic.main.content_main.button_1822
+import kotlinx.android.synthetic.main.content_main.button_racegoer
 
 class DashboardActivity : YrcBaseActivity() {
 
@@ -61,6 +60,7 @@ class DashboardActivity : YrcBaseActivity() {
         setOver65ButtonListener()
         set1822ButtonListener()
         setRacegoerButtonListener()
+        setTotalButtonListener()
 
         disposableClearAllTickets = RxBus.listen(RxEvent.buttonFunction::class.java).subscribe {
             countAdultTickets = 0
@@ -85,6 +85,20 @@ class DashboardActivity : YrcBaseActivity() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        button_total.text = countAdultTickets.plus(countOver65Tickets).plus(count1822Tickets)
+            .plus(countRacegoerTickets).toString().plus(" ")
+            .plus(
+                "x Ticket £".plus(
+                        countAdultTickets.times(Prices.PRICE_ADULT)
+                            .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
+                            .plus(count1822Tickets.times(Prices.PRICE_1822))
+                            .plus(countRacegoerTickets.times(Prices.PRICE_RACEGOER))
+                    )
+            )
     }
 
     override fun onDestroy() {
@@ -119,11 +133,8 @@ class DashboardActivity : YrcBaseActivity() {
             val intent = Intent(this, CustomerSalesAddTicketQuantityActivity::class.java)
             countAdultTickets += 1
             intent.putExtra(TICKET_ADULTS, countAdultTickets)
-            countOver65Tickets
             intent.putExtra(TICKET_OVER65, countOver65Tickets)
-            count1822Tickets
             intent.putExtra(TICKET_1822, count1822Tickets)
-            countRacegoerTickets
             intent.putExtra(TICKET_RACEGOER, countRacegoerTickets)
             startActivity(intent)
         }
@@ -132,13 +143,10 @@ class DashboardActivity : YrcBaseActivity() {
     private fun setOver65ButtonListener() {
         button_Over65.setOnClickListener {
             val intent = Intent(this, CustomerSalesAddTicketQuantityActivity::class.java)
-            countAdultTickets
             intent.putExtra(TICKET_ADULTS, countAdultTickets)
             countOver65Tickets += 1
             intent.putExtra(TICKET_OVER65, countOver65Tickets)
-            count1822Tickets
             intent.putExtra(TICKET_1822, count1822Tickets)
-            countRacegoerTickets
             intent.putExtra(TICKET_RACEGOER, countRacegoerTickets)
             startActivity(intent)
         }
@@ -147,13 +155,10 @@ class DashboardActivity : YrcBaseActivity() {
     private fun set1822ButtonListener() {
         button_1822.setOnClickListener {
             val intent = Intent(this, CustomerSalesAddTicketQuantityActivity::class.java)
-            countAdultTickets
             intent.putExtra(TICKET_ADULTS, countAdultTickets)
-            countOver65Tickets
             intent.putExtra(TICKET_OVER65, countOver65Tickets)
             count1822Tickets += 1
             intent.putExtra(TICKET_1822, count1822Tickets)
-            countRacegoerTickets
             intent.putExtra(TICKET_RACEGOER, countRacegoerTickets)
             startActivity(intent)
         }
@@ -162,13 +167,21 @@ class DashboardActivity : YrcBaseActivity() {
     private fun setRacegoerButtonListener() {
         button_racegoer.setOnClickListener {
             val intent = Intent(this, CustomerSalesAddTicketQuantityActivity::class.java)
-            countAdultTickets
             intent.putExtra(TICKET_ADULTS, countAdultTickets)
-            countOver65Tickets
             intent.putExtra(TICKET_OVER65, countOver65Tickets)
-            count1822Tickets
             intent.putExtra(TICKET_1822, count1822Tickets)
             countRacegoerTickets += 1
+            intent.putExtra(TICKET_RACEGOER, countRacegoerTickets)
+            startActivity(intent)
+        }
+    }
+
+    private fun setTotalButtonListener() {
+        button_total.setOnClickListener {
+            val intent = Intent(this, CustomerSalesAddTicketQuantityActivity::class.java)
+            intent.putExtra(TICKET_ADULTS, countAdultTickets)
+            intent.putExtra(TICKET_OVER65, countOver65Tickets)
+            intent.putExtra(TICKET_1822, count1822Tickets)
             intent.putExtra(TICKET_RACEGOER, countRacegoerTickets)
             startActivity(intent)
         }
