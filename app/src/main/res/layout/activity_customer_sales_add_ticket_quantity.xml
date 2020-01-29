@@ -152,7 +152,6 @@
         android:layout_width="@dimen/_94sdp"
         android:layout_height="@dimen/_45sdp"
         android:layout_marginHorizontal="@dimen/_55sdp"
-        android:layout_marginEnd="8dp"
         android:onClick="onMinusButtonClicked"
         android:text="-"
         app:fontType="Regular"
