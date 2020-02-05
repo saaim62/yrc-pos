@@ -25,8 +25,9 @@
                 android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <activity
@@ -64,11 +65,6 @@
                 android:theme="@style/NoActionBar"
                 android:windowSoftInputMode="stateHidden" />
         <activity
-                android:name="com.yrc.pos.features.signup.EmployeeSignUpActivity"
-                android:screenOrientation="portrait"
-                android:theme="@style/NoActionBar"
-                android:windowSoftInputMode="stateHidden" />
-        <activity
                 android:name="com.yrc.pos.features.dashboard.DashboardActivity"
                 android:screenOrientation="portrait"
                 android:windowSoftInputMode="adjustPan" />
@@ -79,6 +75,21 @@
             android:name="com.yrc.pos.features.dashboard.CustomerSalesAddTicketQuantityActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
+        <receiver android:name=".core.receiver.StartReceiver">
+            <intent-filter android:priority="996">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:name=".core.receiver.BootUpReceiver"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

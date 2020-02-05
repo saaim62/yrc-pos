@@ -2,14 +2,18 @@ package com.yrc.pos.features.dashboard
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.yrc.pos.R
+import com.yrc.pos.core.*
 import com.yrc.pos.core.bus.RxBus
 import com.yrc.pos.core.bus.RxEvent
+import com.yrc.pos.core.session.Session
 import com.yrc.pos.core.session.User
 import com.yrc.pos.core.views.YrcTextView
 import com.yrc.pos.features.login.LoginActivity
@@ -18,12 +22,6 @@ import com.yrc.pos.features.support.SupportDialog
 import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.content_main.*
-import android.view.Menu
-import android.view.MenuItem
-import com.yrc.pos.core.*
-import com.yrc.pos.core.session.Session
-import kotlinx.android.synthetic.main.content_main.button_1822
-import kotlinx.android.synthetic.main.content_main.button_racegoer
 
 class DashboardActivity : YrcBaseActivity() {
 
@@ -235,4 +233,7 @@ class DashboardActivity : YrcBaseActivity() {
         val TICKET_RACEGOER = "ticket_racegoer"
     }
 
+    override fun onBackPressed() {
+        Toast.makeText(this, "Not allowed", Toast.LENGTH_SHORT).show()
+    }
 }
