@@ -67,31 +67,16 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
 
             val apiResult: Int = dal.printer.start()
 
-//            try {
-//
-//                when (apiResult) {
-//                         
-//                         
-//                          0
-//                    -> // Submission successfully made.
-//                         
-//                         
-//                          1
-//                    ->// Busy, so far so good.
-//                         
-//                         
-//                         2
-//                    ->// Out of paper.
-//                         
-//                         
-//                         
-//                    else ->// Hmm
-//                         
-//                         
-//                         
-//                }
-//            } catch (PrinterDevException ex) {
-//            }
+            try {
+
+                when (apiResult) {
+                    0 -> Toast.makeText(this, "Submission successfully made", Toast.LENGTH_SHORT).show()
+                    1 -> Toast.makeText(this, "Busy, so far so good", Toast.LENGTH_SHORT).show()
+                    2 -> Toast.makeText(this, "Out of paper", Toast.LENGTH_SHORT).show()
+                    else -> Toast.makeText(this, "Unexpected", Toast.LENGTH_SHORT).show()
+                }
+            } catch (ex: PrinterDevException) {
+            }
 //            do {
 //                 
 //                    // Check every quarter-second for result of print. 
