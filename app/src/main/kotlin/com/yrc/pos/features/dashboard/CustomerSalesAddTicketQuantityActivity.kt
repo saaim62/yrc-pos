@@ -3,12 +3,18 @@ package com.yrc.pos.features.dashboard
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.pax.dal.IDAL
+import com.pax.dal.entity.EFontTypeAscii
+import com.pax.dal.entity.EFontTypeExtCode
+import com.pax.dal.exceptions.PrinterDevException
+import com.pax.neptunelite.api.NeptuneLiteUser
 import com.yrc.pos.R
 import com.yrc.pos.core.Prices
 import com.yrc.pos.core.YrcBaseActivity
 import com.yrc.pos.core.bus.RxBus
 import com.yrc.pos.core.bus.RxEvent
 import kotlinx.android.synthetic.main.activity_customer_sales_add_ticket_quantity.*
+
 
 class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
     private var countAdultTickets: Int = 0
@@ -17,6 +23,8 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
     private var countRacegoerTickets: Int = 0
 
     private var selectedButton: Int = 0
+
+    lateinit var dal: IDAL
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +49,78 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
         }
         button_racegoer.setOnClickListener {
             selectedButton = 4
+        }
+        button_cash.setOnClickListener {
+            Toast.makeText(this, "Printing...", Toast.LENGTH_SHORT).show()
+
+            dal = NeptuneLiteUser.getInstance().getDal(this)
+            var prn = dal.printer
+            prn.init()
+            prn.fontSet(EFontTypeAscii.FONT_16_16, EFontTypeExtCode.FONT_16_16)
+            prn.printStr("Hello World!", null)
+
+//            prn.spaceSet((byte)0,(byte)0); 
+//            prn.step(0);
+//            prn.invert(doInvert);
+//            prn.leftIndent(leftMarginPx);
+//            prn.printStr("Hello World2!", null)
+
+            val apiResult: Int = dal.printer.start()
+
+//            try {
+//
+//                when (apiResult) {
+//                         
+//                         
+//                          0
+//                    -> // Submission successfully made.
+//                         
+//                         
+//                          1
+//                    ->// Busy, so far so good.
+//                         
+//                         
+//                         2
+//                    ->// Out of paper.
+//                         
+//                         
+//                         
+//                    else ->// Hmm
+//                         
+//                         
+//                         
+//                }
+//            } catch (PrinterDevException ex) {
+//            }
+//            do {
+//                 
+//                    // Check every quarter-second for result of print. 
+//                    Thread.sleep(250); 
+//                    apiResult = prn.getStatus(); 
+//            } while (apiResult == 1);
+//
+//// Paper cutter. 
+//            try {
+//                 
+//                    int cutMode = prn.getCutMode(); 
+//                    if ((cutMode == 0) || (cutMode == 2)) {
+//                     
+//                            // 0=full, or 2=partial/full => full cut. 
+//                            prn.cutPaper(0); 
+//                       
+//                } 
+//                    else if (cutMode == 1) {
+//                     
+//                            // 1=partial only => partial cut. 
+//                            prn.cutPaper(1); 
+//                       
+//                } 
+//            } 
+//            catch(PrinterDevException pdex) {
+//                 
+//            }
+
+
         }
 
         updateUi()
