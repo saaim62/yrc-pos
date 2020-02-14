@@ -54,18 +54,51 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
             Toast.makeText(this, "Printing...", Toast.LENGTH_SHORT).show()
 
             dal = NeptuneLiteUser.getInstance().getDal(this)
-            var prn = dal.printer
+            val prn = dal.printer
             prn.init()
             prn.fontSet(EFontTypeAscii.FONT_16_16, EFontTypeExtCode.FONT_16_16)
-            prn.printStr("Hello World!", null)
+            prn.printStr("Waybill", null)
+            prn.printStr("\n", null)
+            prn.printStr("========================", null)
+            prn.printStr("\n", null)
+            prn.printStr("Start:", null)
+            prn.printStr("\n", null)
+            prn.printStr("End:", null)
+            prn.printStr("\n", null)
+            prn.printStr("Driver:", null)
+            prn.printStr("\n", null)
+            prn.spaceSet(0.toByte(),0.toByte())
+            prn.printStr("Duty:", null)
+            prn.printStr("\n", null)
+            prn.printStr("S.Serial:", null)
+            prn.printStr("\n", null)
+            prn.step(0)
+            prn.printStr("E.Serial:", null)
+            prn.printStr("\n", null)
+            prn.spaceSet(0.toByte(),0.toByte())
+            prn.printStr("Machine:", null)
+            prn.printStr("\n", null)
+            prn.printStr("------------------------", null)
+            prn.printStr("\n", null)
+            prn.printStr("SALES", null)
+            prn.printStr("\n", null)
+            prn.printStr("Adult", null)
+            prn.printStr("\n", null)
+//            prn.invert(true)
+            prn.printStr("Over 65", null)
+            prn.printStr("\n", null)
+            prn.printStr("CASH TOTAL", null)
+            prn.printStr("\n", null)
+            prn.printStr("Gross:", null)
+            prn.printStr("\n", null)
+            prn.leftIndent(3)
+            prn.printStr("Annualled:", null)
+            prn.printStr("\n", null)
+            prn.printStr("Net:", null)
+            prn.printStr("\n", null)
+            prn.printStr("------------------------", null)
 
-//            prn.spaceSet((byte)0,(byte)0); 
-//            prn.step(0);
-//            prn.invert(doInvert);
-//            prn.leftIndent(leftMarginPx);
-//            prn.printStr("Hello World2!", null)
-
-            val apiResult: Int = dal.printer.start()
+            var apiResult: Int = dal.printer.start()
 
             try {
 
@@ -77,37 +110,23 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
                 }
             } catch (ex: PrinterDevException) {
             }
-//            do {
-//                 
-//                    // Check every quarter-second for result of print. 
-//                    Thread.sleep(250); 
-//                    apiResult = prn.getStatus(); 
-//            } while (apiResult == 1);
-//
-//// Paper cutter. 
-//            try {
-//                 
-//                    int cutMode = prn.getCutMode(); 
-//                    if ((cutMode == 0) || (cutMode == 2)) {
-//                     
-//                            // 0=full, or 2=partial/full => full cut. 
-//                            prn.cutPaper(0); 
-//                       
-//                } 
-//                    else if (cutMode == 1) {
-//                     
-//                            // 1=partial only => partial cut. 
-//                            prn.cutPaper(1); 
-//                       
-//                } 
-//            } 
-//            catch(PrinterDevException pdex) {
-//                 
-//            }
-
-
+            do {// Check every quarter-second for result of print. 
+                Thread.sleep(250)
+                apiResult = prn.status
+            } while (apiResult == 1)
+            // Paper cutter. 
+            try {
+                val cutMode: Int = prn.getCutMode()
+                if ((cutMode == 0) || (cutMode == 2)) {
+                    // 0=full, or 2=partial/full => full cut. 
+                    prn.cutPaper(0)
+                } else if (cutMode == 1) {
+                    // 1=partial only => partial cut. 
+                    prn.cutPaper(1)
+                }
+            } catch (pdex: PrinterDevException) {
+            }
         }
-
         updateUi()
     }
 
