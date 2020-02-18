@@ -1,5 +1,6 @@
 package com.yrc.pos.features.dashboard
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -14,6 +15,8 @@ import com.yrc.pos.core.YrcBaseActivity
 import com.yrc.pos.core.bus.RxBus
 import com.yrc.pos.core.bus.RxEvent
 import kotlinx.android.synthetic.main.activity_customer_sales_add_ticket_quantity.*
+import java.text.DateFormat
+import java.util.*
 
 
 class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
@@ -56,47 +59,71 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
             dal = NeptuneLiteUser.getInstance().getDal(this)
             val prn = dal.printer
             prn.init()
-            prn.fontSet(EFontTypeAscii.FONT_16_16, EFontTypeExtCode.FONT_16_16)
-            prn.printStr("Waybill", null)
-            prn.printStr("\n", null)
-            prn.printStr("========================", null)
-            prn.printStr("\n", null)
-            prn.printStr("Start:", null)
-            prn.printStr("\n", null)
-            prn.printStr("End:", null)
-            prn.printStr("\n", null)
-            prn.printStr("Driver:", null)
-            prn.printStr("\n", null)
-            prn.spaceSet(0.toByte(),0.toByte())
-            prn.printStr("Duty:", null)
-            prn.printStr("\n", null)
-            prn.printStr("S.Serial:", null)
-            prn.printStr("\n", null)
-            prn.step(0)
-            prn.printStr("E.Serial:", null)
-            prn.printStr("\n", null)
-            prn.spaceSet(0.toByte(),0.toByte())
-            prn.printStr("Machine:", null)
-            prn.printStr("\n", null)
-            prn.printStr("------------------------", null)
-            prn.printStr("\n", null)
-            prn.printStr("SALES", null)
-            prn.printStr("\n", null)
+            prn.fontSet(EFontTypeAscii.FONT_24_48, EFontTypeExtCode.FONT_24_48)
+            prn.leftIndent(100)
+//            prn.spaceSet(50.toByte(), 50.toByte())
             prn.printStr("Adult", null)
             prn.printStr("\n", null)
-//            prn.invert(true)
-            prn.printStr("Over 65", null)
+            prn.printStr("£20.00", null)
             prn.printStr("\n", null)
-            prn.printStr("CASH TOTAL", null)
+
+            prn.leftIndent(0)
+            prn.spaceSet(0.toByte(), 0.toByte())
+            prn.fontSet(EFontTypeAscii.FONT_16_16, EFontTypeExtCode.FONT_16_32)
+            prn.printStr(DateFormat.getDateTimeInstance().format(Date()), null)
             prn.printStr("\n", null)
-            prn.printStr("Gross:", null)
+            prn.printStr("Receipt only", null)
             prn.printStr("\n", null)
-            prn.leftIndent(3)
-            prn.printStr("Annualled:", null)
+            prn.printStr("Not valid for entry", null)
             prn.printStr("\n", null)
-            prn.printStr("Net:", null)
+            prn.fontSet(EFontTypeAscii.FONT_8_16, EFontTypeExtCode.FONT_16_16)
+            prn.printStr("Retain ticket as a proof", null)
             prn.printStr("\n", null)
-            prn.printStr("------------------------", null)
+            prn.invert(true)
+//            prn.printBitmap(BitmapFactory.decodeResource(resources, R.drawable.qrcode))
+            prn.printStr("\n", null)
+            prn.printStr("\n", null)
+            prn.printStr("\n", null)
+
+
+//            prn.printStr("========================", null)
+//            prn.printStr("\n", null)
+//            prn.printStr("Start:", null)
+//            prn.printStr("\n", null)
+//            prn.printStr("End:", null)
+//            prn.printStr("\n", null)
+//            prn.printStr("Driver:", null)
+//            prn.printStr("\n", null)
+//            prn.spaceSet(0.toByte(),0.toByte())
+//            prn.printStr("Duty:", null)
+//            prn.printStr("\n", null)
+//            prn.printStr("S.Serial:", null)
+//            prn.printStr("\n", null)
+//            prn.step(0)
+//            prn.printStr("E.Serial:", null)
+//            prn.printStr("\n", null)
+//            prn.spaceSet(0.toByte(),0.toByte())
+//            prn.printStr("Machine:", null)
+//            prn.printStr("\n", null)
+//            prn.printStr("------------------------", null)
+//            prn.printStr("\n", null)
+//            prn.printStr("SALES", null)
+//            prn.printStr("\n", null)
+//            prn.printStr("Adult", null)
+//            prn.printStr("\n", null)
+////            prn.invert(true)
+//            prn.printStr("Over 65", null)
+//            prn.printStr("\n", null)
+//            prn.printStr("CASH TOTAL", null)
+//            prn.printStr("\n", null)
+//            prn.printStr("Gross:", null)
+//            prn.printStr("\n", null)
+//            prn.leftIndent(3)
+//            prn.printStr("Annualled:", null)
+//            prn.printStr("\n", null)
+//            prn.printStr("Net:", null)
+//            prn.printStr("\n", null)
+//            prn.printStr("------------------------", null)
 
             var apiResult: Int = dal.printer.start()
 
@@ -110,22 +137,22 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
                 }
             } catch (ex: PrinterDevException) {
             }
-            do {// Check every quarter-second for result of print. 
-                Thread.sleep(250)
-                apiResult = prn.status
-            } while (apiResult == 1)
-            // Paper cutter. 
-            try {
-                val cutMode: Int = prn.getCutMode()
-                if ((cutMode == 0) || (cutMode == 2)) {
-                    // 0=full, or 2=partial/full => full cut. 
-                    prn.cutPaper(0)
-                } else if (cutMode == 1) {
-                    // 1=partial only => partial cut. 
-                    prn.cutPaper(1)
-                }
-            } catch (pdex: PrinterDevException) {
-            }
+//            do {// Check every quarter-second for result of print. 
+//                Thread.sleep(250)
+//                apiResult = prn.status
+//            } while (apiResult == 1)
+//            // Paper cutter. 
+//            try {
+//                val cutMode: Int = prn.getCutMode()
+//                if ((cutMode == 0) || (cutMode == 2)) {
+//                    // 0=full, or 2=partial/full => full cut. 
+//                    prn.cutPaper(0)
+//                } else if (cutMode == 1) {
+//                    // 1=partial only => partial cut. 
+//                    prn.cutPaper(1)
+//                }
+//            } catch (pdex: PrinterDevException) {
+//            }
         }
         updateUi()
     }
