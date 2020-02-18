@@ -27,43 +27,43 @@ object YrcLogger {
     }
 
     fun v(msg: String) {
-        if (Logs_Enabled && Log.isLoggable(TAG, Log.VERBOSE)) {
+        if (Logs_Enabled) {
             Log.v(TAG, buildMsg(msg))
         }
     }
 
     fun d(msg: String) {
-        if (Logs_Enabled && Log.isLoggable(TAG, Log.DEBUG)) {
+        if (Logs_Enabled) {
             Log.d(TAG, buildMsg(msg))
         }
     }
 
     fun i(msg: String) {
-        if (Logs_Enabled && Log.isLoggable(TAG, Log.INFO)) {
+        if (Logs_Enabled) {
             Log.i(TAG, buildMsg(msg))
         }
     }
 
     fun w(msg: String) {
-        if (Logs_Enabled && Log.isLoggable(TAG, Log.WARN)) {
+        if (Logs_Enabled) {
             Log.w(TAG, buildMsg(msg))
         }
     }
 
     fun w(msg: String, e: Exception) {
-        if (Logs_Enabled && Log.isLoggable(TAG, Log.WARN)) {
+        if (Logs_Enabled) {
             Log.w(TAG, buildMsg(msg), e)
         }
     }
 
     fun e(msg: String) {
-        if (Logs_Enabled && Log.isLoggable(TAG, Log.ERROR)) {
+        if (Logs_Enabled) {
             Log.e(TAG, buildMsg(msg))
         }
     }
 
     fun e(msg: String, e: Exception) {
-        if (Logs_Enabled && Log.isLoggable(TAG, Log.ERROR)) {
+        if (Logs_Enabled) {
             Log.e(TAG, buildMsg(msg), e)
         }
     }

@@ -12,6 +12,7 @@ import com.pax.neptunelite.api.NeptuneLiteUser
 import com.yrc.pos.R
 import com.yrc.pos.core.Prices
 import com.yrc.pos.core.YrcBaseActivity
+import com.yrc.pos.core.YrcLogger
 import com.yrc.pos.core.bus.RxBus
 import com.yrc.pos.core.bus.RxEvent
 import kotlinx.android.synthetic.main.activity_customer_sales_add_ticket_quantity.*
@@ -54,89 +55,56 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
             selectedButton = 4
         }
         button_cash.setOnClickListener {
-            Toast.makeText(this, "Printing...", Toast.LENGTH_SHORT).show()
-
             dal = NeptuneLiteUser.getInstance().getDal(this)
             val prn = dal.printer
             prn.init()
+
             prn.fontSet(EFontTypeAscii.FONT_24_48, EFontTypeExtCode.FONT_24_48)
-            prn.leftIndent(100)
+            prn.leftIndent(110)
 //            prn.spaceSet(50.toByte(), 50.toByte())
             prn.printStr("Adult", null)
             prn.printStr("\n", null)
-            prn.printStr("£20.00", null)
-            prn.printStr("\n", null)
+            prn.leftIndent(100)
 
+            prn.printStr("£20.00", null)
             prn.leftIndent(0)
+            prn.printStr("----------------", null)
+
+            prn.fontSet(EFontTypeAscii.FONT_16_32, EFontTypeExtCode.FONT_16_32)
+            prn.leftIndent(20)
             prn.spaceSet(0.toByte(), 0.toByte())
-            prn.fontSet(EFontTypeAscii.FONT_16_16, EFontTypeExtCode.FONT_16_32)
             prn.printStr(DateFormat.getDateTimeInstance().format(Date()), null)
             prn.printStr("\n", null)
+
+            prn.leftIndent(20)
             prn.printStr("Receipt only", null)
             prn.printStr("\n", null)
+
             prn.printStr("Not valid for entry", null)
             prn.printStr("\n", null)
+
             prn.fontSet(EFontTypeAscii.FONT_8_16, EFontTypeExtCode.FONT_16_16)
+            prn.leftIndent(20)
+            prn.dotLine
             prn.printStr("Retain ticket as a proof", null)
-            prn.printStr("\n", null)
-            prn.invert(true)
-//            prn.printBitmap(BitmapFactory.decodeResource(resources, R.drawable.qrcode))
-            prn.printStr("\n", null)
-            prn.printStr("\n", null)
-            prn.printStr("\n", null)
 
+//            prn.invert(true)
+            prn.step(10)
+            prn.leftIndent(0)
+            prn.printBitmapWithMonoThreshold(BitmapFactory.decodeResource(resources, R.drawable.logo), 1)
 
-//            prn.printStr("========================", null)
-//            prn.printStr("\n", null)
-//            prn.printStr("Start:", null)
-//            prn.printStr("\n", null)
-//            prn.printStr("End:", null)
-//            prn.printStr("\n", null)
-//            prn.printStr("Driver:", null)
-//            prn.printStr("\n", null)
-//            prn.spaceSet(0.toByte(),0.toByte())
-//            prn.printStr("Duty:", null)
-//            prn.printStr("\n", null)
-//            prn.printStr("S.Serial:", null)
-//            prn.printStr("\n", null)
-//            prn.step(0)
-//            prn.printStr("E.Serial:", null)
-//            prn.printStr("\n", null)
-//            prn.spaceSet(0.toByte(),0.toByte())
-//            prn.printStr("Machine:", null)
-//            prn.printStr("\n", null)
-//            prn.printStr("------------------------", null)
-//            prn.printStr("\n", null)
-//            prn.printStr("SALES", null)
-//            prn.printStr("\n", null)
-//            prn.printStr("Adult", null)
-//            prn.printStr("\n", null)
-////            prn.invert(true)
-//            prn.printStr("Over 65", null)
-//            prn.printStr("\n", null)
-//            prn.printStr("CASH TOTAL", null)
-//            prn.printStr("\n", null)
-//            prn.printStr("Gross:", null)
-//            prn.printStr("\n", null)
-//            prn.leftIndent(3)
-//            prn.printStr("Annualled:", null)
-//            prn.printStr("\n", null)
-//            prn.printStr("Net:", null)
-//            prn.printStr("\n", null)
-//            prn.printStr("------------------------", null)
-
-            var apiResult: Int = dal.printer.start()
-
+            val apiResult: Int = dal.printer.start()
             try {
-
                 when (apiResult) {
-                    0 -> Toast.makeText(this, "Submission successfully made", Toast.LENGTH_SHORT).show()
-                    1 -> Toast.makeText(this, "Busy, so far so good", Toast.LENGTH_SHORT).show()
-                    2 -> Toast.makeText(this, "Out of paper", Toast.LENGTH_SHORT).show()
-                    else -> Toast.makeText(this, "Unexpected", Toast.LENGTH_SHORT).show()
+                    0 -> YrcLogger.d("Submission successfully made")
+                    1 -> YrcLogger.d("Busy, so far so good")
+                    2 -> YrcLogger.d("Out of paper")
+                    else -> YrcLogger.d("Unexpected")
                 }
             } catch (ex: PrinterDevException) {
+                ex.printStackTrace()
             }
+
 //            do {// Check every quarter-second for result of print. 
 //                Thread.sleep(250)
 //                apiResult = prn.status
@@ -258,7 +226,6 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
     }
 
     fun onCrossButtonClicked(view: View) {
-        //todo clear all tickets and return to back screen
         RxBus.publish(RxEvent.buttonFunction("onCrossButtonClicked"))
         finish()
     }
