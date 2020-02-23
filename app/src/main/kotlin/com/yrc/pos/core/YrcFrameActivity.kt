@@ -40,7 +40,7 @@ class YrcFrameActivity : YrcBaseActivity() {
     }
 
     private fun setActionBarTitle(title: String) {
-        supportActionBar!!.setTitle(title)
+        supportActionBar!!.title = title
     }
 
     private fun setupActionBar() {

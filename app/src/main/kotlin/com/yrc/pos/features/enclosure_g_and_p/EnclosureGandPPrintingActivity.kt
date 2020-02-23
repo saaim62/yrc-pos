@@ -1,4 +1,4 @@
-package com.yrc.pos.features.dashboard
+package com.yrc.pos.features.enclosure_g_and_p
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -15,12 +15,12 @@ import com.yrc.pos.core.YrcBaseActivity
 import com.yrc.pos.core.YrcLogger
 import com.yrc.pos.core.bus.RxBus
 import com.yrc.pos.core.bus.RxEvent
-import kotlinx.android.synthetic.main.activity_customer_sales_add_ticket_quantity.*
+import kotlinx.android.synthetic.main.activity_enclosure_g_and_p_printing.*
 import java.text.DateFormat
 import java.util.*
 
 
-class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
+class EnclosureGandPPrintingActivity : YrcBaseActivity() {
     private var countAdultTickets: Int = 0
     private var countOver65Tickets: Int = 0
     private var count1822Tickets: Int = 0
@@ -32,14 +32,14 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_customer_sales_add_ticket_quantity)
+        setContentView(R.layout.activity_enclosure_g_and_p_printing)
         val i = intent
         val bundle = i.extras
         if (bundle != null) {
-            countAdultTickets = bundle.getInt(DashboardActivity.TICKET_ADULTS)
-            countOver65Tickets = bundle.getInt(DashboardActivity.TICKET_OVER65)
-            count1822Tickets = bundle.getInt(DashboardActivity.TICKET_1822)
-            countRacegoerTickets = bundle.getInt(DashboardActivity.TICKET_RACEGOER)
+            countAdultTickets = bundle.getInt(EnclosureGandPFragment.TICKET_ADULTS)
+            countOver65Tickets = bundle.getInt(EnclosureGandPFragment.TICKET_OVER65)
+            count1822Tickets = bundle.getInt(EnclosureGandPFragment.TICKET_1822)
+            countRacegoerTickets = bundle.getInt(EnclosureGandPFragment.TICKET_RACEGOER)
         }
 
         button_adult.setOnClickListener {
@@ -138,7 +138,7 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
                 countAdultTickets -= 1
                 RxBus.publish(
                     RxEvent.setTicketCount(
-                        DashboardActivity.TICKET_ADULTS,
+                        EnclosureGandPFragment.TICKET_ADULTS,
                         countAdultTickets
                     )
                 )
@@ -148,7 +148,7 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
                 countOver65Tickets -= 1
                 RxBus.publish(
                     RxEvent.setTicketCount(
-                        DashboardActivity.TICKET_OVER65,
+                        EnclosureGandPFragment.TICKET_OVER65,
                         countOver65Tickets
                     )
                 )
@@ -158,7 +158,7 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
                 count1822Tickets -= 1
                 RxBus.publish(
                     RxEvent.setTicketCount(
-                        DashboardActivity.TICKET_1822,
+                        EnclosureGandPFragment.TICKET_1822,
                         count1822Tickets
                     )
                 )
@@ -168,7 +168,7 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
                 countRacegoerTickets -= 1
                 RxBus.publish(
                     RxEvent.setTicketCount(
-                        DashboardActivity.TICKET_RACEGOER,
+                        EnclosureGandPFragment.TICKET_RACEGOER,
                         countRacegoerTickets
                     )
                 )
@@ -186,7 +186,7 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
                 countAdultTickets += 1
                 RxBus.publish(
                     RxEvent.setTicketCount(
-                        DashboardActivity.TICKET_ADULTS,
+                        EnclosureGandPFragment.TICKET_ADULTS,
                         countAdultTickets
                     )
                 )
@@ -196,7 +196,7 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
                 countOver65Tickets += 1
                 RxBus.publish(
                     RxEvent.setTicketCount(
-                        DashboardActivity.TICKET_OVER65,
+                        EnclosureGandPFragment.TICKET_OVER65,
                         countOver65Tickets
                     )
                 )
@@ -206,7 +206,7 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
                 count1822Tickets += 1
                 RxBus.publish(
                     RxEvent.setTicketCount(
-                        DashboardActivity.TICKET_1822,
+                        EnclosureGandPFragment.TICKET_1822,
                         count1822Tickets
                     )
                 )
@@ -216,7 +216,7 @@ class CustomerSalesAddTicketQuantityActivity : YrcBaseActivity() {
                 countRacegoerTickets += 1
                 RxBus.publish(
                     RxEvent.setTicketCount(
-                        DashboardActivity.TICKET_RACEGOER,
+                        EnclosureGandPFragment.TICKET_RACEGOER,
                         countRacegoerTickets
                     )
                 )

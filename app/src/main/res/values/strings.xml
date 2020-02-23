@@ -120,4 +120,6 @@
     <string name="customer_support_required">Customer Support Required</string>
     <string name="mail_to">mailto:</string>
     <string name="tel">tel:</string>
+    <string name="title_enclosure_g_and_p"><![CDATA[G & P]]></string>
+    <string name="title_clocktower">Clock Tower</string>
 </resources>

@@ -1,76 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        package="com.yrc.pos">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.yrc.pos">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="com.pax.permission.PRINTER" />
 
     <application
-            android:name="com.yrc.pos.core.YrcApplication"
-            android:allowBackup="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:roundIcon="@mipmap/ic_launcher_round"
-            android:supportsRtl="true"
-            android:theme="@style/AppTheme"
-            android:usesCleartextTraffic="true"
-            tools:ignore="GoogleAppIndexingWarning">
+        android:name="com.yrc.pos.core.YrcApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning">
         <activity
-                android:name="com.yrc.pos.features.splash.SplashActivity"
-                android:screenOrientation="portrait"
-                android:theme="@style/NoActionBar">
+            android:name="com.yrc.pos.features.splash.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.HOME" />
-                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
-                android:name="com.yrc.pos.features.login.LoginActivity"
-                android:screenOrientation="portrait"
-                android:theme="@style/NoActionBar"
-                android:windowSoftInputMode="stateHidden" />
+            android:name="com.yrc.pos.features.login.LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
-                android:name="com.yrc.pos.features.signup.SignupActivity"
-                android:screenOrientation="portrait"
-                android:theme="@style/NoActionBar"
-                android:windowSoftInputMode="stateHidden" />
+            android:name="com.yrc.pos.features.signup.SignupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
-                android:name="com.yrc.pos.features.signup.HelloUserActivity"
-                android:screenOrientation="portrait"
-                android:theme="@style/NoActionBar"
-                android:windowSoftInputMode="stateHidden" />
+            android:name="com.yrc.pos.features.signup.HelloUserActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
-                android:name="com.yrc.pos.features.forget_password.ForgetPasswordActivity"
-                android:screenOrientation="portrait"
-                android:theme="@style/NoActionBar"
-                android:windowSoftInputMode="stateHidden" />
+            android:name="com.yrc.pos.features.forget_password.ForgetPasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
-                android:name="com.yrc.pos.features.forget_password.PasswordResetStatusActivity"
-                android:screenOrientation="portrait"
-                android:theme="@style/NoActionBar" />
+            android:name="com.yrc.pos.features.forget_password.PasswordResetStatusActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
         <activity
-                android:name="com.yrc.pos.features.forget_password.NewPasswordActivity"
-                android:screenOrientation="portrait"
-                android:theme="@style/NoActionBar"
-                android:windowSoftInputMode="stateHidden" />
+            android:name="com.yrc.pos.features.forget_password.NewPasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
-                android:name="com.yrc.pos.features.dashboard.DashboardActivity"
-                android:screenOrientation="portrait"
-                android:windowSoftInputMode="adjustPan" />
-        <activity
-                android:name="com.yrc.pos.core.YrcFrameActivity"
-                android:screenOrientation="portrait" />
-        <activity
-            android:name="com.yrc.pos.features.dashboard.CustomerSalesAddTicketQuantityActivity"
+            android:name="com.yrc.pos.features.dashboard.DashboardActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.yrc.pos.core.YrcFrameActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yrc.pos.features.enclosure_g_and_p.EnclosureGandPPrintingActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.yrc.pos.features.enclosure_clock_tower.EnclosureClockTowerPrintingActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
         <receiver android:name=".core.receiver.StartReceiver">
             <intent-filter android:priority="996">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -78,7 +84,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </receiver>
-        <receiver android:enabled="true" android:name=".core.receiver.BootUpReceiver"
+        <receiver
+            android:name=".core.receiver.BootUpReceiver"
+            android:enabled="true"
             android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
 
             <intent-filter>
