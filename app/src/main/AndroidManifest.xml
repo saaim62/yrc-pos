@@ -42,11 +42,6 @@
                 android:theme="@style/NoActionBar"
                 android:windowSoftInputMode="stateHidden" />
         <activity
-                android:name="com.yrc.pos.features.signup.CodeVerificationActivity"
-                android:screenOrientation="portrait"
-                android:theme="@style/NoActionBar"
-                android:windowSoftInputMode="stateHidden" />
-        <activity
                 android:name="com.yrc.pos.features.signup.HelloUserActivity"
                 android:screenOrientation="portrait"
                 android:theme="@style/NoActionBar"

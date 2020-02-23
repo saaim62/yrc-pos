@@ -46,35 +46,38 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'com.github.mumayank:AirLocation:1.3'
     implementation 'io.michaelrocks:libphonenumber-android:8.10.16'
-    implementation 'com.google.android.gms:play-services-location:16.0.0'
+
     // Module Dependencies
     implementation project(':countrycodepicker')
     implementation project(':jrspinner')
+    implementation files('libs/NeptuneLiteApi_V3.03.00_20190304.jar')
+
     // UI Dependencies
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
     implementation 'com.kaopiz:kprogresshud:1.2.0'
-    implementation 'de.hdodenhof:circleimageview:3.0.1'
+
     // Navigation Dependencies
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.2.0-alpha01'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.2.0-alpha01'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.0.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0-alpha02'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0-alpha02'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.0-RC4'
+
     // Web APIs Dependencies
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
     // Unit Testing Dependencies
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation files('libs/NeptuneLiteApi_V3.03.00_20190304.jar')
 
     implementation 'com.google.zxing:android-core:3.3.0'
 }
