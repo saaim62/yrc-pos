@@ -70,12 +70,12 @@ dependencies {
     implementation 'io.reactivex.rxjava3:rxjava:3.0.0-RC4'
 
     // Web APIs Dependencies
-    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
 
     // Unit Testing Dependencies
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
