@@ -9,7 +9,6 @@ import com.yrc.pos.core.*
 import com.yrc.pos.core.bus.RxBus
 import com.yrc.pos.core.bus.RxEvent
 import com.yrc.pos.core.views.YrcTextView
-import com.yrc.pos.features.enclosure_clock_tower.EnclosureClockTowerPrintingActivity
 import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_enclosure_g_and_p.*
 
@@ -86,7 +85,7 @@ class EnclosureGandPFragment : YrcBaseFragment() {
 
     private fun setAdultButtonListener() {
         button_Adult.setOnClickListener {
-            val intent = Intent(activity, EnclosureClockTowerPrintingActivity::class.java)
+            val intent = Intent(activity, EnclosureGandPPrintingActivity::class.java)
             countAdultTickets += 1
             intent.putExtra(TICKET_ADULTS, countAdultTickets)
             intent.putExtra(TICKET_OVER65, countOver65Tickets)
@@ -98,7 +97,7 @@ class EnclosureGandPFragment : YrcBaseFragment() {
 
     private fun setOver65ButtonListener() {
         button_Over65.setOnClickListener {
-            val intent = Intent(activity, EnclosureClockTowerPrintingActivity::class.java)
+            val intent = Intent(activity, EnclosureGandPPrintingActivity::class.java)
             intent.putExtra(TICKET_ADULTS, countAdultTickets)
             countOver65Tickets += 1
             intent.putExtra(TICKET_OVER65, countOver65Tickets)
@@ -110,7 +109,7 @@ class EnclosureGandPFragment : YrcBaseFragment() {
 
     private fun set1822ButtonListener() {
         button_1822.setOnClickListener {
-            val intent = Intent(activity, EnclosureClockTowerPrintingActivity::class.java)
+            val intent = Intent(activity, EnclosureGandPPrintingActivity::class.java)
             intent.putExtra(TICKET_ADULTS, countAdultTickets)
             intent.putExtra(TICKET_OVER65, countOver65Tickets)
             count1822Tickets += 1
@@ -122,7 +121,7 @@ class EnclosureGandPFragment : YrcBaseFragment() {
 
     private fun setRacegoerButtonListener() {
         button_racegoer.setOnClickListener {
-            val intent = Intent(activity, EnclosureClockTowerPrintingActivity::class.java)
+            val intent = Intent(activity, EnclosureGandPPrintingActivity::class.java)
             intent.putExtra(TICKET_ADULTS, countAdultTickets)
             intent.putExtra(TICKET_OVER65, countOver65Tickets)
             intent.putExtra(TICKET_1822, count1822Tickets)
@@ -134,7 +133,7 @@ class EnclosureGandPFragment : YrcBaseFragment() {
 
     private fun setTotalButtonListener() {
         button_total.setOnClickListener {
-            val intent = Intent(activity, EnclosureClockTowerPrintingActivity::class.java)
+            val intent = Intent(activity, EnclosureGandPPrintingActivity::class.java)
             intent.putExtra(TICKET_ADULTS, countAdultTickets)
             intent.putExtra(TICKET_OVER65, countOver65Tickets)
             intent.putExtra(TICKET_1822, count1822Tickets)

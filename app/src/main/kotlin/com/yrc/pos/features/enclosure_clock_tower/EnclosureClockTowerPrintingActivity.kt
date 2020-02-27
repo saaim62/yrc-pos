@@ -30,7 +30,7 @@ class EnclosureClockTowerPrintingActivity : YrcBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_enclosure_g_and_p_printing)
+        setContentView(R.layout.activity_enclosure_clock_tower_printing)
         val i = intent
         val bundle = i.extras
         if (bundle != null) {
@@ -183,6 +183,10 @@ class EnclosureClockTowerPrintingActivity : YrcBaseActivity() {
 
     fun onCrossButtonClicked(view: View) {
         RxBus.publish(RxEvent.buttonFunction("onCrossButtonClicked"))
+        finish()
+    }
+
+    fun onCreditButtonClicked(view: View) {
         finish()
     }
 

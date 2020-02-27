@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/light_screen_background"
@@ -175,7 +174,7 @@
 
     <com.yrc.pos.core.views.YrcButton
         android:id="@+id/button_cross"
-        android:layout_width="@dimen/_141sdp"
+        android:layout_width="@dimen/_94sdp"
         android:layout_height="@dimen/_45sdp"
         android:layout_marginHorizontal="@dimen/_55sdp"
         android:layout_marginStart="8dp"
@@ -190,9 +189,23 @@
         app:layout_constraintTop_toTopOf="@+id/button_cash" />
 
     <com.yrc.pos.core.views.YrcButton
+        android:id="@+id/button_credit"
+        style="@style/CreditButtonStyle"
+        android:layout_width="@dimen/_94sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_marginHorizontal="@dimen/_55sdp"
+        android:layout_marginBottom="32dp"
+        android:onClick="onCreditButtonClicked"
+        android:text="CREDIT"
+        app:fontType="Regular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_cash"
+        app:layout_constraintStart_toEndOf="@+id/button_cross" />
+
+    <com.yrc.pos.core.views.YrcButton
         android:id="@+id/button_cash"
-        style="@style/LoginButtonStyle"
-        android:layout_width="@dimen/_141sdp"
+        style="@style/CashButtonStyle"
+        android:layout_width="@dimen/_94sdp"
         android:layout_height="@dimen/_45sdp"
         android:layout_marginHorizontal="@dimen/_55sdp"
         android:layout_marginEnd="8dp"
