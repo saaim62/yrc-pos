@@ -189,14 +189,14 @@
         app:layout_constraintTop_toTopOf="@+id/button_cash" />
 
     <com.yrc.pos.core.views.YrcButton
-        android:id="@+id/button_credit"
+        android:id="@+id/button_card"
         style="@style/CreditButtonStyle"
         android:layout_width="@dimen/_94sdp"
         android:layout_height="@dimen/_45sdp"
         android:layout_marginHorizontal="@dimen/_55sdp"
         android:layout_marginBottom="32dp"
         android:onClick="onCashButtonClicked"
-        android:text="CREDIT"
+        android:text="CARD"
         app:fontType="Regular"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_cash"

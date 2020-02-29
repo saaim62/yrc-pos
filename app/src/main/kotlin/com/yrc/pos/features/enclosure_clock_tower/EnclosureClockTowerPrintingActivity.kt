@@ -15,7 +15,7 @@ import com.yrc.pos.core.YrcBaseActivity
 import com.yrc.pos.core.YrcLogger
 import com.yrc.pos.core.bus.RxBus
 import com.yrc.pos.core.bus.RxEvent
-import kotlinx.android.synthetic.main.activity_enclosure_g_and_p_printing.*
+import kotlinx.android.synthetic.main.activity_enclosure_clock_tower_printing.*
 import java.text.DateFormat
 import java.util.*
 
@@ -186,7 +186,7 @@ class EnclosureClockTowerPrintingActivity : YrcBaseActivity() {
         finish()
     }
 
-    fun onCreditButtonClicked(view: View) {
+    fun onCardButtonClicked(view: View) {
         finish()
     }
 

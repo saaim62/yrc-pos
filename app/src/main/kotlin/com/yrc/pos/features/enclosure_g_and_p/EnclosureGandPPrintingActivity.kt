@@ -230,7 +230,7 @@ class EnclosureGandPPrintingActivity : YrcBaseActivity() {
         finish()
     }
 
-    fun onCreditButtonClicked(view: View) {
+    fun onCardButtonClicked(view: View) {
         finish()
     }
 
