@@ -5,7 +5,6 @@ import android.graphics.BitmapFactory
 import com.pax.dal.IDAL
 import com.pax.dal.entity.EFontTypeAscii
 import com.pax.dal.entity.EFontTypeExtCode
-import com.pax.dal.exceptions.PrinterDevException
 import com.pax.neptunelite.api.NeptuneLiteUser
 import com.yrc.pos.R
 import java.text.DateFormat
@@ -48,50 +47,50 @@ object TicketsPrinting {
         prn.dotLine
         prn.printStr("Retain ticket as a proof", null)
 
-//            prn.invert(true)
         prn.step(10)
-        prn.leftIndent(0)
-        prn.printBitmapWithMonoThreshold(BitmapFactory.decodeResource(context.resources, R.drawable.logo), 1)
+        prn.leftIndent(100)
+//        prn.invert(true)
+        prn.printBitmap(BitmapFactory.decodeResource(context.resources, R.drawable.qrcode))
+        prn.step(100)
 
-        val apiResult: Int = dal.printer.start()
-        try {
-            when (apiResult) {
-                0 -> YrcLogger.d("Submission successfully made")
-                1 -> YrcLogger.d("Busy, so far so good")
-                2 -> YrcLogger.d("Out of paper")
-                else -> YrcLogger.d("Unexpected")
-            }
-        } catch (ex: PrinterDevException) {
-            ex.printStackTrace()
-        }
-
-//            do {// Check every quarter-second for result of print. 
-//                Thread.sleep(250)
-//                apiResult = prn.status
-//            } while (apiResult == 1)
-//            // Paper cutter. 
-//            try {
-//                val cutMode: Int = prn.getCutMode()
-//                if ((cutMode == 0) || (cutMode == 2)) {
-//                    // 0=full, or 2=partial/full => full cut. 
-//                    prn.cutPaper(0)
-//                } else if (cutMode == 1) {
-//                    // 1=partial only => partial cut. 
-//                    prn.cutPaper(1)
-//                }
-//            } catch (pdex: PrinterDevException) {
+//        val apiResult: Int = dal.printer.start()
+//        try {
+//            when (apiResult) {
+//                0 -> Toast.makeText(context, "Submission successfully made", Toast.LENGTH_SHORT).show()
+//                1 -> Toast.makeText(context, "Busy, so far so good", Toast.LENGTH_SHORT).show()
+//                2 -> Toast.makeText(context, "Out of paper", Toast.LENGTH_SHORT).show()
+//                else -> Toast.makeText(context, "Unexpected", Toast.LENGTH_SHORT).show()
 //            }
+//        } catch (ex: PrinterDevException) {
+//            ex.printStackTrace()
+//        }
+
+//        do {// Check every quarter-second for result of print. 
+//            Thread.sleep(250)
+//            apiResult = prn.status
+//        } while (apiResult == 1)
+//        // Paper cutter. 
+//        try {
+//            val cutMode: Int = prn.cutMode
+//            if ((cutMode == 0) || (cutMode == 2)) {
+//                // 0=full, or 2=partial/full => full cut. 
+//                prn.cutPaper(0)
+//            } else if (cutMode == 1) {
+//                // 1=partial only => partial cut. 
+//                prn.cutPaper(1)
+//            }
+//        } catch (pdex: PrinterDevException) {
+//        }
     }
 
     internal fun printOver65Ticket(context: Context) {
-
+        
         val dal: IDAL = NeptuneLiteUser.getInstance().getDal(context)
         val prn = dal.printer
         prn.init()
 
         prn.fontSet(EFontTypeAscii.FONT_24_48, EFontTypeExtCode.FONT_24_48)
         prn.leftIndent(110)
-//            prn.spaceSet(50.toByte(), 50.toByte())
         prn.printStr("Over65", null)
         prn.printStr("\n", null)
         prn.leftIndent(100)
@@ -118,38 +117,9 @@ object TicketsPrinting {
         prn.dotLine
         prn.printStr("Retain ticket as a proof", null)
 
-//            prn.invert(true)
         prn.step(10)
-        prn.leftIndent(0)
-        prn.printBitmapWithMonoThreshold(BitmapFactory.decodeResource(context.resources, R.drawable.logo), 1)
-
-        val apiResult: Int = dal.printer.start()
-        try {
-            when (apiResult) {
-                0 -> YrcLogger.d("Submission successfully made")
-                1 -> YrcLogger.d("Busy, so far so good")
-                2 -> YrcLogger.d("Out of paper")
-                else -> YrcLogger.d("Unexpected")
-            }
-        } catch (ex: PrinterDevException) {
-            ex.printStackTrace()
-        }
-
-//            do {// Check every quarter-second for result of print. 
-//                Thread.sleep(250)
-//                apiResult = prn.status
-//            } while (apiResult == 1)
-//            // Paper cutter. 
-//            try {
-//                val cutMode: Int = prn.getCutMode()
-//                if ((cutMode == 0) || (cutMode == 2)) {
-//                    // 0=full, or 2=partial/full => full cut. 
-//                    prn.cutPaper(0)
-//                } else if (cutMode == 1) {
-//                    // 1=partial only => partial cut. 
-//                    prn.cutPaper(1)
-//                }
-//            } catch (pdex: PrinterDevException) {
-//            }
+        prn.leftIndent(100)
+        prn.printBitmapWithMonoThreshold(BitmapFactory.decodeResource(context.resources, R.drawable.qrcode), 1)
+        prn.step(100)
     }
 }
