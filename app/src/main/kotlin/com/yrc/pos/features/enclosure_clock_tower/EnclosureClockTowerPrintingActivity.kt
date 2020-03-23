@@ -3,7 +3,6 @@ package com.yrc.pos.features.enclosure_clock_tower
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import com.pax.dal.IDAL
 import com.yrc.pos.R
 import com.yrc.pos.core.Prices
 import com.yrc.pos.core.TicketsPrinting
