@@ -15,7 +15,7 @@ object Fonts {
 }
 
 object EndPoints {
-    const val API_LOGIN = "/api/auth/login"
+    const val API_LOGIN = "7ab8ba49"
     const val API_FORGET_PASSWORD = "/api/auth/forget_password"
     const val API_RESET_PASSWORD = "/api/auth/reset_password"
     const val API_SIGN_UP = "/api/auth/signup"

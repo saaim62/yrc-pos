@@ -23,7 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object APiManager {
 
     private lateinit var hambaServices: ApiInterface
-    private const val BASE_URL = "http://167.71.241.65:8080"
+    private const val BASE_URL = "https://api.mocki.io/v1/"
 
     fun initialize(){
         hambaServices = Retrofit.Builder()

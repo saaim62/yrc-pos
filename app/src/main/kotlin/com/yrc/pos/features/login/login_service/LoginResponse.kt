@@ -23,4 +23,16 @@ class LoginResponse : YrcBaseApiResponse() {
 
     @SerializedName("secretKey")
     var secretKey: String? = Constants.EMPTY_STRING
+
+    var code = 0
+    var user: Users? = null
+
+    class Users {
+        var driver: String? = null
+        var pin: String? = null
+        var dutyNumber: String? = null
+
+    }
+
+
 }

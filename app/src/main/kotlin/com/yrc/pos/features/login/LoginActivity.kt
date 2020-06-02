@@ -15,6 +15,7 @@ import com.yrc.pos.core.session.Session
 import com.yrc.pos.core.session.User
 import com.yrc.pos.features.dashboard.DashboardActivity
 import com.yrc.pos.features.forget_password.ForgetPasswordActivity
+import com.yrc.pos.features.login.login_service.LoginRequest
 import com.yrc.pos.features.login.login_service.LoginResponse
 import com.yrc.pos.features.profile.get_profile_service.GetProfileResponse
 import com.yrc.pos.features.signup.HelloUserActivity
@@ -31,21 +32,21 @@ class LoginActivity : YrcBaseActivity() {
 
     fun onSignInButtonClicked(signInButton: View) {
         moveToDashboardScreen()
-//        if (checkValidations()) {
-//
-//            var loginRequest = LoginRequest()
-//
-//            if (YrcUtils.isPhoneNumber(editText_emailOrNumber.getText())) {
-//                loginRequest.number = editText_emailOrNumber.getText()
-//                loginRequest.password = editText_password.getText()
-//            } else {
-//                loginRequest.email = editText_emailOrNumber.getText()
-//                loginRequest.password = editText_password.getText()
-//            }
-//
-//            Session.clearSession()
-//            APiManager.loginApi(this, this, loginRequest)
-//        }
+        if (checkValidations()) {
+
+            var loginRequest = LoginRequest()
+
+            if (YrcUtils.isPhoneNumber(editText_emailOrNumber.getText())) {
+                loginRequest.number = editText_emailOrNumber.getText()
+                loginRequest.password = editText_password.getText()
+            } else {
+                loginRequest.email = editText_emailOrNumber.getText()
+                loginRequest.password = editText_password.getText()
+            }
+
+            Session.clearSession()
+            APiManager.loginApi(this, this, loginRequest)
+        }
     }
 
     override fun onApiSuccess(apiResponse: YrcBaseApiResponse) {

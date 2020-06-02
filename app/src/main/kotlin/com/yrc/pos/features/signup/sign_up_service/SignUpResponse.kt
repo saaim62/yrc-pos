@@ -12,6 +12,6 @@ class SignUpResponse : YrcBaseApiResponse() {
     @SerializedName("success")
     var success: Boolean? = false
 
-    @SerializedName("message")
-    var message: String? = Constants.EMPTY_STRING
+//    @SerializedName("message")
+//    var message: String? = Constants.EMPTY_STRING
 }
