@@ -90,11 +90,11 @@ class DashboardActivity : YrcBaseActivity(), NavigationView.OnNavigationItemSele
 
         when (menuItem.itemId) {
             R.id.item_sign_out -> {
-                var session: SessionManagement = SessionManagement(this)
-                session.LogoutUser()
-               // Session.clearSession()
+             //   var session: SessionManagement = SessionManagement(this)
+             //   session.LogoutUser()
+                Session.clearSession()
                 moveToLoginScreen()
-                finish()
+              //  finish()
             }
         }
         return true

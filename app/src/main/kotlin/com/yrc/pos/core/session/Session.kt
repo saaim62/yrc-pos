@@ -14,17 +14,11 @@ object Session {
     }
 
     fun storeSession(
-        accessToken: String?,
-        secretKey: String?,
-        tokenType: String?,
-        driver: String?,
-        pin: String?,
-        dutyNumber: String?
+        accessToken: String?
     ) {
         val preferenceEditor = sessionPreferences.edit()
-        preferenceEditor.putString(SessionConstants.Key_SecretKey, secretKey)
-        preferenceEditor.putString(SessionConstants.Key_TokenType, tokenType)
-        preferenceEditor.putString(SessionConstants.Key_AccessToken, tokenType + Constants.SPACE_STRING + accessToken)
+        preferenceEditor.putString(SessionConstants.Key_AccessToken, accessToken)
+
         preferenceEditor.apply()
     }
 
@@ -36,19 +30,10 @@ object Session {
         return sessionPreferences.getString(SessionConstants.Key_AccessToken, Constants.EMPTY_STRING)
     }
 
-    fun getSecretKey() : String {
-        return sessionPreferences.getString(SessionConstants.Key_SecretKey, Constants.EMPTY_STRING)
-    }
-
-    fun getTokenType() : String {
-        return sessionPreferences.getString(SessionConstants.Key_TokenType, Constants.EMPTY_STRING)
-    }
 
     fun clearSession() {
         val preferenceEditor = sessionPreferences.edit()
         preferenceEditor.remove(SessionConstants.Key_AccessToken)
-        preferenceEditor.remove(SessionConstants.Key_SecretKey)
-        preferenceEditor.remove(SessionConstants.Key_TokenType)
         preferenceEditor.apply()
         User.wipeUserData()
     }

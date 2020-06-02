@@ -11,7 +11,7 @@ object User {
     private lateinit var userPreferences: SharedPreferences
     private const val userPreferenceName = "UserPreferences"
 
-    fun initialize(context: Context){
+    fun initialize(context: Context) {
         userPreferences = context.getSharedPreferences(userPreferenceName, Context.MODE_PRIVATE)
     }
 
@@ -27,20 +27,32 @@ object User {
         preferenceEditor.apply()
     }
 
-    fun getUserName() : String? {
+    fun getUserName(): String? {
         return getUserProfile()!!.firstName
     }
 
-    fun getUserProfile() : GetProfileResponse.Details? {
-        var userProfile = userPreferences.getString(UserConstants.Key_User_Profile, Constants.EMPTY_STRING)
+    //    fun getUserProfile() : GetProfileResponse.Details? {
+//        var userProfile = userPreferences.getString(UserConstants.Key_User_Profile, Constants.EMPTY_STRING)
+//        if (userProfile.isEmpty()) {
+//            return GetProfileResponse.Details()
+//        } else {
+//            return Gson().fromJson<GetProfileResponse.Details>(userProfile, GetProfileResponse.Details::class.java)
+//        }
+//    }
+
+    fun getUserProfile(): GetProfileResponse.Details? {
+        val userProfile =userPreferences.getString(UserConstants.Key_DRIVER, Constants.EMPTY_STRING)
         if (userProfile.isEmpty()) {
             return GetProfileResponse.Details()
         } else {
-            return Gson().fromJson<GetProfileResponse.Details>(userProfile, GetProfileResponse.Details::class.java)
+            return Gson().fromJson<GetProfileResponse.Details>(
+                userProfile,
+                GetProfileResponse.Details::class.java
+            )
         }
     }
 
-    fun getProfileUpdatePercentage() : String {
+    fun getProfileUpdatePercentage(): String {
 
         var updatePercentage = 30 //Default percentage is 30
         var userProfile = getUserProfile()
@@ -61,7 +73,8 @@ object User {
             && userProfile!!.country != null && userProfile.country!!.isNotEmpty()
             && userProfile!!.cityName != null && userProfile.cityName!!.isNotEmpty()
             && userProfile!!.addressType != null && userProfile.addressType!!.isNotEmpty()
-            && userProfile!!.address != null && userProfile.address!!.isNotEmpty()) {
+            && userProfile!!.address != null && userProfile.address!!.isNotEmpty()
+        ) {
 
             updatePercentage += 50
         }
@@ -75,7 +88,7 @@ object User {
         preferenceEditor.apply()
     }
 
-    fun isCurrentProfileOutdated() : Boolean {
+    fun isCurrentProfileOutdated(): Boolean {
         return userPreferences.getBoolean(UserConstants.Key_Profile_Status, true)
     }
 
@@ -83,6 +96,9 @@ object User {
         val preferenceEditor = userPreferences.edit()
         preferenceEditor.remove(UserConstants.Key_User_Profile)
         preferenceEditor.remove(UserConstants.Key_Profile_Status)
+        preferenceEditor.remove(UserConstants.Key_DRIVER)
+        preferenceEditor.remove(UserConstants.Key_PIN)
+        preferenceEditor.remove(UserConstants.Key_DUTYNUMBER)
         preferenceEditor.apply()
     }
 }

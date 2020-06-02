@@ -15,6 +15,16 @@ class GetProfileResponse : YrcBaseApiResponse() {
     @SerializedName("details")
     var details: Details? = null
 
+    var user: Users? = null
+
+    class Users {
+        var driver: String? = null
+        var pin: String? = null
+        var dutyNumber: String? = null
+
+    }
+
+
     class Details {
 
         @SerializedName("id")
@@ -94,5 +104,14 @@ class GetProfileResponse : YrcBaseApiResponse() {
 
         @SerializedName("employee")
         var employee: Boolean? = false
+
+//        @SerializedName("driver")
+//        var driver: String? = Constants.EMPTY_STRING
+//
+//        @SerializedName("pin")
+//        var pin: String? = Constants.EMPTY_STRING
+//
+//        @SerializedName("dutyNumber")
+//        var dutyNumber: String? = Constants.EMPTY_STRING
     }
 }
