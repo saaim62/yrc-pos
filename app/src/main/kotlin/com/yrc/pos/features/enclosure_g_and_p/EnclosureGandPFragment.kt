@@ -10,7 +10,10 @@ import com.yrc.pos.core.bus.RxBus
 import com.yrc.pos.core.bus.RxEvent
 import com.yrc.pos.core.views.YrcTextView
 import io.reactivex.rxjava3.disposables.Disposable
+import kotlinx.android.synthetic.main.activity_enclosure_g_and_p_printing.*
 import kotlinx.android.synthetic.main.fragment_enclosure_g_and_p.*
+import kotlinx.android.synthetic.main.fragment_enclosure_g_and_p.button_1822
+import kotlinx.android.synthetic.main.fragment_enclosure_g_and_p.button_racegoer
 
 class EnclosureGandPFragment : YrcBaseFragment() {
 
@@ -24,14 +27,18 @@ class EnclosureGandPFragment : YrcBaseFragment() {
     private lateinit var disposableClearAllTickets: Disposable
     private lateinit var disposableMultiplyTicket: Disposable
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         super.onCreate(savedInstanceState)
         return inflater.inflate(R.layout.fragment_enclosure_g_and_p, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        initViews()
         setAdultButtonListener()
         setOver65ButtonListener()
         set1822ButtonListener()
@@ -63,17 +70,24 @@ class EnclosureGandPFragment : YrcBaseFragment() {
         }
     }
 
+    private fun initViews() {
+        button_Adult.text = "Adult   £" + Prices.PRICE_ADULT
+        button_Over65.text = "Over65   £" + Prices.PRICE_OVER65
+        button_1822.text = "18-22   £" + Prices.PRICE_1822
+        button_racegoer.text = "Racegoer  £" + Prices.PRICE_RACEGOER
+    }
+
     override fun onResume() {
         super.onResume()
         button_total.text = countAdultTickets.plus(countOver65Tickets).plus(count1822Tickets)
             .plus(countRacegoerTickets).toString().plus(" ")
             .plus(
                 "x Ticket £".plus(
-                        countAdultTickets.times(Prices.PRICE_ADULT)
-                            .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
-                            .plus(count1822Tickets.times(Prices.PRICE_1822))
-                            .plus(countRacegoerTickets.times(Prices.PRICE_RACEGOER))
-                    )
+                    countAdultTickets.times(Prices.PRICE_ADULT)
+                        .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
+                        .plus(count1822Tickets.times(Prices.PRICE_1822))
+                        .plus(countRacegoerTickets.times(Prices.PRICE_RACEGOER))
+                )
             )
     }
 
@@ -145,10 +159,13 @@ class EnclosureGandPFragment : YrcBaseFragment() {
     companion object {
         @JvmStatic
         val TICKET_ADULTS = "ticket_adults"
+
         @JvmStatic
         val TICKET_OVER65 = "ticket_over65"
+
         @JvmStatic
         val TICKET_1822 = "ticket_1822"
+
         @JvmStatic
         val TICKET_RACEGOER = "ticket_racegoer"
     }

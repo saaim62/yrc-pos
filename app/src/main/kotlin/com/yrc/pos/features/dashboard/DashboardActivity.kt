@@ -17,6 +17,7 @@ import com.google.android.material.navigation.NavigationView
 import com.yrc.pos.R
 import com.yrc.pos.core.Constants
 import com.yrc.pos.core.YrcBaseActivity
+import com.yrc.pos.core.services.SessionManagement
 import com.yrc.pos.core.session.Session
 import com.yrc.pos.core.session.User
 import com.yrc.pos.core.views.YrcTextView
@@ -25,7 +26,6 @@ import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.content_main.*
 
 class DashboardActivity : YrcBaseActivity(), NavigationView.OnNavigationItemSelectedListener {
-
 //    private lateinit var drawerLayout: DrawerLayout
     private lateinit var textViewHeaderTitle: YrcTextView
 
@@ -90,8 +90,11 @@ class DashboardActivity : YrcBaseActivity(), NavigationView.OnNavigationItemSele
 
         when (menuItem.itemId) {
             R.id.item_sign_out -> {
-                Session.clearSession()
+                var session: SessionManagement = SessionManagement(this)
+                session.LogoutUser()
+               // Session.clearSession()
                 moveToLoginScreen()
+                finish()
             }
         }
         return true

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/light_screen_background">
 
     <com.yrc.pos.core.views.YrcTextView
@@ -32,7 +33,7 @@
         android:layout_height="@dimen/_55sdp"
         android:layout_marginHorizontal="@dimen/_35sdp"
         android:layout_marginTop="8dp"
-        android:text="Adult   £20.00"
+        tools:text="Adult   £20.00"
         android:textAllCaps="false"
         app:fontType="Regular"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +47,7 @@
         android:layout_height="@dimen/_55sdp"
         android:layout_marginHorizontal="@dimen/_35sdp"
         android:layout_marginTop="32dp"
-        android:text="Over65   £30.00"
+        tools:text="Over65   £30.00"
         android:textAllCaps="false"
         app:fontType="Regular"
         app:layout_constraintEnd_toEndOf="parent"

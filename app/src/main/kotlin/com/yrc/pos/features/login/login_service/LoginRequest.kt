@@ -13,4 +13,8 @@ class LoginRequest {
 
     @SerializedName("password")
     var password: String? = Constants.EMPTY_STRING
+
+    var driver: String? = null
+    var pin: String? = null
+    var dutyNumber: String? = null
 }

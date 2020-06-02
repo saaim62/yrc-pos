@@ -8,7 +8,6 @@ class LoginResponse : YrcBaseApiResponse() {
 
     @SerializedName("status")
     var status: Boolean? = false
-
     @SerializedName("success")
     var success: Boolean? = false
 
@@ -26,7 +25,6 @@ class LoginResponse : YrcBaseApiResponse() {
 
     var code = 0
     var user: Users? = null
-
     class Users {
         var driver: String? = null
         var pin: String? = null

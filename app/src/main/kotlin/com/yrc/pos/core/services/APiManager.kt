@@ -17,10 +17,27 @@ import com.yrc.pos.features.signup.resend_otp_service.ResendOtpRequest
 import com.yrc.pos.features.signup.resend_otp_service.ResendOtpResponse
 import com.yrc.pos.features.signup.sign_up_service.SignUpRequest
 import com.yrc.pos.features.signup.sign_up_service.SignUpResponse
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object APiManager {
+    private val retrofit: Retrofit
+        get() {
+            val interceptor = HttpLoggingInterceptor()
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+            val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
+            return Retrofit.Builder()
+                .baseUrl("https://api.mocki.io/v1/")
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+        }
+    @JvmStatic
+    val apiInterface: ApiInterface
+        get() = retrofit.create(ApiInterface::class.java)
+
 
     private lateinit var hambaServices: ApiInterface
     private const val BASE_URL = "https://api.mocki.io/v1/"
@@ -32,6 +49,7 @@ object APiManager {
             .build()
             .create(ApiInterface::class.java)
     }
+
 
     fun loginApi(context: Context, apiCallbacks: ApiCallbacks, loginRequest: LoginRequest) {
         val loginApiCall = hambaServices.loginToHamba(loginRequest)

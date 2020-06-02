@@ -13,7 +13,14 @@ object Session {
         sessionPreferences = context.getSharedPreferences(sessionPreferenceName, Context.MODE_PRIVATE)
     }
 
-    fun storeSession(accessToken: String?, secretKey: String?, tokenType: String?) {
+    fun storeSession(
+        accessToken: String?,
+        secretKey: String?,
+        tokenType: String?,
+        driver: String?,
+        pin: String?,
+        dutyNumber: String?
+    ) {
         val preferenceEditor = sessionPreferences.edit()
         preferenceEditor.putString(SessionConstants.Key_SecretKey, secretKey)
         preferenceEditor.putString(SessionConstants.Key_TokenType, tokenType)

@@ -2,15 +2,20 @@ package com.yrc.pos.features.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.telecom.Call
 import android.view.View
+import android.widget.Toast
+import com.google.android.gms.common.api.Response
 import com.yrc.pos.R
 import com.yrc.pos.core.YrcBaseActivity
 import com.yrc.pos.core.YrcUtils
 import com.yrc.pos.core.enums.DialogTheme
 import com.yrc.pos.core.providers.AlertDialogProvider
 import com.yrc.pos.core.services.APiManager
+import com.yrc.pos.core.services.APiManager.apiInterface
 import com.yrc.pos.core.services.YrcBaseApiResponse
 import com.yrc.pos.core.services.HttpErrorCodes
+import com.yrc.pos.core.services.SessionManagement
 import com.yrc.pos.core.session.Session
 import com.yrc.pos.core.session.User
 import com.yrc.pos.features.dashboard.DashboardActivity
@@ -22,31 +27,42 @@ import com.yrc.pos.features.signup.HelloUserActivity
 import com.yrc.pos.features.signup.SignupActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.editText_password
+import kotlinx.android.synthetic.main.fragment_search.view.*
+import javax.security.auth.callback.Callback
 
 class LoginActivity : YrcBaseActivity() {
-
+    lateinit var session: SessionManagement
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        session = SessionManagement(applicationContext)
+        if (session.isLoggedIn()){
+            val i = Intent(applicationContext,DashboardActivity::class.java)
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(i)
+            finish()
+        }
     }
 
     fun onSignInButtonClicked(signInButton: View) {
-        moveToDashboardScreen()
-        if (checkValidations()) {
-
-            var loginRequest = LoginRequest()
-
-            if (YrcUtils.isPhoneNumber(editText_emailOrNumber.getText())) {
-                loginRequest.number = editText_emailOrNumber.getText()
-                loginRequest.password = editText_password.getText()
-            } else {
-                loginRequest.email = editText_emailOrNumber.getText()
-                loginRequest.password = editText_password.getText()
-            }
-
-            Session.clearSession()
-            APiManager.loginApi(this, this, loginRequest)
-        }
+        login()
+//        if (checkValidations()) {
+//
+//            var loginRequest = LoginRequest()
+//
+//            if (YrcUtils.isPhoneNumber(editText_emailOrNumber.getText())) {
+//                loginRequest.number = editText_emailOrNumber.getText()
+//                loginRequest.password = editText_password.getText()
+//
+//            } else {
+//                loginRequest.email = editText_emailOrNumber.getText()
+//                loginRequest.password = editText_password.getText()
+//            }
+//
+//            Session.clearSession()
+//            APiManager.loginApi(this, this, loginRequest)
+//        }
     }
 
     override fun onApiSuccess(apiResponse: YrcBaseApiResponse) {
@@ -77,9 +93,43 @@ class LoginActivity : YrcBaseActivity() {
         }
     }
 
+    private fun login(){
+        val loginRequest = LoginRequest()
+        loginRequest.driver = editText_emailOrNumber!!.getText()
+        loginRequest.pin = editText_dutyNumber!!.getText()
+        loginRequest.dutyNumber = editText_password!!.getText()
+        val loginResponseCall = apiInterface.getlogin(loginRequest)
+        loginResponseCall!!.enqueue(object : retrofit2.Callback<LoginResponse?> {
+            override fun onResponse(call: retrofit2.Call<LoginResponse?>, response: retrofit2.Response<LoginResponse?>) {
+                if (response.isSuccessful) {
+                    val loginResponse = response.body()
+                    if (loginResponse != null) {
+                        if (loginResponse.code == 200) {
+                            session.createLoginSession("","", "",loginResponse.code.toString())
+                            Toast.makeText(this@LoginActivity, "LoggedIn", Toast.LENGTH_LONG).show()
+                            val intent = Intent(this@LoginActivity, DashboardActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Toast.makeText(this@LoginActivity, "False", Toast.LENGTH_LONG).show()
+                        }
+                    }
+
+                } else {
+                    Toast.makeText(this@LoginActivity, "Not Login", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onFailure(call: retrofit2.Call<LoginResponse?>, t: Throwable) {
+                Toast.makeText(applicationContext, t.message, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
     private fun handleLoginResponse(loginResponse: LoginResponse){
         if (loginResponse.status!!) {
-            Session.storeSession(loginResponse.accessToken, loginResponse.secretKey, loginResponse.tokenType)
+            //Session.storeSession(loginResponse.accessToken, loginResponse.secretKey, loginResponse.tokenType)
+
             callGetProfileApi()
         } else {
             AlertDialogProvider.showAlertDialog(this, DialogTheme.ThemeWhite, loginResponse.message)
