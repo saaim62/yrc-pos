@@ -242,7 +242,7 @@ class EnclosureGandPPrintingActivity : YrcBaseActivity() {
         if (countAdultTickets != 0)
             button_adult.visibility = View.VISIBLE
         button_adult.text = countAdultTickets.toString().plus(" ")
-            .plus("x Adult £".plus(" ").plus(countAdultTickets.times(Prices.PRICE_ADULT)))
+            .plus("x Adult £".plus(" ").plus(Prices.PRICE_ADULT?.let { countAdultTickets.times(it) }))
 
         if (countOver65Tickets != 0)
             button_over65.visibility = View.VISIBLE
@@ -264,10 +264,12 @@ class EnclosureGandPPrintingActivity : YrcBaseActivity() {
             .plus(
                 "x Ticket £".plus(" ")
                     .plus(
-                        countAdultTickets.times(Prices.PRICE_ADULT)
-                            .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
-                            .plus(count1822Tickets.times(Prices.PRICE_1822))
-                            .plus(countRacegoerTickets.times(Prices.PRICE_RACEGOER))
+                        Prices.PRICE_ADULT?.let {
+                            countAdultTickets.times(it)
+                                .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
+                                .plus(count1822Tickets.times(Prices.PRICE_1822))
+                                .plus(countRacegoerTickets.times(Prices.PRICE_RACEGOER))
+                        }
                     )
             )
 

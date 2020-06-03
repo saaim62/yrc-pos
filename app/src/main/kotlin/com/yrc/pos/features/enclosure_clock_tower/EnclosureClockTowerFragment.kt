@@ -66,8 +66,10 @@ class EnclosureClockTowerFragment : YrcBaseFragment() {
         button_total.text = countAdultTickets.plus(countOver65Tickets).toString().plus(" ")
             .plus(
                 "x Ticket £".plus(
-                    countAdultTickets.times(Prices.PRICE_ADULT)
-                        .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
+                    Prices.PRICE_ADULT?.let {
+                        countAdultTickets.times(it)
+                            .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
+                    }
                 )
             )
     }

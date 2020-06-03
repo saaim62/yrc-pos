@@ -48,27 +48,27 @@ class DashboardActivity : YrcBaseActivity(), NavigationView.OnNavigationItemSele
 //        NavigationUI.setupActionBarWithNavController(this, findNavController(R.id.nav_host_fragment), drawerLayout)
         navigationDrawerView.setNavigationItemSelectedListener(this)
 
-        setNavigationDrawerHeaderData()
+     //   setNavigationDrawerHeaderData()
     }
 
-    private fun setNavigationDrawerHeaderData() {
-
-        val headerView = navigationDrawerView.getHeaderView(0)
-        val textViewUserName = headerView.findViewById(R.id.textView_userName) as YrcTextView
-        val imageViewUserPhoto = headerView.findViewById(R.id.imageView_userPhoto) as ImageView
-
-        if (User.getUserName()!!.isNotEmpty()) {
-            textViewUserName.text = User.getUserName()
-            textViewHeaderTitle.text = getString(R.string.welcome) + Constants.SPACE_STRING + User.getUserName()
-        }
-
-        val resId = resources.getIdentifier(User.getUserProfile()!!.avatar, "drawable", this.packageName)
-        if (resId > 0) {
-            imageViewUserPhoto.setImageResource(resId)
-        } else {
-            imageViewUserPhoto.setImageResource(R.drawable.female_avatar_1)
-        }
-    }
+//    private fun setNavigationDrawerHeaderData() {
+//
+//        val headerView = navigationDrawerView.getHeaderView(0)
+//        val textViewUserName = headerView.findViewById(R.id.textView_userName) as YrcTextView
+//        val imageViewUserPhoto = headerView.findViewById(R.id.imageView_userPhoto) as ImageView
+//
+//        if (User.getUserName()!!.isNotEmpty()) {
+//            textViewUserName.text = User.getUserName()
+//            textViewHeaderTitle.text = getString(R.string.welcome) + Constants.SPACE_STRING + User.getUserName()
+//        }
+//
+//        val resId = resources.getIdentifier(User.getUserProfile()!!.avatar, "drawable", this.packageName)
+//        if (resId > 0) {
+//            imageViewUserPhoto.setImageResource(resId)
+//        } else {
+//            imageViewUserPhoto.setImageResource(R.drawable.female_avatar_1)
+//        }
+//    }
 
 //    override fun onSupportNavigateUp(): Boolean {
 //        val navController = findNavController(R.id.nav_host_fragment)

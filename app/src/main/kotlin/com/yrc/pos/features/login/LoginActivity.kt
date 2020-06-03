@@ -54,12 +54,12 @@ class LoginActivity : YrcBaseActivity() {
             if (YrcUtils.isPhoneNumber(editText_emailOrNumber.getText())) {
                 loginRequest.driver = editText_emailOrNumber.getText()
                 loginRequest.pin = editText_password.getText()
-                loginRequest.dutyNumber =editText_dutyNumber.getText()
+                loginRequest.dutyNumber = editText_dutyNumber.getText()
 
             } else {
                 loginRequest.driver = editText_emailOrNumber.getText()
                 loginRequest.pin = editText_password.getText()
-                loginRequest.dutyNumber =editText_dutyNumber.getText()
+                loginRequest.dutyNumber = editText_dutyNumber.getText()
             }
 
             APiManager.loginApi(this, this, loginRequest)
@@ -76,10 +76,10 @@ class LoginActivity : YrcBaseActivity() {
 
         if (apiResponse is GetProfileResponse) {
 
-            User.setCurrentProfileOutdated(false)
-            User.saveUserProfile(apiResponse.details!!)
-            
-            if (User.getUserProfile()!!.firstName != null && User.getUserProfile()!!.firstName!!.isNotEmpty()) {
+            User.saveUserProfile(apiResponse.user!!)
+
+            if (User.getUserProfile()!!.driver != null) {
+                Toast.makeText(this@LoginActivity, "user showed@@@@@@@@@@@@", Toast.LENGTH_LONG).show()
                 moveToDashboardScreen()
             } else {
                 moveToHelloScreen()
@@ -89,7 +89,11 @@ class LoginActivity : YrcBaseActivity() {
 
     override fun onApiFailure(errorCode: Int) {
         if (errorCode == HttpErrorCodes.Unauthorized.code) {
-            AlertDialogProvider.showAlertDialog(this, DialogTheme.ThemeWhite, getString(R.string.password_incorrect))
+            AlertDialogProvider.showAlertDialog(
+                this,
+                DialogTheme.ThemeWhite,
+                getString(R.string.password_incorrect)
+            )
         } else {
             super.onApiFailure(errorCode)
         }
@@ -128,25 +132,30 @@ class LoginActivity : YrcBaseActivity() {
 //        })
 //    }
 
-    private fun handleLoginResponse(loginResponse: LoginResponse){
+    private fun handleLoginResponse(loginResponse: LoginResponse) {
         if (loginResponse.code == 200) {
             Session.storeSession(loginResponse.accessToken)
-          //  callGetProfileApi()
-            moveToDashboardScreen()
+            callGetProfileApi()
         } else {
             AlertDialogProvider.showAlertDialog(this, DialogTheme.ThemeWhite, loginResponse.message)
         }
     }
 
-    private fun callGetProfileApi(){
-        if (Session.isSessionAvailable() && User.isCurrentProfileOutdated()) {
+    private fun callGetProfileApi() {
+        if (Session.isSessionAvailable()) {
             APiManager.getUserProfile(this, this)
+            moveToDashboardScreen()
+
         } else {
-            AlertDialogProvider.showAlertDialog(this, DialogTheme.ThemeWhite, getString(R.string.session_not_available))
+            AlertDialogProvider.showAlertDialog(
+                this,
+                DialogTheme.ThemeWhite,
+                getString(R.string.session_not_available)
+            )
         }
     }
 
-    fun onCreateAccountClicked(createAccountTextView: View){
+    fun onCreateAccountClicked(createAccountTextView: View) {
         val individualSignUpIntent = Intent(this, SignupActivity::class.java)
         startActivity(individualSignUpIntent)
     }
@@ -173,7 +182,7 @@ class LoginActivity : YrcBaseActivity() {
         finish()
     }
 
-    private fun checkValidations() : Boolean {
+    private fun checkValidations(): Boolean {
 
         if (editText_emailOrNumber.getText().isEmpty()) {
             editText_emailOrNumber.setError(getString(R.string.please_enter_cell_number_or_email))

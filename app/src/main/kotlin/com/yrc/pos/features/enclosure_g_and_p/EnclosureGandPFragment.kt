@@ -83,10 +83,12 @@ class EnclosureGandPFragment : YrcBaseFragment() {
             .plus(countRacegoerTickets).toString().plus(" ")
             .plus(
                 "x Ticket £".plus(
-                    countAdultTickets.times(Prices.PRICE_ADULT)
-                        .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
-                        .plus(count1822Tickets.times(Prices.PRICE_1822))
-                        .plus(countRacegoerTickets.times(Prices.PRICE_RACEGOER))
+                    Prices.PRICE_ADULT?.let {
+                        countAdultTickets.times(it)
+                            .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
+                            .plus(count1822Tickets.times(Prices.PRICE_1822))
+                            .plus(countRacegoerTickets.times(Prices.PRICE_RACEGOER))
+                    }
                 )
             )
     }

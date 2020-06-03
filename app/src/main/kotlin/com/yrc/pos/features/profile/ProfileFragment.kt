@@ -81,7 +81,7 @@ class ProfileFragment : YrcBaseFragment(), OnAvatarClickListener {
 
         if (apiResponse is IndividualProfileEditResponse) {
             if (apiResponse.success!!) {
-                User.setCurrentProfileOutdated(true)
+
                 AlertDialogProvider.showAlertDialog(activity!!, DialogTheme.ThemeGreen, getString(R.string.record_updated_successfully))
             } else {
                 AlertDialogProvider.showAlertDialog(activity!!, DialogTheme.ThemeGreen, apiResponse.message)
@@ -123,85 +123,85 @@ class ProfileFragment : YrcBaseFragment(), OnAvatarClickListener {
         })
     }
 
-    private fun updateUI(details: GetProfileResponse.Details) {
-
-        if (details.nationality != null && details.nationality!!.isNotEmpty()) {
-            spinner_nationality.setSelected(resources.getStringArray(R.array.nationalities).indexOf(details.nationality))
-        }
-
-        if (details.birthDate != null && details.birthDate!!.isNotEmpty()) {
-            editText_dateOfBirth.setText(details.birthDate!!)
-        }
-
-        if (details.prefix != null && details.prefix!!.isNotEmpty()) {
-            spinner_prefix.setSelected(resources.getStringArray(R.array.prefix_list).indexOf(details.prefix))
-        }
-
-        if (details.gender != null && details.gender!!.isNotEmpty()) {
-            editText_gender.setGender(details.gender!!)
-        }
-
-        if (details.number != null && details.number!!.isNotEmpty()) {
-            val phoneNumber = PhoneNumberUtil.createInstance(activity!!).parse(details.number, Constants.EMPTY_STRING)
-            editText_phone.setPhoneNumber(phoneNumber.nationalNumber.toString())
-            editText_phone.setCountryCode(phoneNumber.countryCode)
-        }
-
-        if (details.addressType != null && details.addressType!!.isNotEmpty()) {
-            spinner_addressType.setSelected(resources.getStringArray(R.array.address_type).indexOf(details.addressType))
-        }
-
-        if (details.address != null && details.address!!.isNotEmpty()) {
-            editText_address.setText(details.address!!)
-        }
-
-        if (details.cityName != null && details.cityName!!.isNotEmpty()) {
-            editText_city.setText(details.cityName!!)
-        }
-
-        if (details.country != null && details.country!!.isNotEmpty()) {
-            spinner_country.setSelected(resources.getStringArray(R.array.countries).indexOf(details.country))
-        }
-
-        if (details.zipCode != null && details.zipCode!!.isNotEmpty()) {
-            editText_zipCode.setText(details.zipCode!!)
-        }
-
-        if (details.email != null && details.email!!.isNotEmpty()) {
-            editText_email.setText(details.email!!)
-        }
-
-        if (details.firstName != null && details.firstName!!.isNotEmpty()) {
-            editText_firstName.setText(details.firstName!!)
-        }
-
-        if (details.middleName != null && details.middleName!!.isNotEmpty()) {
-            editText_middleName.setText(details.middleName!!)
-        }
-
-        if (details.lastName != null && details.lastName!!.isNotEmpty()) {
-            editText_lastName.setText(details.lastName!!)
-        }
-
-        if (details.avatar != null && details.avatar!!.isNotEmpty()) {
-            var resId = resources.getIdentifier(details.avatar, "drawable", activity!!.packageName)
-            if (resId == 0) {
-                imageView_profilePic.setImageResource(R.drawable.female_avatar_1)
-                imageView_profilePic.tag = resources.getResourceEntryName(R.drawable.female_avatar_1)
-            } else {
-                imageView_profilePic.setImageResource(resId)
-                imageView_profilePic.tag = resources.getResourceEntryName(resId)
-            }
-        }
-
-        if (!details.interests.isNullOrEmpty()) {
-            val listOfInterests: ArrayList<Int> = ArrayList()
-            details.interests!!.forEach {
-                listOfInterests.add(resources.getStringArray(R.array.interests).indexOf(it))
-            }
-            spinner_interest.setSelected(listOfInterests)
-        }
-    }
+//    private fun updateUI(details: GetProfileResponse.Details) {
+//
+//        if (details.nationality != null && details.nationality!!.isNotEmpty()) {
+//            spinner_nationality.setSelected(resources.getStringArray(R.array.nationalities).indexOf(details.nationality))
+//        }
+//
+//        if (details.birthDate != null && details.birthDate!!.isNotEmpty()) {
+//            editText_dateOfBirth.setText(details.birthDate!!)
+//        }
+//
+//        if (details.prefix != null && details.prefix!!.isNotEmpty()) {
+//            spinner_prefix.setSelected(resources.getStringArray(R.array.prefix_list).indexOf(details.prefix))
+//        }
+//
+//        if (details.gender != null && details.gender!!.isNotEmpty()) {
+//            editText_gender.setGender(details.gender!!)
+//        }
+//
+//        if (details.number != null && details.number!!.isNotEmpty()) {
+//            val phoneNumber = PhoneNumberUtil.createInstance(activity!!).parse(details.number, Constants.EMPTY_STRING)
+//            editText_phone.setPhoneNumber(phoneNumber.nationalNumber.toString())
+//            editText_phone.setCountryCode(phoneNumber.countryCode)
+//        }
+//
+//        if (details.addressType != null && details.addressType!!.isNotEmpty()) {
+//            spinner_addressType.setSelected(resources.getStringArray(R.array.address_type).indexOf(details.addressType))
+//        }
+//
+//        if (details.address != null && details.address!!.isNotEmpty()) {
+//            editText_address.setText(details.address!!)
+//        }
+//
+//        if (details.cityName != null && details.cityName!!.isNotEmpty()) {
+//            editText_city.setText(details.cityName!!)
+//        }
+//
+//        if (details.country != null && details.country!!.isNotEmpty()) {
+//            spinner_country.setSelected(resources.getStringArray(R.array.countries).indexOf(details.country))
+//        }
+//
+//        if (details.zipCode != null && details.zipCode!!.isNotEmpty()) {
+//            editText_zipCode.setText(details.zipCode!!)
+//        }
+//
+//        if (details.email != null && details.email!!.isNotEmpty()) {
+//            editText_email.setText(details.email!!)
+//        }
+//
+//        if (details.firstName != null && details.firstName!!.isNotEmpty()) {
+//            editText_firstName.setText(details.firstName!!)
+//        }
+//
+//        if (details.middleName != null && details.middleName!!.isNotEmpty()) {
+//            editText_middleName.setText(details.middleName!!)
+//        }
+//
+//        if (details.lastName != null && details.lastName!!.isNotEmpty()) {
+//            editText_lastName.setText(details.lastName!!)
+//        }
+//
+//        if (details.avatar != null && details.avatar!!.isNotEmpty()) {
+//            var resId = resources.getIdentifier(details.avatar, "drawable", activity!!.packageName)
+//            if (resId == 0) {
+//                imageView_profilePic.setImageResource(R.drawable.female_avatar_1)
+//                imageView_profilePic.tag = resources.getResourceEntryName(R.drawable.female_avatar_1)
+//            } else {
+//                imageView_profilePic.setImageResource(resId)
+//                imageView_profilePic.tag = resources.getResourceEntryName(resId)
+//            }
+//        }
+//
+//        if (!details.interests.isNullOrEmpty()) {
+//            val listOfInterests: ArrayList<Int> = ArrayList()
+//            details.interests!!.forEach {
+//                listOfInterests.add(resources.getStringArray(R.array.interests).indexOf(it))
+//            }
+//            spinner_interest.setSelected(listOfInterests)
+//        }
+//    }
 
     private fun setDatePickListener() {
         editText_dateOfBirth.setEditTextClickable(false)
@@ -295,19 +295,19 @@ class ProfileFragment : YrcBaseFragment(), OnAvatarClickListener {
         editUserIndividualProfileRequest.imgExtension = "http://profile_image_url"
         editUserIndividualProfileRequest.interests = spinner_interest.multipleSelected
 
-        var existingEmail = User.getUserProfile()!!.email
-        if (existingEmail != null && existingEmail.isNotEmpty()) {
-            editUserIndividualProfileRequest.email = existingEmail
-        } else {
-            editUserIndividualProfileRequest.email = editText_email.getText()
-        }
+//        var existingEmail = User.getUserProfile()!!.email
+//        if (existingEmail != null && existingEmail.isNotEmpty()) {
+//            editUserIndividualProfileRequest.email = existingEmail
+//        } else {
+//            editUserIndividualProfileRequest.email = editText_email.getText()
+//        }
 
-        var existingNumber = User.getUserProfile()!!.number
-        if (existingNumber != null && existingNumber.isNotEmpty()) {
-            editUserIndividualProfileRequest.number = existingNumber
-        } else {
-            editUserIndividualProfileRequest.number = editText_phone.getPhoneNumber()
-        }
+//        var existingNumber = User.getUserProfile()!!.number
+//        if (existingNumber != null && existingNumber.isNotEmpty()) {
+//            editUserIndividualProfileRequest.number = existingNumber
+//        } else {
+//            editUserIndividualProfileRequest.number = editText_phone.getPhoneNumber()
+//        }
 
         return editUserIndividualProfileRequest
     }

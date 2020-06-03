@@ -15,81 +15,32 @@ object User {
         userPreferences = context.getSharedPreferences(userPreferenceName, Context.MODE_PRIVATE)
     }
 
-    fun addUserName(userName: String?) {
-        var userDetails = getUserProfile()
-        userDetails!!.firstName = userName
-        saveUserProfile(userDetails)
-    }
 
-    fun saveUserProfile(userProfile: GetProfileResponse.Details) {
+    fun saveUserProfile(userProfile: GetProfileResponse.Users) {
         val preferenceEditor = userPreferences.edit()
         preferenceEditor.putString(UserConstants.Key_User_Profile, Gson().toJson(userProfile))
         preferenceEditor.apply()
     }
 
-    fun getUserName(): String? {
-        return getUserProfile()!!.firstName
-    }
-
-    //    fun getUserProfile() : GetProfileResponse.Details? {
-//        var userProfile = userPreferences.getString(UserConstants.Key_User_Profile, Constants.EMPTY_STRING)
-//        if (userProfile.isEmpty()) {
-//            return GetProfileResponse.Details()
-//        } else {
-//            return Gson().fromJson<GetProfileResponse.Details>(userProfile, GetProfileResponse.Details::class.java)
-//        }
+//    fun getUserName(): String? {
+//    //    return getUserProfile()!!.firstName
 //    }
 
-    fun getUserProfile(): GetProfileResponse.Details? {
+    fun getUserProfile(): GetProfileResponse.Users? {
         val userProfile =userPreferences.getString(UserConstants.Key_DRIVER, Constants.EMPTY_STRING)
-        if (userProfile.isEmpty()) {
-            return GetProfileResponse.Details()
-        } else {
-            return Gson().fromJson<GetProfileResponse.Details>(
+        if (userProfile.isNotEmpty()) {
+            //return GetProfileResponse.Users()
+            return Gson().fromJson(
                 userProfile,
-                GetProfileResponse.Details::class.java
+                GetProfileResponse.Users::class.java
             )
         }
-    }
-
-    fun getProfileUpdatePercentage(): String {
-
-        var updatePercentage = 30 //Default percentage is 30
-        var userProfile = getUserProfile()
-
-        if (userProfile!!.avatar != null && userProfile.avatar!!.isNotEmpty()) {
-            updatePercentage += 20
+        else {
+            return Gson().fromJson<GetProfileResponse.Users>(
+                userProfile,
+                GetProfileResponse.Users::class.java
+            )
         }
-
-        if ((userProfile!!.firstName != null && userProfile.firstName!!.isNotEmpty())
-            && userProfile!!.lastName != null && userProfile.lastName!!.isNotEmpty()
-            && userProfile!!.personType != null && userProfile.personType!!.isNotEmpty()
-            && userProfile!!.prefix != null && userProfile.prefix!!.isNotEmpty()
-            && userProfile!!.gender != null && userProfile.gender!!.isNotEmpty()
-            && userProfile!!.birthDate != null && userProfile.birthDate!!.isNotEmpty()
-            && userProfile!!.nationality != null && userProfile.nationality!!.isNotEmpty()
-            && userProfile!!.registrationType != null && userProfile.registrationType!!.isNotEmpty()
-            && userProfile!!.registrationNo != null && userProfile.registrationNo!!.isNotEmpty()
-            && userProfile!!.country != null && userProfile.country!!.isNotEmpty()
-            && userProfile!!.cityName != null && userProfile.cityName!!.isNotEmpty()
-            && userProfile!!.addressType != null && userProfile.addressType!!.isNotEmpty()
-            && userProfile!!.address != null && userProfile.address!!.isNotEmpty()
-        ) {
-
-            updatePercentage += 50
-        }
-
-        return "$updatePercentage%"
-    }
-
-    fun setCurrentProfileOutdated(status: Boolean) {
-        val preferenceEditor = userPreferences.edit()
-        preferenceEditor.putBoolean(UserConstants.Key_Profile_Status, status)
-        preferenceEditor.apply()
-    }
-
-    fun isCurrentProfileOutdated(): Boolean {
-        return userPreferences.getBoolean(UserConstants.Key_Profile_Status, true)
     }
 
     fun wipeUserData() {
