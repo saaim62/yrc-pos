@@ -48,6 +48,9 @@ interface ApiInterface {
     @GET(EndPoints.API_GET_PROFILE)
     fun getUserProfile(@Header(Key.AUTHORIZATION) accessToken: String) : Call<GetProfileResponse>
 
+    @GET(EndPoints.API_GET_PROFILE)
+    fun getUserPrice(@Header(Key.AUTHORIZATION) price: Int) : Call<GetProfileResponse>
+
     @POST(EndPoints.API_EDIT_INDIVIDUAL_PROFILE)
     fun editIndividualProfile(@Header(Key.AUTHORIZATION) accessToken: String, @Body individualProfileEditRequest: IndividualProfileEditRequest) : Call<IndividualProfileEditResponse>
 }

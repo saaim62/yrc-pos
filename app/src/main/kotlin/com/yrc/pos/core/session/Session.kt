@@ -3,39 +3,46 @@ package com.yrc.pos.core.session
 import android.content.Context
 import android.content.SharedPreferences
 import com.yrc.pos.core.Constants
+import com.yrc.pos.features.profile.get_profile_service.GetProfileResponse
 
 object Session {
 
     private lateinit var sessionPreferences: SharedPreferences
     private const val sessionPreferenceName = "SessionPreferences"
 
-    fun initialize(context: Context){
-        sessionPreferences = context.getSharedPreferences(sessionPreferenceName, Context.MODE_PRIVATE)
+    fun initialize(context: Context) {
+        sessionPreferences =
+            context.getSharedPreferences(sessionPreferenceName, Context.MODE_PRIVATE)
     }
 
-    fun storeSession(accessToken: String?)
-    {
+    fun storeSession(accessToken: String?) {
         val preferenceEditor = sessionPreferences.edit()
         preferenceEditor.putString(SessionConstants.Key_AccessToken, accessToken)
         preferenceEditor.apply()
     }
 
-    fun storePrice(price: String?){
+    fun storePrice(price: GetProfileResponse.Price) {
         val preferenceEditor = sessionPreferences.edit()
-        preferenceEditor.putString(SessionConstants.Key_Price, price)
+        preferenceEditor.putString(SessionConstants.Key_Price, price.toString())
         preferenceEditor.apply()
     }
 
-    fun isSessionAvailable() : Boolean {
-        return sessionPreferences.getString(SessionConstants.Key_AccessToken, Constants.EMPTY_STRING).isNotEmpty()
+    fun getPrice(): Int {
+        return sessionPreferences.getInt(SessionConstants.Key_Price, Constants.EMPTY_INT)
     }
 
-    fun getAccessToken() : String {
-        return sessionPreferences.getString(SessionConstants.Key_AccessToken, Constants.EMPTY_STRING)
+    fun isSessionAvailable(): Boolean {
+        return sessionPreferences.getString(
+            SessionConstants.Key_AccessToken,
+            Constants.EMPTY_STRING
+        ).isNotEmpty()
     }
 
-    fun getPrice() : String {
-        return sessionPreferences.getString(SessionConstants.Key_Price, Constants.EMPTY_STRING)
+    fun getAccessToken(): String {
+        return sessionPreferences.getString(
+            SessionConstants.Key_AccessToken,
+            Constants.EMPTY_STRING
+        )
     }
 
 

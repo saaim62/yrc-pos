@@ -8,6 +8,7 @@ import com.yrc.pos.R
 import com.yrc.pos.core.*
 import com.yrc.pos.core.bus.RxBus
 import com.yrc.pos.core.bus.RxEvent
+import com.yrc.pos.core.session.User
 import com.yrc.pos.core.views.YrcTextView
 import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_enclosure_g_and_p_printing.*
@@ -71,7 +72,7 @@ class EnclosureGandPFragment : YrcBaseFragment() {
     }
 
     private fun initViews() {
-        button_Adult.text = "Adult   £" + Prices.PRICE_ADULT
+        button_Adult.text = "Adult   £" + User.getUserPrice()?.adultPrice?.toInt()
         button_Over65.text = "Over65   £" + Prices.PRICE_OVER65
         button_1822.text = "18-22   £" + Prices.PRICE_1822
         button_racegoer.text = "Racegoer  £" + Prices.PRICE_RACEGOER
@@ -83,11 +84,13 @@ class EnclosureGandPFragment : YrcBaseFragment() {
             .plus(countRacegoerTickets).toString().plus(" ")
             .plus(
                 "x Ticket £".plus(
-                    Prices.PRICE_ADULT?.let {
-                        countAdultTickets.times(it)
-                            .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
-                            .plus(count1822Tickets.times(Prices.PRICE_1822))
-                            .plus(countRacegoerTickets.times(Prices.PRICE_RACEGOER))
+                    User.getUserPrice()?.adultPrice?.toInt().let {
+                        if (it != null) {
+                            countAdultTickets.times(it)
+                                .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
+                                .plus(count1822Tickets.times(Prices.PRICE_1822))
+                                .plus(countRacegoerTickets.times(Prices.PRICE_RACEGOER))
+                        }
                     }
                 )
             )

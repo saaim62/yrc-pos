@@ -61,18 +61,18 @@ class LoginActivity : YrcBaseActivity() {
             handleLoginResponse(apiResponse)
         }
 
-//        if (apiResponse is GetProfileResponse) {
-//            User.saveUserPrice(apiResponse.user!!)
-//
-//            var userPrice = User.getUserPrice()
-//            if (userPrice != null) {
-//                if (userPrice.code != null) {
-//                    Toast.makeText(this@LoginActivity, "price is saved", Toast.LENGTH_LONG).show()
-//                } else {
-//                    moveToHelloScreen()
-//                }
-//            }
-//        }
+        if (apiResponse is GetProfileResponse) {
+            User.saveUserPrice(apiResponse.price!!)
+
+            var userPrice = User.getUserPrice()
+            if (userPrice != null) {
+                if (userPrice.code != null) {
+         //           Toast.makeText(this@LoginActivity, "price is saved", Toast.LENGTH_LONG).show()
+                } else {
+                    moveToHelloScreen()
+                }
+            }
+        }
 
 
         if (apiResponse is GetProfileResponse) {
@@ -102,47 +102,14 @@ class LoginActivity : YrcBaseActivity() {
         }
     }
 
-//    private fun login(){
-//        val loginRequest = LoginRequest()
-//        loginRequest.driver = editText_emailOrNumber!!.getText()
-//        loginRequest.pin = editText_dutyNumber!!.getText()
-//        loginRequest.dutyNumber = editText_password!!.getText()
-//        val loginResponseCall = apiInterface.getlogin(loginRequest)
-//        loginResponseCall!!.enqueue(object : retrofit2.Callback<LoginResponse?> {
-//            override fun onResponse(call: retrofit2.Call<LoginResponse?>, response: retrofit2.Response<LoginResponse?>) {
-//                if (response.isSuccessful) {
-//                    val loginResponse = response.body()
-//                    if (loginResponse != null) {
-//                        if (loginResponse.code == 200) {
-//                            session.createLoginSession("","", "",loginResponse.code.toString())
-//                            Toast.makeText(this@LoginActivity, "LoggedIn", Toast.LENGTH_LONG).show()
-//                            val intent = Intent(this@LoginActivity, DashboardActivity::class.java)
-//                            startActivity(intent)
-//                            finish()
-//                        } else {
-//                            Toast.makeText(this@LoginActivity, "False", Toast.LENGTH_LONG).show()
-//                        }
-//                    }
-//
-//                } else {
-//                    Toast.makeText(this@LoginActivity, "Not Login", Toast.LENGTH_LONG).show()
-//                }
-//            }
-
-//            override fun onFailure(call: retrofit2.Call<LoginResponse?>, t: Throwable) {
-//                Toast.makeText(applicationContext, t.message, Toast.LENGTH_SHORT).show()
-//            }
-//        })
-//    }
-
     private fun priceResponse(getProfileResponse: GetProfileResponse) {
-//        if (User.getUserPrice()!!.code != null) {
-//            Session.storePrice(getProfileResponse.price.toString())
-//         //   Toast.makeText(this@LoginActivity, "price saved", Toast.LENGTH_LONG).show()
-//            callGetPriceApi()
-//        } else {
-//            AlertDialogProvider.showAlertDialog(this, DialogTheme.ThemeWhite, getProfileResponse.message)
-//        }
+        if (User.getUserPrice()!!.code != null) {
+            getProfileResponse.price?.let { Session.storePrice(it) }
+         //   Toast.makeText(this@LoginActivity, "price saved", Toast.LENGTH_LONG).show()
+            callGetPriceApi()
+        } else {
+            AlertDialogProvider.showAlertDialog(this, DialogTheme.ThemeWhite, getProfileResponse.message)
+        }
     }
 
     private fun handleLoginResponse(loginResponse: LoginResponse) {
@@ -171,7 +138,7 @@ class LoginActivity : YrcBaseActivity() {
 
     private fun callGetPriceApi() {
         if (Session.isSessionAvailable()) {
-            APiManager.getPrice(this, this)
+            APiManager.getUserPrice(this, this)
         } else {
             AlertDialogProvider.showAlertDialog(
                 this,

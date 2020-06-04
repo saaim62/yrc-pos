@@ -7,6 +7,7 @@ import com.pax.dal.entity.EFontTypeAscii
 import com.pax.dal.entity.EFontTypeExtCode
 import com.pax.neptunelite.api.NeptuneLiteUser
 import com.yrc.pos.R
+import com.yrc.pos.core.session.User
 import java.text.DateFormat
 import java.util.*
 
@@ -25,7 +26,7 @@ object TicketsPrinting {
         prn.printStr("\n", null)
         prn.leftIndent(100)
 
-        prn.printStr("£" + Prices.PRICE_ADULT, null)
+        prn.printStr("£" + User.getUserPrice()?.adultPrice?.toInt(), null)
         prn.leftIndent(0)
         prn.printStr("----------------", null)
 

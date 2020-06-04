@@ -6,6 +6,7 @@ import com.yrc.pos.features.profile.get_profile_service.GetProfileResponse
 
 object Constants {
     const val EMPTY_STRING = ""
+    const val EMPTY_INT = 0
     const val SPACE_STRING = " "
     const val LOGGER_TAG = "Yrc App"
     const val DOB_FORMAT = "MMM/dd/yyyy"
@@ -39,7 +40,7 @@ object Tags {
 }
 
 object Prices {
-    const val PRICE_ADULT = 1000
+   // val PRICE_ADULT = getUserPrice()?.adultPrice.toString()
     const val PRICE_OVER65 = 3000
     const val PRICE_1822 = 4000
     const val PRICE_RACEGOER = 5000

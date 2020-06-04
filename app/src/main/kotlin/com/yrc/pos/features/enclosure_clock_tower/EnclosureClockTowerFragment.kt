@@ -11,6 +11,7 @@ import com.yrc.pos.core.Prices
 import com.yrc.pos.core.YrcBaseFragment
 import com.yrc.pos.core.bus.RxBus
 import com.yrc.pos.core.bus.RxEvent
+import com.yrc.pos.core.session.User
 import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.android.synthetic.main.activity_enclosure_clock_tower_printing.*
 import kotlinx.android.synthetic.main.fragment_enclosure_clock_tower.*
@@ -57,7 +58,7 @@ class EnclosureClockTowerFragment : YrcBaseFragment() {
     }
 
     private fun initView1() {
-        button_Adult.text= "Adult   £" + Prices.PRICE_ADULT
+        button_Adult.text= "Adult   £" + User.getUserPrice()?.adultPrice?.toInt()
         button_Over65.text = "Over65   £" + Prices.PRICE_OVER65
     }
 
@@ -66,9 +67,11 @@ class EnclosureClockTowerFragment : YrcBaseFragment() {
         button_total.text = countAdultTickets.plus(countOver65Tickets).toString().plus(" ")
             .plus(
                 "x Ticket £".plus(
-                    Prices.PRICE_ADULT?.let {
-                        countAdultTickets.times(it)
-                            .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
+                    User.getUserPrice()?.adultPrice?.toInt().let {
+                        if (it != null) {
+                            countAdultTickets.times(it)
+                                .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
+                        }
                     }
                 )
             )

@@ -14,21 +14,21 @@ object User {
     fun initialize(context: Context) {
         userPreferences = context.getSharedPreferences(userPreferenceName, Context.MODE_PRIVATE)
     }
-    fun saveUserPrice(userPrice: GetProfileResponse.Users) {
+    fun saveUserPrice(userPrice: GetProfileResponse.Price) {
         val preferenceEditor = userPreferences.edit()
-        preferenceEditor.putString(UserConstants.Key_User_Profile, Gson().toJson(userPrice))
+        preferenceEditor.putString(SessionConstants.Key_Price, Gson().toJson(userPrice))
         preferenceEditor.apply()
     }
 
-    fun getUserPrice(): GetProfileResponse.Users? {
+    fun getUserPrice(): GetProfileResponse.Price {
         val userProfile = userPreferences.getString(SessionConstants.Key_Price, Constants.EMPTY_STRING)
         if (userProfile.isEmpty()) {
-            return GetProfileResponse.Users()
+            return GetProfileResponse.Price()
 
         } else {
             return Gson().fromJson(
                 userProfile,
-                GetProfileResponse.Users::class.java
+                GetProfileResponse.Price::class.java
             )
         }
     }
@@ -44,8 +44,7 @@ object User {
 //    }
 
     fun getUserProfile(): GetProfileResponse.Users? {
-        val userProfile =
-            userPreferences.getString(UserConstants.Key_User_Profile, Constants.EMPTY_STRING)
+        val userProfile = userPreferences.getString(UserConstants.Key_User_Profile, Constants.EMPTY_STRING)
         if (userProfile.isEmpty()) {
               return GetProfileResponse.Users()
 

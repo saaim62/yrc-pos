@@ -9,6 +9,7 @@ import com.yrc.pos.core.TicketsPrinting
 import com.yrc.pos.core.YrcBaseActivity
 import com.yrc.pos.core.bus.RxBus
 import com.yrc.pos.core.bus.RxEvent
+import com.yrc.pos.core.session.User
 import kotlinx.android.synthetic.main.activity_enclosure_clock_tower_printing.*
 
 
@@ -126,7 +127,11 @@ class EnclosureClockTowerPrintingActivity : YrcBaseActivity() {
         if (countAdultTickets != 0)
             button_adult.visibility = View.VISIBLE
         button_adult.text = countAdultTickets.toString().plus(" ")
-            .plus("x Adult £".plus(" ").plus(Prices.PRICE_ADULT?.let { countAdultTickets.times(it) }))
+            .plus("x Adult £".plus(" ").plus(User.getUserPrice()?.adultPrice?.toInt().let {
+                if (it != null) {
+                    countAdultTickets.times(it)
+                }
+            }))
 
         if (countOver65Tickets != 0)
             button_over65.visibility = View.VISIBLE
@@ -137,9 +142,11 @@ class EnclosureClockTowerPrintingActivity : YrcBaseActivity() {
             .plus(
                 "x Ticket £".plus(" ")
                     .plus(
-                        Prices.PRICE_ADULT?.let {
-                            countAdultTickets.times(it)
-                                .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
+                        User.getUserPrice()?.adultPrice?.toInt().let {
+                            if (it != null) {
+                                countAdultTickets.times(it)
+                                    .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
+                            }
                         }
                     )
             )
