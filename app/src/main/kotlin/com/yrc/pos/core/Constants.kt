@@ -39,7 +39,7 @@ object Tags {
 }
 
 object Prices {
-     val PRICE_ADULT = getUserPrice()
+    const val PRICE_ADULT = 1000
     const val PRICE_OVER65 = 3000
     const val PRICE_1822 = 4000
     const val PRICE_RACEGOER = 5000

@@ -57,24 +57,23 @@ class LoginActivity : YrcBaseActivity() {
     override fun onApiSuccess(apiResponse: YrcBaseApiResponse) {
         super.onApiSuccess(apiResponse)
 
-
-        if (apiResponse is GetProfileResponse) {
-            User.saveUserPrice(apiResponse.user!!)
-
-            var userPrice = User.getUserPrice()
-            if (userPrice != null) {
-                if (userPrice.code != null) {
-                    Toast.makeText(this@LoginActivity, "price is saved", Toast.LENGTH_LONG).show()
-                } else {
-                    moveToHelloScreen()
-                }
-            }
-        }
-
-
         if (apiResponse is LoginResponse) {
             handleLoginResponse(apiResponse)
         }
+
+//        if (apiResponse is GetProfileResponse) {
+//            User.saveUserPrice(apiResponse.user!!)
+//
+//            var userPrice = User.getUserPrice()
+//            if (userPrice != null) {
+//                if (userPrice.code != null) {
+//                    Toast.makeText(this@LoginActivity, "price is saved", Toast.LENGTH_LONG).show()
+//                } else {
+//                    moveToHelloScreen()
+//                }
+//            }
+//        }
+
 
         if (apiResponse is GetProfileResponse) {
             User.saveUserProfile(apiResponse.user!!)

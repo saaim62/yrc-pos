@@ -18,18 +18,11 @@ class GetProfileResponse : YrcBaseApiResponse() {
     var user: Users? = null
 
     class Users {
+        var code = 0
         var driver: String? = null
         var pin: String? = null
         var dutyNumber: String? = null
 
     }
 
-//        @SerializedName("driver")
-//        var driver: String? = Constants.EMPTY_STRING
-//
-//        @SerializedName("pin")
-//        var pin: String? = Constants.EMPTY_STRING
-//
-//        @SerializedName("dutyNumber")
-//        var dutyNumber: String? = Constants.EMPTY_STRING
 }

@@ -23,7 +23,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object APiManager {
-//    private val retrofit: Retrofit
+    //    private val retrofit: Retrofit
 //        get() {
 //            val interceptor = HttpLoggingInterceptor()
 //            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -41,9 +41,13 @@ object APiManager {
     private lateinit var hambaServices: ApiInterface
     private const val BASE_URL = "https://api.mocki.io/v1/"
 
-    fun initialize(){
+    fun initialize() {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.apply { interceptor.level = HttpLoggingInterceptor.Level.BODY }
+        val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
         hambaServices = Retrofit.Builder()
             .baseUrl(BASE_URL)
+            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ApiInterface::class.java)
@@ -55,12 +59,24 @@ object APiManager {
         ApiExecutor<LoginResponse>().addCallToQueue(context, loginApiCall, apiCallbacks)
     }
 
-    fun forgetPassword(context: Context, apiCallbacks: ApiCallbacks, forgetPasswordRequest: ForgetPasswordRequest) {
+    fun forgetPassword(
+        context: Context,
+        apiCallbacks: ApiCallbacks,
+        forgetPasswordRequest: ForgetPasswordRequest
+    ) {
         val forgetPasswordApiCall = hambaServices.forgetPassword(forgetPasswordRequest)
-        ApiExecutor<ForgetPasswordResponse>().addCallToQueue(context, forgetPasswordApiCall, apiCallbacks)
+        ApiExecutor<ForgetPasswordResponse>().addCallToQueue(
+            context,
+            forgetPasswordApiCall,
+            apiCallbacks
+        )
     }
 
-    fun resetPassword(context: Context, apiCallbacks: ApiCallbacks, newPasswordRequest: NewPasswordRequest) {
+    fun resetPassword(
+        context: Context,
+        apiCallbacks: ApiCallbacks,
+        newPasswordRequest: NewPasswordRequest
+    ) {
         val newPasswordApiCall = hambaServices.resetPassword(newPasswordRequest)
         ApiExecutor<NewPasswordResponse>().addCallToQueue(context, newPasswordApiCall, apiCallbacks)
     }
@@ -70,12 +86,20 @@ object APiManager {
         ApiExecutor<SignUpResponse>().addCallToQueue(context, signUpApiCall, apiCallbacks)
     }
 
-    fun verifyOtpCode(context: Context, apiCallbacks: ApiCallbacks, verifyOtpRequest: VerifyOtpRequest) {
+    fun verifyOtpCode(
+        context: Context,
+        apiCallbacks: ApiCallbacks,
+        verifyOtpRequest: VerifyOtpRequest
+    ) {
         val verifyOtpApiCall = hambaServices.verifyOtpCode(verifyOtpRequest)
         ApiExecutor<VerifyOtpResponse>().addCallToQueue(context, verifyOtpApiCall, apiCallbacks)
     }
 
-    fun resendOtpCode(context: Context, apiCallbacks: ApiCallbacks, resendOtpRequest: ResendOtpRequest) {
+    fun resendOtpCode(
+        context: Context,
+        apiCallbacks: ApiCallbacks,
+        resendOtpRequest: ResendOtpRequest
+    ) {
         val resendOtpApiCall = hambaServices.resendOtpCode(resendOtpRequest)
         ApiExecutor<ResendOtpResponse>().addCallToQueue(context, resendOtpApiCall, apiCallbacks)
     }
@@ -90,8 +114,19 @@ object APiManager {
         ApiExecutor<GetProfileResponse>().addCallToQueue(context, getProfileApiCall, apiCallbacks)
     }
 
-    fun editIndividualProfileApi(context: Context, apiCallbacks: ApiCallbacks, individualProfileEditRequest: IndividualProfileEditRequest) {
-        val editIndividualProfileApiCall = hambaServices.editIndividualProfile(Session.getAccessToken(), individualProfileEditRequest)
-        ApiExecutor<IndividualProfileEditResponse>().addCallToQueue(context, editIndividualProfileApiCall, apiCallbacks)
+    fun editIndividualProfileApi(
+        context: Context,
+        apiCallbacks: ApiCallbacks,
+        individualProfileEditRequest: IndividualProfileEditRequest
+    ) {
+        val editIndividualProfileApiCall = hambaServices.editIndividualProfile(
+            Session.getAccessToken(),
+            individualProfileEditRequest
+        )
+        ApiExecutor<IndividualProfileEditResponse>().addCallToQueue(
+            context,
+            editIndividualProfileApiCall,
+            apiCallbacks
+        )
     }
 }
