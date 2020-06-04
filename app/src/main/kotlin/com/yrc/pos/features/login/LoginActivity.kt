@@ -2,13 +2,10 @@ package com.yrc.pos.features.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.telecom.Call
 import android.view.View
 import android.widget.Toast
-import com.google.android.gms.common.api.Response
 import com.yrc.pos.R
 import com.yrc.pos.core.YrcBaseActivity
-import com.yrc.pos.core.YrcUtils
 import com.yrc.pos.core.enums.DialogTheme
 import com.yrc.pos.core.providers.AlertDialogProvider
 import com.yrc.pos.core.services.APiManager
@@ -26,8 +23,7 @@ import com.yrc.pos.features.signup.HelloUserActivity
 import com.yrc.pos.features.signup.SignupActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.editText_password
-import kotlinx.android.synthetic.main.fragment_search.view.*
-import javax.security.auth.callback.Callback
+
 
 class LoginActivity : YrcBaseActivity() {
     lateinit var session: SessionManagement
@@ -50,18 +46,9 @@ class LoginActivity : YrcBaseActivity() {
         if (checkValidations()) {
 
             val loginRequest = LoginRequest()
-
-            if (YrcUtils.isPhoneNumber(editText_emailOrNumber.getText())) {
-                loginRequest.driver = editText_emailOrNumber.getText()
-                loginRequest.pin = editText_password.getText()
-                loginRequest.dutyNumber = editText_dutyNumber.getText()
-
-            } else {
-                loginRequest.driver = editText_emailOrNumber.getText()
-                loginRequest.pin = editText_password.getText()
-                loginRequest.dutyNumber = editText_dutyNumber.getText()
-            }
-
+            loginRequest.driver = editText_emailOrNumber.getText()
+            loginRequest.pin = editText_password.getText()
+            loginRequest.dutyNumber = editText_dutyNumber.getText()
             APiManager.loginApi(this, this, loginRequest)
             Session.clearSession()
         }
@@ -70,19 +57,36 @@ class LoginActivity : YrcBaseActivity() {
     override fun onApiSuccess(apiResponse: YrcBaseApiResponse) {
         super.onApiSuccess(apiResponse)
 
+
+        if (apiResponse is GetProfileResponse) {
+            User.saveUserPrice(apiResponse.user!!)
+
+            var userPrice = User.getUserPrice()
+            if (userPrice != null) {
+                if (userPrice.code != null) {
+                    Toast.makeText(this@LoginActivity, "price is saved", Toast.LENGTH_LONG).show()
+                } else {
+                    moveToHelloScreen()
+                }
+            }
+        }
+
+
         if (apiResponse is LoginResponse) {
             handleLoginResponse(apiResponse)
         }
 
         if (apiResponse is GetProfileResponse) {
-
             User.saveUserProfile(apiResponse.user!!)
 
-            if (User.getUserProfile()!!.driver != null) {
-                Toast.makeText(this@LoginActivity, "user showed@@@@@@@@@@@@", Toast.LENGTH_LONG).show()
-                moveToDashboardScreen()
-            } else {
-                moveToHelloScreen()
+            var userProfile = User.getUserProfile()
+            if (userProfile != null) {
+                if (userProfile.code != null) {
+                    Toast.makeText(this@LoginActivity, "user showed@@@@@@@@@@@@", Toast.LENGTH_LONG).show()
+                    moveToDashboardScreen()
+                } else {
+                    moveToHelloScreen()
+                }
             }
         }
     }
@@ -132,6 +136,16 @@ class LoginActivity : YrcBaseActivity() {
 //        })
 //    }
 
+    private fun priceResponse(getProfileResponse: GetProfileResponse) {
+//        if (User.getUserPrice()!!.code != null) {
+//            Session.storePrice(getProfileResponse.price.toString())
+//         //   Toast.makeText(this@LoginActivity, "price saved", Toast.LENGTH_LONG).show()
+//            callGetPriceApi()
+//        } else {
+//            AlertDialogProvider.showAlertDialog(this, DialogTheme.ThemeWhite, getProfileResponse.message)
+//        }
+    }
+
     private fun handleLoginResponse(loginResponse: LoginResponse) {
         if (loginResponse.code == 200) {
             Session.storeSession(loginResponse.accessToken)
@@ -154,6 +168,20 @@ class LoginActivity : YrcBaseActivity() {
             )
         }
     }
+
+
+    private fun callGetPriceApi() {
+        if (Session.isSessionAvailable()) {
+            APiManager.getPrice(this, this)
+        } else {
+            AlertDialogProvider.showAlertDialog(
+                this,
+                DialogTheme.ThemeWhite,
+                getString(R.string.session_not_available)
+            )
+        }
+    }
+
 
     fun onCreateAccountClicked(createAccountTextView: View) {
         val individualSignUpIntent = Intent(this, SignupActivity::class.java)
@@ -189,17 +217,17 @@ class LoginActivity : YrcBaseActivity() {
             return false
         }
 
-        if (YrcUtils.isPhoneNumber(editText_emailOrNumber.getText())) {
-            if (editText_emailOrNumber.getText().length < 10) {
-                editText_emailOrNumber.setError(getString(R.string.please_enter_valid_cell_number))
-                return false
-            }
-        } else {
-            if (!YrcUtils.isEmailValid(editText_emailOrNumber.getText())) {
-                editText_emailOrNumber.setError(getString(R.string.please_enter_valid_email))
-                return false
-            }
-        }
+//        if (YrcUtils.isPhoneNumber(editText_emailOrNumber.getText())) {
+//            if (editText_emailOrNumber.getText().length < 10) {
+//                editText_emailOrNumber.setError(getString(R.string.please_enter_valid_cell_number))
+//                return false
+//            }
+//        } else {
+//            if (!YrcUtils.isEmailValid(editText_emailOrNumber.getText())) {
+//                editText_emailOrNumber.setError(getString(R.string.please_enter_valid_email))
+//                return false
+//            }
+//        }
 
         if (editText_password.getText().isEmpty()) {
             editText_password.setError(getString(R.string.please_enter_password))

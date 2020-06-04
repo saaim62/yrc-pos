@@ -1,5 +1,9 @@
 package com.yrc.pos.core
 
+import com.yrc.pos.core.session.Session.getPrice
+import com.yrc.pos.core.session.User.getUserPrice
+import com.yrc.pos.features.profile.get_profile_service.GetProfileResponse
+
 object Constants {
     const val EMPTY_STRING = ""
     const val SPACE_STRING = " "
@@ -35,7 +39,7 @@ object Tags {
 }
 
 object Prices {
-    const val PRICE_ADULT = 2000
+     val PRICE_ADULT = getUserPrice()
     const val PRICE_OVER65 = 3000
     const val PRICE_1822 = 4000
     const val PRICE_RACEGOER = 5000

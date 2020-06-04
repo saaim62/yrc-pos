@@ -85,6 +85,11 @@ object APiManager {
         ApiExecutor<GetProfileResponse>().addCallToQueue(context, getProfileApiCall, apiCallbacks)
     }
 
+    fun getPrice(context: Context, apiCallbacks: ApiCallbacks) {
+        val getProfileApiCall = hambaServices.getUserProfile(Session.getPrice())
+        ApiExecutor<GetProfileResponse>().addCallToQueue(context, getProfileApiCall, apiCallbacks)
+    }
+
     fun editIndividualProfileApi(context: Context, apiCallbacks: ApiCallbacks, individualProfileEditRequest: IndividualProfileEditRequest) {
         val editIndividualProfileApiCall = hambaServices.editIndividualProfile(Session.getAccessToken(), individualProfileEditRequest)
         ApiExecutor<IndividualProfileEditResponse>().addCallToQueue(context, editIndividualProfileApiCall, apiCallbacks)

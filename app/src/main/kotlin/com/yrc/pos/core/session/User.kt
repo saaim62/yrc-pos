@@ -14,7 +14,24 @@ object User {
     fun initialize(context: Context) {
         userPreferences = context.getSharedPreferences(userPreferenceName, Context.MODE_PRIVATE)
     }
+    fun saveUserPrice(userPrice: GetProfileResponse.Users) {
+        val preferenceEditor = userPreferences.edit()
+        preferenceEditor.putString(UserConstants.Key_User_Profile, Gson().toJson(userPrice))
+        preferenceEditor.apply()
+    }
 
+    fun getUserPrice(): GetProfileResponse.Users? {
+        val userProfile = userPreferences.getString(SessionConstants.Key_Price, Constants.EMPTY_STRING)
+        if (userProfile.isEmpty()) {
+            return GetProfileResponse.Users()
+
+        } else {
+            return Gson().fromJson(
+                userProfile,
+                GetProfileResponse.Users::class.java
+            )
+        }
+    }
 
     fun saveUserProfile(userProfile: GetProfileResponse.Users) {
         val preferenceEditor = userPreferences.edit()
@@ -22,21 +39,18 @@ object User {
         preferenceEditor.apply()
     }
 
-//    fun getUserName(): String? {
-//    //    return getUserProfile()!!.firstName
+//    fun getUserPrice(): String? {
+//        return getUserPrice()!!.
 //    }
 
     fun getUserProfile(): GetProfileResponse.Users? {
-        val userProfile =userPreferences.getString(UserConstants.Key_DRIVER, Constants.EMPTY_STRING)
-        if (userProfile.isNotEmpty()) {
-            //return GetProfileResponse.Users()
+        val userProfile =
+            userPreferences.getString(UserConstants.Key_User_Profile, Constants.EMPTY_STRING)
+        if (userProfile.isEmpty()) {
+              return GetProfileResponse.Users()
+
+        } else {
             return Gson().fromJson(
-                userProfile,
-                GetProfileResponse.Users::class.java
-            )
-        }
-        else {
-            return Gson().fromJson<GetProfileResponse.Users>(
                 userProfile,
                 GetProfileResponse.Users::class.java
             )
@@ -46,10 +60,6 @@ object User {
     fun wipeUserData() {
         val preferenceEditor = userPreferences.edit()
         preferenceEditor.remove(UserConstants.Key_User_Profile)
-        preferenceEditor.remove(UserConstants.Key_Profile_Status)
-        preferenceEditor.remove(UserConstants.Key_DRIVER)
-        preferenceEditor.remove(UserConstants.Key_PIN)
-        preferenceEditor.remove(UserConstants.Key_DUTYNUMBER)
         preferenceEditor.apply()
     }
 }

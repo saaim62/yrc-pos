@@ -11,21 +11,26 @@ object YrcUtils {
         return Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
-    fun isPhoneNumber(string: String) : Boolean {
+    fun isPhoneNumber(string: String): Boolean {
         return string.matches(Constants.NUMBER_REGULAR_EXPRESSION.toRegex())
     }
 
-    fun isNetworkAvailable (context: Context) : Boolean {
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    fun isNetworkAvailable(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo = connectivityManager.activeNetworkInfo
-        return  networkInfo != null && networkInfo.isConnected
+        return networkInfo != null && networkInfo.isConnected
     }
 
-    fun isAgeLessThen18(selectedDate: Calendar) : Boolean {
+    fun isAgeLessThen18(selectedDate: Calendar): Boolean {
         val today = Calendar.getInstance()
         var age = today.get(Calendar.YEAR) - selectedDate.get(Calendar.YEAR)
-        if (today.get(Calendar.DAY_OF_YEAR) < selectedDate.get(Calendar.DAY_OF_YEAR)) { age-- }
-        if (age < 18) { return true }
+        if (today.get(Calendar.DAY_OF_YEAR) < selectedDate.get(Calendar.DAY_OF_YEAR)) {
+            age--
+        }
+        if (age < 18) {
+            return true
+        }
         return false
     }
 }

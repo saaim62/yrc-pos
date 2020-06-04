@@ -13,12 +13,16 @@ object Session {
         sessionPreferences = context.getSharedPreferences(sessionPreferenceName, Context.MODE_PRIVATE)
     }
 
-    fun storeSession(
-        accessToken: String?
-    ) {
+    fun storeSession(accessToken: String?)
+    {
         val preferenceEditor = sessionPreferences.edit()
         preferenceEditor.putString(SessionConstants.Key_AccessToken, accessToken)
+        preferenceEditor.apply()
+    }
 
+    fun storePrice(price: String?){
+        val preferenceEditor = sessionPreferences.edit()
+        preferenceEditor.putString(SessionConstants.Key_Price, price)
         preferenceEditor.apply()
     }
 
@@ -28,6 +32,10 @@ object Session {
 
     fun getAccessToken() : String {
         return sessionPreferences.getString(SessionConstants.Key_AccessToken, Constants.EMPTY_STRING)
+    }
+
+    fun getPrice() : String {
+        return sessionPreferences.getString(SessionConstants.Key_Price, Constants.EMPTY_STRING)
     }
 
 

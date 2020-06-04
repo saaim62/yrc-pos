@@ -344,7 +344,7 @@ class ProfileFragment : YrcBaseFragment(), OnAvatarClickListener {
             return false
         }
 
-        if (editText_phone.getPhoneNumber().length < 10) {
+        if (editText_phone.getPhoneNumber().length > 1) {
             editText_phone.setError(getString(R.string.please_enter_valid_cell_number))
             return false
         }
