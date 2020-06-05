@@ -70,7 +70,7 @@ class LoginActivity : YrcBaseActivity() {
             var userProfile = User.getUserProfile()
             if (userProfile != null) {
                 if (userProfile.site == "1") {
-                  
+
                 } else {
 
                 }
