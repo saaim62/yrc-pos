@@ -67,7 +67,7 @@ class EnclosureGandPPrintingActivity : YrcBaseActivity() {
             prn.printStr("\n", null)
             prn.leftIndent(100)
 
-            prn.printStr("£20.00", null)
+            prn.printStr(User.getUserPrice()?.adultPrice.toString(),null)
             prn.leftIndent(0)
             prn.printStr("----------------", null)
 

@@ -70,9 +70,9 @@ class LoginActivity : YrcBaseActivity() {
             var userProfile = User.getUserProfile()
             if (userProfile != null) {
                 if (userProfile.site == "1") {
-
+                    Toast.makeText(this@LoginActivity, "user is saved", Toast.LENGTH_LONG).show()
                 } else {
-
+                    Toast.makeText(this@LoginActivity, "User not saved", Toast.LENGTH_LONG).show()
                 }
             }
         }

@@ -78,24 +78,6 @@ class EnclosureGandPFragment : YrcBaseFragment() {
         button_racegoer.text = "Racegoer  £" + User.getUserPrice()?.racePrice?.toInt()
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//        button_total.text = countAdultTickets.plus(countOver65Tickets).plus(count1822Tickets)
-//            .plus(countRacegoerTickets).toString().plus(" ")
-//            .plus(
-//                "x Ticket £".plus(
-//                    User.getUserPrice()?.adultPrice?.toInt().let {
-//                        if (it != null) {
-//                            countAdultTickets.times(it)
-//                                .plus(countOver65Tickets.times(User.getUserPrice()?.over65Price?.toInt()))
-//                                .plus(count1822Tickets.times(User.getUserPrice()?.youngPrice?.toInt()))
-//                                .plus(countRacegoerTickets.times(User.getUserPrice()?.racePrice?.toInt()))
-//                        }
-//                    }
-//                )
-//            )
-//    }
-
     override fun onResume() {
         super.onResume()
         button_total.text = countAdultTickets.plus(countOver65Tickets).plus(count1822Tickets)
