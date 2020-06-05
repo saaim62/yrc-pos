@@ -49,6 +49,7 @@ object Session {
     fun clearSession() {
         val preferenceEditor = sessionPreferences.edit()
         preferenceEditor.remove(SessionConstants.Key_AccessToken)
+        preferenceEditor.remove(SessionConstants.Key_Price)
         preferenceEditor.apply()
         User.wipeUserData()
     }

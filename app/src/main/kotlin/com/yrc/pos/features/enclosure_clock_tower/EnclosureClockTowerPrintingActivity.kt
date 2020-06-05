@@ -136,16 +136,16 @@ class EnclosureClockTowerPrintingActivity : YrcBaseActivity() {
         if (countOver65Tickets != 0)
             button_over65.visibility = View.VISIBLE
         button_over65.text = countOver65Tickets.toString().plus(" ")
-            .plus("x Over65 £".plus(" ").plus(countOver65Tickets.times(Prices.PRICE_OVER65)))
+            .plus("x Over65 £".plus(" ").plus(countOver65Tickets.times(User.getUserPrice()?.over65Price?.toInt())))
 
         textView_ticket.text = countAdultTickets.plus(countOver65Tickets).toString().plus(" ")
             .plus(
                 "x Ticket £".plus(" ")
                     .plus(
-                        User.getUserPrice()?.adultPrice?.toInt().let {
+                        User.getUserPrice()?.over65Price?.toInt().let {
                             if (it != null) {
                                 countAdultTickets.times(it)
-                                    .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
+                                    .plus(countOver65Tickets.times(User.getUserPrice()?.over65Price?.toInt()))
                             }
                         }
                     )

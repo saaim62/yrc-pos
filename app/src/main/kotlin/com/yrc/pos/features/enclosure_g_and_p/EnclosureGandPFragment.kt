@@ -73,10 +73,28 @@ class EnclosureGandPFragment : YrcBaseFragment() {
 
     private fun initViews() {
         button_Adult.text = "Adult   £" + User.getUserPrice()?.adultPrice?.toInt()
-        button_Over65.text = "Over65   £" + Prices.PRICE_OVER65
-        button_1822.text = "18-22   £" + Prices.PRICE_1822
-        button_racegoer.text = "Racegoer  £" + Prices.PRICE_RACEGOER
+        button_Over65.text = "Over65   £" + User.getUserPrice()?.over65Price?.toInt()
+        button_1822.text = "18-22   £" + User.getUserPrice()?.youngPrice?.toInt()
+        button_racegoer.text = "Racegoer  £" + User.getUserPrice()?.racePrice?.toInt()
     }
+
+//    override fun onResume() {
+//        super.onResume()
+//        button_total.text = countAdultTickets.plus(countOver65Tickets).plus(count1822Tickets)
+//            .plus(countRacegoerTickets).toString().plus(" ")
+//            .plus(
+//                "x Ticket £".plus(
+//                    User.getUserPrice()?.adultPrice?.toInt().let {
+//                        if (it != null) {
+//                            countAdultTickets.times(it)
+//                                .plus(countOver65Tickets.times(User.getUserPrice()?.over65Price?.toInt()))
+//                                .plus(count1822Tickets.times(User.getUserPrice()?.youngPrice?.toInt()))
+//                                .plus(countRacegoerTickets.times(User.getUserPrice()?.racePrice?.toInt()))
+//                        }
+//                    }
+//                )
+//            )
+//    }
 
     override fun onResume() {
         super.onResume()
@@ -84,14 +102,10 @@ class EnclosureGandPFragment : YrcBaseFragment() {
             .plus(countRacegoerTickets).toString().plus(" ")
             .plus(
                 "x Ticket £".plus(
-                    User.getUserPrice()?.adultPrice?.toInt().let {
-                        if (it != null) {
-                            countAdultTickets.times(it)
-                                .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
-                                .plus(count1822Tickets.times(Prices.PRICE_1822))
-                                .plus(countRacegoerTickets.times(Prices.PRICE_RACEGOER))
-                        }
-                    }
+                    countAdultTickets.times(User.getUserPrice()?.adultPrice?.toInt())
+                        .plus(countOver65Tickets.times(User.getUserPrice()?.over65Price?.toInt()))
+                        .plus(count1822Tickets.times(User.getUserPrice()?.youngPrice?.toInt()))
+                        .plus(countRacegoerTickets.times(User.getUserPrice()?.racePrice?.toInt()))
                 )
             )
     }

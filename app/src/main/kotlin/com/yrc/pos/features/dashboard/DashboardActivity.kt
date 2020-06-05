@@ -49,6 +49,11 @@ class DashboardActivity : YrcBaseActivity(), NavigationView.OnNavigationItemSele
         navigationDrawerView.setNavigationItemSelectedListener(this)
 
      //   setNavigationDrawerHeaderData()
+
+
+            //  bottom_nav_view.selectedItemId = R.id.navigation_enclosure_clock_tower
+
+
     }
 
 //    private fun setNavigationDrawerHeaderData() {

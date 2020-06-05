@@ -243,40 +243,32 @@ class EnclosureGandPPrintingActivity : YrcBaseActivity() {
         if (countAdultTickets != 0)
             button_adult.visibility = View.VISIBLE
         button_adult.text = countAdultTickets.toString().plus(" ")
-            .plus("x Adult £".plus(" ").plus(User.getUserPrice()?.adultPrice?.toInt().let {
-                if (it != null) {
-                    countAdultTickets.times(it)
-                }
-            }))
+            .plus("x Adult £".plus(" ").plus(countAdultTickets.times(User.getUserPrice()?.adultPrice)))
 
         if (countOver65Tickets != 0)
             button_over65.visibility = View.VISIBLE
         button_over65.text = countOver65Tickets.toString().plus(" ")
-            .plus("x Over65 £".plus(" ").plus(countOver65Tickets.times(Prices.PRICE_OVER65)))
+            .plus("x Over65 £".plus(" ").plus(countOver65Tickets.times(User.getUserPrice()?.over65Price?.toInt())))
 
         if (count1822Tickets != 0)
             button_1822.visibility = View.VISIBLE
         button_1822.text = count1822Tickets.toString().plus(" ")
-            .plus("x 18-22 £".plus(" ").plus(count1822Tickets.times(Prices.PRICE_1822)))
+            .plus("x 18-22 £".plus(" ").plus(count1822Tickets.times(User.getUserPrice()?.youngPrice?.toInt())))
 
         if (countRacegoerTickets != 0)
             button_racegoer.visibility = View.VISIBLE
         button_racegoer.text = countRacegoerTickets.toString().plus(" ")
-            .plus("x Racegoer £".plus(" ").plus(countRacegoerTickets.times(Prices.PRICE_RACEGOER)))
+            .plus("x Racegoer £".plus(" ").plus(countRacegoerTickets.times(User.getUserPrice()?.racePrice?.toInt())))
 
         textView_ticket.text = countAdultTickets.plus(countOver65Tickets).plus(count1822Tickets)
             .plus(countRacegoerTickets).toString().plus(" ")
             .plus(
                 "x Ticket £".plus(" ")
                     .plus(
-                        User.getUserPrice()?.adultPrice?.toInt().let {
-                            if (it != null) {
-                                countAdultTickets.times(it)
-                                    .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
-                                    .plus(count1822Tickets.times(Prices.PRICE_1822))
-                                    .plus(countRacegoerTickets.times(Prices.PRICE_RACEGOER))
-                            }
-                        }
+                        countAdultTickets.times(User.getUserPrice()?.adultPrice)
+                            .plus(countOver65Tickets.times(User.getUserPrice()?.over65Price))
+                            .plus(count1822Tickets.times(User.getUserPrice()?.youngPrice))
+                            .plus(countRacegoerTickets.times(User.getUserPrice()?.racePrice))
                     )
             )
 

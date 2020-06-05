@@ -33,12 +33,12 @@
             android:orientation="horizontal">
 
         <RadioButton
-                android:id="@+id/avatar_radioButtonMale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/selector_gender_male"
-                android:button="@null"
-                android:tag="Male" />
+            android:id="@+id/avatar_radioButtonMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_gender_male"
+            android:button="@null"
+            android:tag="Male" />
 
         <RadioButton
                 android:id="@+id/avatar_radioButtonFemale"

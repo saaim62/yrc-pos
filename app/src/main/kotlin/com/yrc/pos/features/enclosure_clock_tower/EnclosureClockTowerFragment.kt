@@ -6,19 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.LayoutRes
 import com.yrc.pos.R
-import com.yrc.pos.core.Prices
 import com.yrc.pos.core.YrcBaseFragment
 import com.yrc.pos.core.bus.RxBus
 import com.yrc.pos.core.bus.RxEvent
 import com.yrc.pos.core.session.User
 import io.reactivex.rxjava3.disposables.Disposable
-import kotlinx.android.synthetic.main.activity_enclosure_clock_tower_printing.*
-import kotlinx.android.synthetic.main.fragment_enclosure_clock_tower.*
 import kotlinx.android.synthetic.main.fragment_enclosure_g_and_p.*
-import kotlinx.android.synthetic.main.fragment_enclosure_g_and_p.button_Adult
-import kotlinx.android.synthetic.main.fragment_enclosure_g_and_p.button_Over65
-import kotlinx.android.synthetic.main.fragment_enclosure_g_and_p.button_total
 
 class EnclosureClockTowerFragment : YrcBaseFragment() {
 
@@ -59,18 +54,18 @@ class EnclosureClockTowerFragment : YrcBaseFragment() {
 
     private fun initView1() {
         button_Adult.text= "Adult   £" + User.getUserPrice()?.adultPrice?.toInt()
-        button_Over65.text = "Over65   £" + Prices.PRICE_OVER65
+        button_Over65.text = "Over65   £" + User.getUserPrice()?.over65Price?.toInt()
     }
 
     override fun onResume() {
         super.onResume()
-        button_total.text = countAdultTickets.plus(countOver65Tickets).toString().plus(" ")
+        button_total.text = countAdultTickets.plus(countOver65Tickets).toString().plus("")
             .plus(
                 "x Ticket £".plus(
                     User.getUserPrice()?.adultPrice?.toInt().let {
                         if (it != null) {
                             countAdultTickets.times(it)
-                                .plus(countOver65Tickets.times(Prices.PRICE_OVER65))
+                                .plus(countOver65Tickets.times(User.getUserPrice()?.over65Price?.toInt()))
                         }
                     }
                 )

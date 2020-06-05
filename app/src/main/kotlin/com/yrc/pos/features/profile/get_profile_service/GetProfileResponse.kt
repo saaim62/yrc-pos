@@ -14,7 +14,7 @@ class GetProfileResponse : YrcBaseApiResponse() {
 
 
 
-    var code = 0
+
 
     var price: Price? = null
 
@@ -29,6 +29,7 @@ class GetProfileResponse : YrcBaseApiResponse() {
     var user: Users? = null
 
     class Users {
+        var site = 0
         var code = 0
         var driver: String? = null
         var pin: String? = null

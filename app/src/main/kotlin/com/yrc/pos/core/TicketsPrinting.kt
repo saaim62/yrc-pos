@@ -96,7 +96,7 @@ object TicketsPrinting {
         prn.printStr("\n", null)
         prn.leftIndent(100)
 
-        prn.printStr("£" + Prices.PRICE_OVER65, null)
+        prn.printStr("£" + User.getUserPrice()?.over65Price?.toInt(), null)
         prn.leftIndent(0)
         prn.printStr("----------------", null)
 
