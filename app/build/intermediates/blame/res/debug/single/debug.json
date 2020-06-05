@@ -1,0 +1,682 @@
+[
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_male_selected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-mdpi\\ic_male_selected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_male_unselected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-hdpi\\ic_male_unselected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_female_selected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-hdpi\\ic_female_selected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_calendar_green.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xhdpi\\ic_calendar_green.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\navigation_dashboard_nav_graph.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\navigation\\dashboard_nav_graph.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_female_avatar_7.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\female_avatar_7.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_male_avatar_3.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\male_avatar_3.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_app_bar_main.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\app_bar_main.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_logout.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xhdpi\\ic_logout.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_hello_bubble_image.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xhdpi\\hello_bubble_image.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_action_name.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_action_name.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_layout_support_dialog.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\layout_support_dialog.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_dashboard.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\activity_dashboard.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_spinner_background_light.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\spinner_background_light.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\anim_slide_from_top.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\anim\\slide_from_top.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_robot_image.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xhdpi\\robot_image.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\anim_slide_from_bottom.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\anim\\slide_from_bottom.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_male_selected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xhdpi\\ic_male_selected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu_dashboard.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\menu\\menu_dashboard.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_logout.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_logout.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_hello_user.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\activity_hello_user.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_logout.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-hdpi\\ic_logout.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\anim_avatar_slide_in_from_left.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\anim\\avatar_slide_in_from_left.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_switch_thumb_active.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\switch_thumb_active.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_enclosure_clock_tower.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\fragment_enclosure_clock_tower.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_female_unselected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-mdpi\\ic_female_unselected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_alert_dialog_green_background.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\alert_dialog_green_background.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_drop_down_green.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_drop_down_green.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher_background.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_name.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_name.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_male_avatar_2.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\male_avatar_2.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_drop_down_white.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xhdpi\\ic_drop_down_white.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_female_avatar_8.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\female_avatar_8.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_male_avatar_9.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\male_avatar_9.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_enclosure_g_and_p.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\fragment_enclosure_g_and_p.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_spinner_item_dark.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\spinner_item_dark.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_qrcode.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\ic_qrcode.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_selector_gender_male.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\selector_gender_male.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_female_avatar_1.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\female_avatar_1.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_forget_password_logo_3.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\forget_password_logo_3.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_light_screen_background.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\light_screen_background.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_male_unselected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_male_unselected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_female_avatar_2.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\female_avatar_2.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_gmail_button_bg.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\gmail_button_bg.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_green_light_strock_bg.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\green_light_strock_bg.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_name.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_name.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_forget_password_logo_2.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\forget_password_logo_2.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_female_unselected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xhdpi\\ic_female_unselected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\menu\\bottom_nav_menu.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_layout_mobile_number_view.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\layout_mobile_number_view.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_female_selected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_female_selected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_logout.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-mdpi\\ic_logout.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_male_unselected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxhdpi\\ic_male_unselected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_female_selected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-mdpi\\ic_female_selected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_male_unselected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-mdpi\\ic_male_unselected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_login.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_spinner_dropdown.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\item_spinner_dropdown.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_qrcode.bmp.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\qrcode.bmp"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_help_icon.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\help_icon.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_forget_password.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\activity_forget_password.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_layout_gender_selection_view.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\layout_gender_selection_view.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_switch_thumb_inactive.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\switch_thumb_inactive.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_female_selected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxhdpi\\ic_female_selected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_logout.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxhdpi\\ic_logout.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_male_avatar_1.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\male_avatar_1.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_positive_white_btn_background.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\positive_white_btn_background.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_code_verification_fields_bg.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\code_verification_fields_bg.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_arithmetic_button_background.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\arithmetic_button_background.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\anim_avatar_slide_out_to_left.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\anim\\avatar_slide_out_to_left.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_spinner_background_dark.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\spinner_background_dark.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_enclosure_clock_tower_printing.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\activity_enclosure_clock_tower_printing.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_frame.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\activity_frame.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_male_avatar_4.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\male_avatar_4.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_male_avatar_7.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\male_avatar_7.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_alert_dialog_white_background.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\alert_dialog_white_background.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_login_fields_green_bg.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\login_fields_green_bg.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_login_button_background.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\login_button_background.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_signup_button_background.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\signup_button_background.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_layout_hamba_profile_edittext.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\layout_hamba_profile_edittext.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_footer_background.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\footer_background.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_female_unselected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_female_unselected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_drop_down_white.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-hdpi\\ic_drop_down_white.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_enclosure_g_and_p_printing.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\activity_enclosure_g_and_p_printing.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_female_avatar_4.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\female_avatar_4.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_abs_layout.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\abs_layout.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_layout_hamba_login_edittext.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\layout_hamba_login_edittext.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\menu_nav_drawer_menu.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\menu\\nav_drawer_menu.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_profile.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\fragment_profile.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\anim_slide_from_left.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\anim\\slide_from_left.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_male_selected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxhdpi\\ic_male_selected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_signup.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\activity_signup.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_male_avatar_6.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\male_avatar_6.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_drop_down_green.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xhdpi\\ic_drop_down_green.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_logo.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\logo.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_female_avatar_5.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\female_avatar_5.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_layout_alert_dialog_green.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\layout_alert_dialog_green.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_side_nav_bar.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\side_nav_bar.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_female_unselected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-hdpi\\ic_female_unselected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_navigation_drawer_item_background.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\navigation_drawer_item_background.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_calendar_green.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxhdpi\\ic_calendar_green.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_drop_down_green.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-hdpi\\ic_drop_down_green.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_action_name.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_action_name.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_spinner_item_light.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\spinner_item_light.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_male_selected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_male_selected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_layout_gmail_button.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\layout_gmail_button.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_forget_password_button_bg.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\forget_password_button_bg.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\font_titillium_web.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\font\\titillium_web.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_action_name.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_action_name.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_main.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\content_main.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_header_background.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\header_background.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ring_white_light.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\ring_white_light.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_calendar_green.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-hdpi\\ic_calendar_green.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ring_green_light.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\ring_green_light.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_login_module_background.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\login_module_background.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_positive_green_btn_background.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\positive_green_btn_background.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_layout_alert_dialog_white.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\layout_alert_dialog_white.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_female_avatar_9.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\female_avatar_9.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_search.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\fragment_search.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_drop_down_white.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_drop_down_white.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_login_fields_white_bg.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\login_fields_white_bg.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_male_selected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-hdpi\\ic_male_selected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_layout_avatar_selection.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\layout_avatar_selection.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_male_avatar_5.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\male_avatar_5.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_drop_down_green.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxhdpi\\ic_drop_down_green.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_female_selected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xhdpi\\ic_female_selected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_calendar_green.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxxhdpi\\ic_calendar_green.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_male_unselected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xhdpi\\ic_male_unselected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_name.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-hdpi\\ic_action_name.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_layout_navigation_drawer_header.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\layout_navigation_drawer_header.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_female_unselected.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxhdpi\\ic_female_unselected.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_drop_down_green.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-mdpi\\ic_drop_down_green.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_female_avatar_3.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\female_avatar_3.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_male_avatar_8.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\male_avatar_8.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_cancel_button_background.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\cancel_button_background.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_name.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-mdpi\\ic_action_name.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_new_password.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\activity_new_password.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_calendar_green.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-mdpi\\ic_calendar_green.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_forget_password_bg.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\forget_password_bg.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_hello_screen_bg.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\hello_screen_bg.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_forget_password_logo_1.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\forget_password_logo_1.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_drop_down_white.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-mdpi\\ic_drop_down_white.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_gmail_icon.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\gmail_icon.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_drop_down_white.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable-xxhdpi\\ic_drop_down_white.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_female_avatar_6.png.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\female_avatar_6.png"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_password_reset_status.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\activity_password_reset_status.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_splash.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\work\\yrc-pos\\app\\build\\intermediates\\res\\merged\\debug\\drawable_selector_gender_female.xml.flat",
+        "source": "C:\\work\\yrc-pos\\app\\src\\main\\res\\drawable\\selector_gender_female.xml"
+    }
+]

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yrc.pos"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="28" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="com.pax.permission.PRINTER" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <application
+        android:name="com.yrc.pos.core.YrcApplication"
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:testOnly="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name="com.yrc.pos.features.splash.SplashActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.yrc.pos.features.login.LoginActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.yrc.pos.features.signup.SignupActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.yrc.pos.features.signup.HelloUserActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.yrc.pos.features.forget_password.ForgetPasswordActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.yrc.pos.features.forget_password.PasswordResetStatusActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name="com.yrc.pos.features.forget_password.NewPasswordActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name="com.yrc.pos.features.dashboard.DashboardActivity"
+            android:screenOrientation="fullSensor"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.yrc.pos.core.YrcFrameActivity"
+            android:screenOrientation="fullSensor" />
+        <activity
+            android:name="com.yrc.pos.features.enclosure_g_and_p.EnclosureGandPPrintingActivity"
+            android:screenOrientation="fullSensor"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.yrc.pos.features.enclosure_clock_tower.EnclosureClockTowerPrintingActivity"
+            android:screenOrientation="fullSensor"
+            android:windowSoftInputMode="adjustPan" />
+
+        <receiver android:name="com.yrc.pos.core.receiver.StartReceiver" >
+            <intent-filter android:priority="996" >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.yrc.pos.core.receiver.BootUpReceiver"
+            android:enabled="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--
+            Service handling Google Sign-In user revocation. For apps that do not integrate with
+            Google Sign-In, this service will never be started.
+        -->
+        <service
+            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+            android:exported="true"
+            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
+
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <provider
+            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+            android:authorities="com.yrc.pos.lifecycle-process"
+            android:exported="false"
+            android:multiprocess="true" />
+    </application>
+
+</manifest>

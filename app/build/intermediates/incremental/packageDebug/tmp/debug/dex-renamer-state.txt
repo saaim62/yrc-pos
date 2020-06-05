@@ -1,0 +1,4 @@
+#Sat Jun 06 01:18:47 PKT 2020
+base.0=C\:\\work\\yrc-pos\\app\\build\\intermediates\\dex\\debug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

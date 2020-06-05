@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorGreenDark">#2A6361</color>
+    <color name="colorGreenLight">#55B1AC</color>
+    <color name="colorGreenMedium">#478B87</color>
+    <color name="jrspinner_black_transparent">#80000000</color>
+    <color name="jrspinner_color_default">#99000000</color>
+    <style name="DialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+
+        <!--change to true if want fullscreen without statusbar-->
+        <item name="android:windowFullscreen">false</item>
+
+        <item name="android:windowIsFloating">false</item>
+
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+    <declare-styleable name="JRSpinner">
+        <attr format="string" name="jrs_title"/>
+        <attr format="color" name="jrs_icon_tint"/>
+        <attr format="boolean" name="jrs_multiple"/>
+    </declare-styleable>
+</resources>

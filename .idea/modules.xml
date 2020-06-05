@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="yrc-pos/app" />
+      <module fileurl="file://$PROJECT_DIR$/countrycodepicker/countrycodepicker.iml" filepath="$PROJECT_DIR$/countrycodepicker/countrycodepicker.iml" group="yrc-pos/countrycodepicker" />
+      <module fileurl="file://$PROJECT_DIR$/jrspinner/jrspinner.iml" filepath="$PROJECT_DIR$/jrspinner/jrspinner.iml" group="yrc-pos/jrspinner" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/yrc-pos.iml" filepath="$PROJECT_DIR$/.idea/yrc-pos.iml" group="yrc-pos" />
+    </modules>
+  </component>
+</project>

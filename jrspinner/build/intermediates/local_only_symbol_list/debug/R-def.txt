@@ -1,0 +1,29 @@
+R_DEF: Internal format may change without notice
+local
+attr? jrs_icon_tint
+attr? jrs_multiple
+attr? jrs_title
+color colorGreenDark
+color colorGreenLight
+color colorGreenMedium
+color jrspinner_black_transparent
+color jrspinner_color_default
+drawable jrspinner_check
+drawable jrspinner_search_bg
+drawable jrspinnericon_close
+drawable jrspinnericon_search
+id card
+id label
+id recyclerView
+id reset
+id root
+id search
+id search_icon
+id selected
+id title
+id tv_done
+id view
+layout jrspinner_item
+layout jrspinner_layout_dialog
+style DialogStyle
+styleable JRSpinner jrs_title jrs_icon_tint jrs_multiple
