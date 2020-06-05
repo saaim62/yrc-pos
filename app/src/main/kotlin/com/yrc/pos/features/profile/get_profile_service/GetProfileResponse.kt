@@ -29,7 +29,7 @@ class GetProfileResponse : YrcBaseApiResponse() {
     var user: Users? = null
 
     class Users {
-        var site = 0
+        var site: String? = null
         var code = 0
         var driver: String? = null
         var pin: String? = null

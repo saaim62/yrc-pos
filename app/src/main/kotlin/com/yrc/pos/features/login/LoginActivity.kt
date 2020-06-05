@@ -64,27 +64,19 @@ class LoginActivity : YrcBaseActivity() {
                 }
             }
         }
-            if (apiResponse is GetProfileResponse) {
-                User.saveUserProfile(apiResponse.user!!)
+        if (apiResponse is GetProfileResponse) {
+            User.saveUserProfile(apiResponse.user!!)
 
-                var userProfile = User.getUserProfile()
-                if (userProfile != null) {
-                    if (userProfile.site == 0) {
+            var userProfile = User.getUserProfile()
+            if (userProfile != null) {
+                if (userProfile.site == "1") {
+                  
+                } else {
 
-                            Toast.makeText(
-                                this@LoginActivity,
-                                "user showed@@@@@@@@@@@@",
-                                Toast.LENGTH_LONG
-                            )
-                                .show()
-                        moveToDashboardScreen()
-                    } else {
-                        moveToHelloScreen()
-
-                    }
                 }
             }
         }
+    }
 
     override fun onApiFailure(errorCode: Int) {
         if (errorCode == HttpErrorCodes.Unauthorized.code) {
@@ -124,8 +116,7 @@ class LoginActivity : YrcBaseActivity() {
     private fun callGetProfileApi() {
         if (Session.isSessionAvailable()) {
             APiManager.getUserProfile(this, this)
-          //  moveToDashboardScreen()
-              moveToHelloScreen()
+            moveToDashboardScreen()
         } else {
             AlertDialogProvider.showAlertDialog(
                 this,
@@ -134,7 +125,6 @@ class LoginActivity : YrcBaseActivity() {
             )
         }
     }
-
 
     private fun callGetPriceApi() {
         if (Session.isSessionAvailable()) {
@@ -164,21 +154,15 @@ class LoginActivity : YrcBaseActivity() {
         startActivity(forgetPasswordIntent)
     }
 
-    private fun moveToHelloScreen() {
+    fun moveToHelloScreen() {
         val helloUserIntent = Intent(this, HelloUserActivity::class.java)
         startActivity(helloUserIntent)
         finish()
     }
 
-    private fun moveToDashboardScreen() {
+    fun moveToDashboardScreen() {
         val dashboardIntent = Intent(this, DashboardActivity::class.java)
         startActivity(dashboardIntent)
-        finish()
-    }
-
-    private fun moveToEnclouserGandPref() {
-        val enclouserGandPrefIntent = Intent(this, EnclosureClockTowerPrintingActivity::class.java)
-        startActivity(enclouserGandPrefIntent)
         finish()
     }
 

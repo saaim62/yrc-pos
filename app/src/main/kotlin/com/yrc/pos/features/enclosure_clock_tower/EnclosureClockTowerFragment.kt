@@ -59,15 +59,11 @@ class EnclosureClockTowerFragment : YrcBaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        button_total.text = countAdultTickets.plus(countOver65Tickets).toString().plus("")
+        button_total.text = countAdultTickets.plus(countOver65Tickets).toString().plus(" ")
             .plus(
                 "x Ticket £".plus(
-                    User.getUserPrice()?.adultPrice?.toInt().let {
-                        if (it != null) {
-                            countAdultTickets.times(it)
-                                .plus(countOver65Tickets.times(User.getUserPrice()?.over65Price?.toInt()))
-                        }
-                    }
+                    countAdultTickets.times(User.getUserPrice()?.adultPrice)
+                        .plus(countOver65Tickets.times(User.getUserPrice()?.over65Price))
                 )
             )
     }

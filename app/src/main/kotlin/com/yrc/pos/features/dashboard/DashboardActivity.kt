@@ -2,22 +2,17 @@ package com.yrc.pos.features.dashboard
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
-import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.yrc.pos.R
-import com.yrc.pos.core.Constants
 import com.yrc.pos.core.YrcBaseActivity
-import com.yrc.pos.core.services.SessionManagement
 import com.yrc.pos.core.session.Session
 import com.yrc.pos.core.session.User
 import com.yrc.pos.core.views.YrcTextView
@@ -26,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.content_main.*
 
 class DashboardActivity : YrcBaseActivity(), NavigationView.OnNavigationItemSelectedListener {
-//    private lateinit var drawerLayout: DrawerLayout
+    //    private lateinit var drawerLayout: DrawerLayout
     private lateinit var textViewHeaderTitle: YrcTextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,8 +33,14 @@ class DashboardActivity : YrcBaseActivity(), NavigationView.OnNavigationItemSele
 
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setCustomView(R.layout.abs_layout)
-        supportActionBar!!.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.header_background))
-        textViewHeaderTitle = supportActionBar!!.customView.findViewById<YrcTextView>(R.id.textViewTitle)
+        supportActionBar!!.setBackgroundDrawable(
+            ContextCompat.getDrawable(
+                this,
+                R.drawable.header_background
+            )
+        )
+        textViewHeaderTitle =
+            supportActionBar!!.customView.findViewById<YrcTextView>(R.id.textViewTitle)
 
         bottom_nav_view.setupWithNavController(findNavController(R.id.nav_host_fragment))
         navigationDrawerView.setupWithNavController(findNavController(R.id.nav_host_fragment))
@@ -48,12 +49,28 @@ class DashboardActivity : YrcBaseActivity(), NavigationView.OnNavigationItemSele
 //        NavigationUI.setupActionBarWithNavController(this, findNavController(R.id.nav_host_fragment), drawerLayout)
         navigationDrawerView.setNavigationItemSelectedListener(this)
 
-     //   setNavigationDrawerHeaderData()
+        //   setNavigationDrawerHeaderData()
 
+        var userProfile = User.getUserProfile()
+        if (userProfile != null) {
+            if (userProfile.site =="1") {
 
-            //  bottom_nav_view.selectedItemId = R.id.navigation_enclosure_clock_tower
+                Toast.makeText(
+                    this@DashboardActivity,
+                    "this is in dashboard",
+                    Toast.LENGTH_LONG
+                )
+                    .show()
+                bottom_nav_view.selectedItemId = R.id.navigation_enclosure_clock_tower
+                val nav_Menu: Menu = bottom_nav_view.getMenu()
+                nav_Menu.findItem(R.id.navigation_enclosure_g_and_p).setVisible(false)
 
-
+            } else {
+                bottom_nav_view.selectedItemId = R.id.navigation_enclosure_g_and_p
+                val nav_Menu: Menu = bottom_nav_view.getMenu()
+                nav_Menu.findItem(R.id.navigation_enclosure_clock_tower).setVisible(false)
+            }
+        }
     }
 
 //    private fun setNavigationDrawerHeaderData() {
@@ -95,11 +112,11 @@ class DashboardActivity : YrcBaseActivity(), NavigationView.OnNavigationItemSele
 
         when (menuItem.itemId) {
             R.id.item_sign_out -> {
-             //   var session: SessionManagement = SessionManagement(this)
-             //   session.LogoutUser()
+                //   var session: SessionManagement = SessionManagement(this)
+                //   session.LogoutUser()
                 Session.clearSession()
                 moveToLoginScreen()
-              //  finish()
+                //  finish()
             }
         }
         return true
