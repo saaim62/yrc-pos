@@ -24,8 +24,6 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ApiInterface {
-//    @POST("7ab8ba49")
-//    fun getlogin(@Body loginRequest: LoginRequest?): Call<LoginResponse?>?
 
     @POST(EndPoints.API_LOGIN)
     fun loginToHamba(@Body loginRequest: LoginRequest) : Call<LoginResponse>

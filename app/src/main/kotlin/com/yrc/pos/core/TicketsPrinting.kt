@@ -2,9 +2,11 @@ package com.yrc.pos.core
 
 import android.content.Context
 import android.graphics.BitmapFactory
+import android.widget.Toast
 import com.pax.dal.IDAL
 import com.pax.dal.entity.EFontTypeAscii
 import com.pax.dal.entity.EFontTypeExtCode
+import com.pax.dal.exceptions.PrinterDevException
 import com.pax.neptunelite.api.NeptuneLiteUser
 import com.yrc.pos.R
 import com.yrc.pos.core.session.User
@@ -21,7 +23,7 @@ object TicketsPrinting {
 
         prn.fontSet(EFontTypeAscii.FONT_24_48, EFontTypeExtCode.FONT_24_48)
         prn.leftIndent(110)
-//            prn.spaceSet(50.toByte(), 50.toByte())
+         //   prn.spaceSet(50.toByte(), 50.toByte())
         prn.printStr("Adult", null)
         prn.printStr("\n", null)
         prn.leftIndent(100)
@@ -50,38 +52,38 @@ object TicketsPrinting {
 
         prn.step(10)
         prn.leftIndent(100)
-//        prn.invert(true)
+        prn.invert(true)
         prn.printBitmap(BitmapFactory.decodeResource(context.resources, R.drawable.qrcode))
         prn.step(100)
 
-//        val apiResult: Int = dal.printer.start()
-//        try {
-//            when (apiResult) {
-//                0 -> Toast.makeText(context, "Submission successfully made", Toast.LENGTH_SHORT).show()
-//                1 -> Toast.makeText(context, "Busy, so far so good", Toast.LENGTH_SHORT).show()
-//                2 -> Toast.makeText(context, "Out of paper", Toast.LENGTH_SHORT).show()
-//                else -> Toast.makeText(context, "Unexpected", Toast.LENGTH_SHORT).show()
-//            }
-//        } catch (ex: PrinterDevException) {
-//            ex.printStackTrace()
-//        }
+        var apiResult: Int = dal.printer.start()
+        try {
+            when (apiResult) {
+                0 -> Toast.makeText(context, "Submission successfully made", Toast.LENGTH_SHORT).show()
+                1 -> Toast.makeText(context, "Busy, so far so good", Toast.LENGTH_SHORT).show()
+                2 -> Toast.makeText(context, "Out of paper", Toast.LENGTH_SHORT).show()
+                else -> Toast.makeText(context, "Unexpected", Toast.LENGTH_SHORT).show()
+            }
+        } catch (ex: PrinterDevException) {
+            ex.printStackTrace()
+        }
 
-//        do {// Check every quarter-second for result of print. 
-//            Thread.sleep(250)
-//            apiResult = prn.status
-//        } while (apiResult == 1)
-//        // Paper cutter. 
-//        try {
-//            val cutMode: Int = prn.cutMode
-//            if ((cutMode == 0) || (cutMode == 2)) {
-//                // 0=full, or 2=partial/full => full cut. 
-//                prn.cutPaper(0)
-//            } else if (cutMode == 1) {
-//                // 1=partial only => partial cut. 
-//                prn.cutPaper(1)
-//            }
-//        } catch (pdex: PrinterDevException) {
-//        }
+        do {// Check every quarter-second for result of print. 
+            Thread.sleep(250)
+            apiResult = prn.status
+        } while (apiResult == 1)
+        // Paper cutter. 
+        try {
+            val cutMode: Int = prn.cutMode
+            if ((cutMode == 0) || (cutMode == 2)) {
+                // 0=full, or 2=partial/full => full cut. 
+                prn.cutPaper(0)
+            } else if (cutMode == 1) {
+                // 1=partial only => partial cut. 
+                prn.cutPaper(1)
+            }
+        } catch (pdex: PrinterDevException) {
+        }
     }
 
     internal fun printOver65Ticket(context: Context) {
@@ -122,5 +124,34 @@ object TicketsPrinting {
         prn.leftIndent(100)
         prn.printBitmapWithMonoThreshold(BitmapFactory.decodeResource(context.resources, R.drawable.qrcode), 1)
         prn.step(100)
+
+        var apiResult: Int = dal.printer.start()
+        try {
+            when (apiResult) {
+                0 -> Toast.makeText(context, "Submission successfully made", Toast.LENGTH_SHORT).show()
+                1 -> Toast.makeText(context, "Busy, so far so good", Toast.LENGTH_SHORT).show()
+                2 -> Toast.makeText(context, "Out of paper", Toast.LENGTH_SHORT).show()
+                else -> Toast.makeText(context, "Unexpected", Toast.LENGTH_SHORT).show()
+            }
+        } catch (ex: PrinterDevException) {
+            ex.printStackTrace()
+        }
+
+        do {// Check every quarter-second for result of print. 
+            Thread.sleep(250)
+            apiResult = prn.status
+        } while (apiResult == 1)
+        // Paper cutter. 
+        try {
+            val cutMode: Int = prn.cutMode
+            if ((cutMode == 0) || (cutMode == 2)) {
+                // 0=full, or 2=partial/full => full cut. 
+                prn.cutPaper(0)
+            } else if (cutMode == 1) {
+                // 1=partial only => partial cut. 
+                prn.cutPaper(1)
+            }
+        } catch (pdex: PrinterDevException) {
+        }
     }
 }
