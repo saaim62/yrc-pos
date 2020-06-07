@@ -3,7 +3,7 @@ package com.yrc.pos.core.session
 import android.content.Context
 import android.content.SharedPreferences
 import com.yrc.pos.core.Constants
-import com.yrc.pos.features.profile.get_profile_service.GetProfileResponse
+import com.yrc.pos.features.login.login_service.LoginResponse
 
 object Session {
 
@@ -21,7 +21,7 @@ object Session {
         preferenceEditor.apply()
     }
 
-    fun storePrice(price: GetProfileResponse.Price) {
+    fun storePrice(price: LoginResponse.Price) {
         val preferenceEditor = sessionPreferences.edit()
         preferenceEditor.putString(SessionConstants.Key_Price, price.toString())
         preferenceEditor.apply()

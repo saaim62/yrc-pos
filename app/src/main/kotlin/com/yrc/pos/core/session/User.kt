@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.yrc.pos.core.Constants
+import com.yrc.pos.features.login.login_service.LoginResponse
 import com.yrc.pos.features.profile.get_profile_service.GetProfileResponse
 
 object User {
@@ -14,26 +15,26 @@ object User {
     fun initialize(context: Context) {
         userPreferences = context.getSharedPreferences(userPreferenceName, Context.MODE_PRIVATE)
     }
-    fun saveUserPrice(userPrice: GetProfileResponse.Price) {
+    fun saveUserPrice(userPrice: LoginResponse.Price) {
         val preferenceEditor = userPreferences.edit()
         preferenceEditor.putString(SessionConstants.Key_Price, Gson().toJson(userPrice))
         preferenceEditor.apply()
     }
 
-    fun getUserPrice(): GetProfileResponse.Price {
+    fun getUserPrice(): LoginResponse.Price {
         val userProfile = userPreferences.getString(SessionConstants.Key_Price, Constants.EMPTY_STRING)
         if (userProfile.isEmpty()) {
-            return GetProfileResponse.Price()
+            return LoginResponse.Price()
 
         } else {
             return Gson().fromJson(
                 userProfile,
-                GetProfileResponse.Price::class.java
+                LoginResponse.Price::class.java
             )
         }
     }
 
-    fun saveUserProfile(userProfile: GetProfileResponse.Users) {
+    fun saveUserProfile(userProfile: LoginResponse.Users) {
         val preferenceEditor = userPreferences.edit()
         preferenceEditor.putString(UserConstants.Key_User_Profile, Gson().toJson(userProfile))
         preferenceEditor.apply()
@@ -43,15 +44,15 @@ object User {
 //        return getUserPrice()!!.
 //    }
 
-    fun getUserProfile(): GetProfileResponse.Users? {
+    fun getUserProfile(): LoginResponse.Users? {
         val userProfile = userPreferences.getString(UserConstants.Key_User_Profile, Constants.EMPTY_STRING)
         if (userProfile.isEmpty()) {
-              return GetProfileResponse.Users()
+              return LoginResponse.Users()
 
         } else {
             return Gson().fromJson(
                 userProfile,
-                GetProfileResponse.Users::class.java
+                LoginResponse.Users::class.java
             )
         }
     }

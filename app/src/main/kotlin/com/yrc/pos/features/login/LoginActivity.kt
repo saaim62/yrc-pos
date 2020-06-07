@@ -15,14 +15,9 @@ import com.yrc.pos.core.services.SessionManagement
 import com.yrc.pos.core.session.Session
 import com.yrc.pos.core.session.User
 import com.yrc.pos.features.dashboard.DashboardActivity
-import com.yrc.pos.features.enclosure_clock_tower.EnclosureClockTowerFragment
-import com.yrc.pos.features.enclosure_clock_tower.EnclosureClockTowerPrintingActivity
-import com.yrc.pos.features.enclosure_g_and_p.EnclosureGandPFragment
-import com.yrc.pos.features.enclosure_g_and_p.EnclosureGandPPrintingActivity
 import com.yrc.pos.features.forget_password.ForgetPasswordActivity
 import com.yrc.pos.features.login.login_service.LoginRequest
 import com.yrc.pos.features.login.login_service.LoginResponse
-import com.yrc.pos.features.profile.get_profile_service.GetProfileResponse
 import com.yrc.pos.features.signup.HelloUserActivity
 import com.yrc.pos.features.signup.SignupActivity
 import kotlinx.android.synthetic.main.activity_login.*
@@ -53,7 +48,7 @@ class LoginActivity : YrcBaseActivity() {
         if (apiResponse is LoginResponse) {
             handleLoginResponse(apiResponse)
         }
-        if (apiResponse is GetProfileResponse) {
+        if (apiResponse is LoginResponse) {
             User.saveUserPrice(apiResponse.price!!)
             var userPrice = User.getUserPrice()
             if (userPrice != null) {
@@ -64,7 +59,7 @@ class LoginActivity : YrcBaseActivity() {
                 }
             }
         }
-        if (apiResponse is GetProfileResponse) {
+        if (apiResponse is LoginResponse) {
             User.saveUserProfile(apiResponse.user!!)
 
             var userProfile = User.getUserProfile()
@@ -90,16 +85,16 @@ class LoginActivity : YrcBaseActivity() {
         }
     }
 
-    private fun priceResponse(getProfileResponse: GetProfileResponse) {
+    private fun priceResponse(loginResponse: LoginResponse) {
         if (User.getUserPrice()!!.code != null) {
-            getProfileResponse.price?.let { Session.storePrice(it) }
+            loginResponse.price?.let { Session.storePrice(it) }
             //   Toast.makeText(this@LoginActivity, "price saved", Toast.LENGTH_LONG).show()
             callGetPriceApi()
         } else {
             AlertDialogProvider.showAlertDialog(
                 this,
                 DialogTheme.ThemeWhite,
-                getProfileResponse.message
+                loginResponse.message
             )
         }
     }

@@ -44,10 +44,10 @@ interface ApiInterface {
     fun resendOtpCode(@Body resendOtpRequest: ResendOtpRequest) : Call<ResendOtpResponse>
 
     @GET(EndPoints.API_GET_PROFILE)
-    fun getUserProfile(@Header(Key.AUTHORIZATION) accessToken: String) : Call<GetProfileResponse>
+    fun getUserProfile(@Header(Key.AUTHORIZATION) accessToken: String) : Call<LoginResponse>
 
     @GET(EndPoints.API_GET_PROFILE)
-    fun getUserPrice(@Header(Key.AUTHORIZATION) price: Int) : Call<GetProfileResponse>
+    fun getUserPrice(@Header(Key.AUTHORIZATION) price: Int) : Call<LoginResponse>
 
     @POST(EndPoints.API_EDIT_INDIVIDUAL_PROFILE)
     fun editIndividualProfile(@Header(Key.AUTHORIZATION) accessToken: String, @Body individualProfileEditRequest: IndividualProfileEditRequest) : Call<IndividualProfileEditResponse>

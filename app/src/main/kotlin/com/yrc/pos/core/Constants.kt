@@ -27,7 +27,7 @@ object EndPoints {
     const val API_SIGN_UP = "/api/auth/signup"
     const val API_VERIFY_OTP = "/api/auth/verify_otp"
     const val API_RESEND_OTP = "/api/auth/resend_otp"
-    const val API_GET_PROFILE = "7ab8ba49/a"
+    const val API_GET_PROFILE = "7ab8ba49"
     const val API_EDIT_INDIVIDUAL_PROFILE = "/api/auth/edit_iprofile"
 }
 

@@ -27,7 +27,6 @@ import com.yrc.pos.core.session.User
 import com.yrc.pos.features.login.LoginActivity
 import com.yrc.pos.features.profile.edit_profile_service.IndividualProfileEditRequest
 import com.yrc.pos.features.profile.edit_profile_service.IndividualProfileEditResponse
-import com.yrc.pos.features.profile.get_profile_service.GetProfileResponse
 import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
 import kotlinx.android.synthetic.main.fragment_profile.*
 import java.text.SimpleDateFormat
