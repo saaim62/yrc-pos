@@ -3,25 +3,22 @@ package com.yrc.pos.features.login
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.yrc.pos.R
 import com.yrc.pos.core.YrcBaseActivity
 import com.yrc.pos.core.enums.DialogTheme
 import com.yrc.pos.core.providers.AlertDialogProvider
 import com.yrc.pos.core.services.APiManager
-import com.yrc.pos.core.services.YrcBaseApiResponse
 import com.yrc.pos.core.services.HttpErrorCodes
 import com.yrc.pos.core.services.SessionManagement
+import com.yrc.pos.core.services.YrcBaseApiResponse
 import com.yrc.pos.core.session.Session
 import com.yrc.pos.core.session.User
 import com.yrc.pos.features.dashboard.DashboardActivity
 import com.yrc.pos.features.forget_password.ForgetPasswordActivity
 import com.yrc.pos.features.login.login_service.LoginRequest
 import com.yrc.pos.features.login.login_service.LoginResponse
-import com.yrc.pos.features.signup.HelloUserActivity
 import com.yrc.pos.features.signup.SignupActivity
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.editText_password
 
 
 class LoginActivity : YrcBaseActivity() {
@@ -44,32 +41,10 @@ class LoginActivity : YrcBaseActivity() {
 
     override fun onApiSuccess(apiResponse: YrcBaseApiResponse) {
         super.onApiSuccess(apiResponse)
-
-        if (apiResponse is LoginResponse) {
-            handleLoginResponse(apiResponse)
-        }
         if (apiResponse is LoginResponse) {
             User.saveUserPrice(apiResponse.price!!)
-            var userPrice = User.getUserPrice()
-            if (userPrice != null) {
-                if (userPrice.code != null) {
-                    //           Toast.makeText(this@LoginActivity, "price is saved", Toast.LENGTH_LONG).show()
-                } else {
-                    moveToHelloScreen()
-                }
-            }
-        }
-        if (apiResponse is LoginResponse) {
             User.saveUserProfile(apiResponse.user!!)
-
-            var userProfile = User.getUserProfile()
-            if (userProfile != null) {
-                if (userProfile.site == "1") {
-                    Toast.makeText(this@LoginActivity, "user is saved", Toast.LENGTH_LONG).show()
-                } else {
-                    Toast.makeText(this@LoginActivity, "User not saved", Toast.LENGTH_LONG).show()
-                }
-            }
+            moveToDashboardScreen()
         }
     }
 
@@ -85,74 +60,14 @@ class LoginActivity : YrcBaseActivity() {
         }
     }
 
-    private fun priceResponse(loginResponse: LoginResponse) {
-        if (User.getUserPrice()!!.code != null) {
-            loginResponse.price?.let { Session.storePrice(it) }
-            //   Toast.makeText(this@LoginActivity, "price saved", Toast.LENGTH_LONG).show()
-            callGetPriceApi()
-        } else {
-            AlertDialogProvider.showAlertDialog(
-                this,
-                DialogTheme.ThemeWhite,
-                loginResponse.message
-            )
-        }
-    }
-
-    private fun handleLoginResponse(loginResponse: LoginResponse) {
-        if (loginResponse.code == 200) {
-            Session.storeSession(loginResponse.accessToken)
-            callGetProfileApi()
-        } else {
-            AlertDialogProvider.showAlertDialog(this, DialogTheme.ThemeWhite, loginResponse.message)
-        }
-    }
-
-    private fun callGetProfileApi() {
-        if (Session.isSessionAvailable()) {
-            APiManager.getUserProfile(this, this)
-            moveToDashboardScreen()
-        } else {
-            AlertDialogProvider.showAlertDialog(
-                this,
-                DialogTheme.ThemeWhite,
-                getString(R.string.session_not_available)
-            )
-        }
-    }
-
-    private fun callGetPriceApi() {
-        if (Session.isSessionAvailable()) {
-            APiManager.getUserPrice(this, this)
-        } else {
-            AlertDialogProvider.showAlertDialog(
-                this,
-                DialogTheme.ThemeWhite,
-                getString(R.string.session_not_available)
-            )
-        }
-    }
-
-
     fun onCreateAccountClicked(createAccountTextView: View) {
         val individualSignUpIntent = Intent(this, SignupActivity::class.java)
         startActivity(individualSignUpIntent)
     }
 
-    fun onContinueAsGuestClicked(guestView: View) {
-        val helloUserIntent = Intent(this, HelloUserActivity::class.java)
-        startActivity(helloUserIntent)
-    }
-
     fun onForgetPasswordClicked(forgetPasswordButton: View) {
         val forgetPasswordIntent = Intent(this, ForgetPasswordActivity::class.java)
         startActivity(forgetPasswordIntent)
-    }
-
-    fun moveToHelloScreen() {
-        val helloUserIntent = Intent(this, HelloUserActivity::class.java)
-        startActivity(helloUserIntent)
-        finish()
     }
 
     fun moveToDashboardScreen() {

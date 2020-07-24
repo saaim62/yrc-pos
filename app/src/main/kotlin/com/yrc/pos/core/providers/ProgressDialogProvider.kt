@@ -10,12 +10,17 @@ object ProgressDialogProvider {
     private lateinit var progressHud: KProgressHUD
 
     fun show(context: Context) {
-        progressHud = KProgressHUD.create(context)
-            .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
-            .setCancellable(false)
-            .setAnimationSpeed(2)
-            .setDimAmount(0.5f)
-            .show()
+        try {
+            progressHud = KProgressHUD.create(context)
+                .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                .setCancellable(false)
+                .setAnimationSpeed(2)
+                .setDimAmount(0.5f)
+                .show()
+        }
+        catch (e : Exception){
+            e.printStackTrace()
+        }
     }
 
     fun dismiss() {

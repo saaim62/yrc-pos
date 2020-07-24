@@ -16,7 +16,6 @@ class LoginResponse : YrcBaseApiResponse() {
     var accessToken: String? = Constants.EMPTY_STRING
     var code = 0
 
-
     var price: Price? = null
 
     class Price {
@@ -26,7 +25,6 @@ class LoginResponse : YrcBaseApiResponse() {
         var youngPrice = 0
         var racePrice = 0
     }
-
     var user: Users? = null
 
     class Users {
@@ -35,8 +33,5 @@ class LoginResponse : YrcBaseApiResponse() {
         var driver: String? = null
         var pin: String? = null
         var dutyNumber: String? = null
-
     }
-
-
 }

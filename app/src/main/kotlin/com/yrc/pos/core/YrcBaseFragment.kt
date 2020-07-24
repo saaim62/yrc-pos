@@ -10,7 +10,7 @@ import com.yrc.pos.core.services.YrcBaseApiResponse
 abstract class YrcBaseFragment : Fragment(), ApiCallbacks {
 
     override fun doBeforeApiCall() {
-        ProgressDialogProvider.show(activity!!)
+     //   ProgressDialogProvider.show(activity!!)
     }
 
     override fun doAfterApiCall() {
@@ -18,7 +18,7 @@ abstract class YrcBaseFragment : Fragment(), ApiCallbacks {
     }
 
     override fun onApiFailure(errorCode: Int) {
-        AlertDialogProvider.showFailureDialog(activity!!, DialogTheme.ThemeWhite)
+ //       AlertDialogProvider.showFailureDialog(activity!!, DialogTheme.ThemeWhite)
     }
 
     override fun onApiSuccess(apiResponse: YrcBaseApiResponse) {}

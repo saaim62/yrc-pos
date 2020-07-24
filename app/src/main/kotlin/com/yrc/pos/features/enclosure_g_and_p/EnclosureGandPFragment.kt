@@ -23,10 +23,8 @@ class EnclosureGandPFragment : YrcBaseFragment() {
     private var count1822Tickets = 0
     private var countRacegoerTickets = 0
 
-    private lateinit var textViewHeaderTitle: YrcTextView
-
-    private lateinit var disposableClearAllTickets: Disposable
-    private lateinit var disposableMultiplyTicket: Disposable
+    private var disposableClearAllTickets: Disposable? = null
+    private var disposableMultiplyTicket: Disposable? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -94,8 +92,12 @@ class EnclosureGandPFragment : YrcBaseFragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        if (!disposableClearAllTickets.isDisposed) disposableClearAllTickets.dispose()
-        if (!disposableMultiplyTicket.isDisposed) disposableMultiplyTicket.dispose()
+        if (disposableClearAllTickets != null) {
+            if (!disposableClearAllTickets?.isDisposed!!) disposableClearAllTickets?.dispose()
+        }
+        if (disposableMultiplyTicket != null) {
+            if (!disposableMultiplyTicket?.isDisposed!!) disposableMultiplyTicket?.dispose()
+        }
     }
 
     private fun setAdultButtonListener() {
