@@ -11,7 +11,6 @@ import com.yrc.pos.core.enums.DialogTheme
 import com.yrc.pos.core.enums.UserType
 import com.yrc.pos.core.listeners.DialogButtonClickListener
 import com.yrc.pos.core.providers.AlertDialogProvider
-import com.yrc.pos.core.services.APiManager
 import com.yrc.pos.core.services.YrcBaseApiResponse
 import com.yrc.pos.features.forget_password.new_password_service.NewPasswordRequest
 import com.yrc.pos.features.forget_password.new_password_service.NewPasswordResponse
@@ -41,7 +40,7 @@ class NewPasswordActivity : YrcBaseActivity() {
                 newPasswordRequest.email = emailOrNumber
             }
 
-            APiManager.resetPassword(this, this, newPasswordRequest)
+//            APiManager.resetPassword(this, this, newPasswordRequest)
         }
     }
 
@@ -88,7 +87,7 @@ class NewPasswordActivity : YrcBaseActivity() {
             resendOtpRequest.userType = UserType.BUSINESS_EMPLOYEE.name
         }
 
-        APiManager.resendOtpCode(this, this, resendOtpRequest)
+ //       APiManager.resendOtpCode(this, this, resendOtpRequest)
     }
 
     private fun checkValidations(): Boolean {

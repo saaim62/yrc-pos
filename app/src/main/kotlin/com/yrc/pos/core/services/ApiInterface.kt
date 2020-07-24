@@ -10,7 +10,6 @@ import com.yrc.pos.features.login.login_service.LoginRequest
 import com.yrc.pos.features.login.login_service.LoginResponse
 import com.yrc.pos.features.profile.edit_profile_service.IndividualProfileEditRequest
 import com.yrc.pos.features.profile.edit_profile_service.IndividualProfileEditResponse
-import com.yrc.pos.features.profile.get_profile_service.GetProfileResponse
 import com.yrc.pos.features.signup.code_verification_service.VerifyOtpRequest
 import com.yrc.pos.features.signup.code_verification_service.VerifyOtpResponse
 import com.yrc.pos.features.signup.resend_otp_service.ResendOtpRequest

@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.LayoutRes
 import com.yrc.pos.R
 import com.yrc.pos.core.YrcBaseFragment
 import com.yrc.pos.core.bus.RxBus

@@ -6,6 +6,8 @@ interface ApiCallbacks {
 
     fun doAfterApiCall()
 
+    fun onNoNetworkAvailable()
+
     fun onApiFailure(errorCode: Int)
 
     fun onApiSuccess(apiResponse: YrcBaseApiResponse)

@@ -35,39 +35,6 @@ class SignupActivity : YrcBaseActivity() {
 
     fun onSignUpButtonClicked(signUpButton: View) {
         gmailId = Constants.EMPTY_STRING
-        signUpUsingNumber()
-    }
-
-    private fun signUpUsingNumber() {
-        if (checkValidations()) {
-//            var individualSignUpRequest = SignUpRequest()
-//            individualSignUpRequest.number = individualSignUp_mobileNumberComponent.getPhoneNumberWithPrefix()
-//            individualSignUpRequest.type = UserType.INDIVIDUAL.name
-//
-//            APiManager.signUpApi(this, this, individualSignUpRequest)
-        }
-    }
-
-    private fun signUpUsingGmailId() {
-//        var individualSignUpRequest = SignUpRequest()
-//        individualSignUpRequest.email = gmailId
-//        individualSignUpRequest.type = UserType.INDIVIDUAL.name
-//
-//        APiManager.signUpApi(this, this, individualSignUpRequest)
-    }
-
-    private fun checkValidations() : Boolean {
-        if (individualSignUp_mobileNumberComponent.getPhoneNumber().length < 10) {
-            individualSignUp_mobileNumberComponent.setError(getString(R.string.please_enter_valid_cell_number))
-            return false
-        }
-
-        return true
-    }
-
-    fun onSignUpWithGmailClicked(view: View) {
-//        mGoogleSignInClient.signOut() //Sign out any already Google signed in user so that user can select account on every attempt
-//        startActivityForResult(mGoogleSignInClient.signInIntent, RC_SIGN_IN)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -82,7 +49,6 @@ class SignupActivity : YrcBaseActivity() {
         try {
             val account = completedTask.getResult(ApiException::class.java)
             gmailId = account!!.email
-            signUpUsingGmailId()
         } catch (e: ApiException) {
             AlertDialogProvider.showFailureDialog(this, DialogTheme.ThemeWhite)
         }

@@ -22,8 +22,8 @@ class SupportDialog : DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         isCancelable = false
-        dialog!!.window.attributes.windowAnimations = R.style.DialogAnimation
-        dialog!!.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog!!.window?.attributes?.windowAnimations = R.style.DialogAnimation
+        dialog!!.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         return inflater.inflate(R.layout.layout_support_dialog, container, false)
     }
@@ -45,7 +45,7 @@ class SupportDialog : DialogFragment() {
     }
 
     private fun checkCallPermission() {
-        if (ContextCompat.checkSelfPermission(activity!!, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(arrayOf(Manifest.permission.CALL_PHONE), PERMISSION_REQUEST_CALL_PHONE);
         } else {
             callAtSupport()

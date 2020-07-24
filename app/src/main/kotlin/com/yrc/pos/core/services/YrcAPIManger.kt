@@ -22,40 +22,10 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object APiManager {
-    //    private val retrofit: Retrofit
-//        get() {
-//            val interceptor = HttpLoggingInterceptor()
-//            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-//            val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
-//            return Retrofit.Builder()
-//                .baseUrl("https://api.mocki.io/v1/")
-//                .client(client)
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build()
-//        }
-//    @JvmStatic
-//    val apiInterface: ApiInterface
-//        get() = retrofit.create(ApiInterface::class.java)
-//
-    private lateinit var hambaServices: ApiInterface
-    private const val BASE_URL = "https://api.mocki.io/v1/"
-
-    fun initialize() {
-        val interceptor = HttpLoggingInterceptor()
-        interceptor.apply { interceptor.level = HttpLoggingInterceptor.Level.BODY }
-        val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
-        hambaServices = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(ApiInterface::class.java)
-    }
-
-
-    fun loginApi(context: Context, apiCallbacks: ApiCallbacks, loginRequest: LoginRequest) {
-        val loginApiCall = hambaServices.loginToHamba(loginRequest)
+class YrcAPIManger(var yrcServices: ApiInterface, private val context: Context) {
+    
+    fun loginApi(apiCallbacks: ApiCallbacks, loginRequest: LoginRequest) {
+        val loginApiCall = yrcServices.loginToHamba(loginRequest)
         ApiExecutor<LoginResponse>().addCallToQueue(context, loginApiCall, apiCallbacks)
     }
 
@@ -64,7 +34,7 @@ object APiManager {
         apiCallbacks: ApiCallbacks,
         forgetPasswordRequest: ForgetPasswordRequest
     ) {
-        val forgetPasswordApiCall = hambaServices.forgetPassword(forgetPasswordRequest)
+        val forgetPasswordApiCall = yrcServices.forgetPassword(forgetPasswordRequest)
         ApiExecutor<ForgetPasswordResponse>().addCallToQueue(
             context,
             forgetPasswordApiCall,
@@ -77,12 +47,12 @@ object APiManager {
         apiCallbacks: ApiCallbacks,
         newPasswordRequest: NewPasswordRequest
     ) {
-        val newPasswordApiCall = hambaServices.resetPassword(newPasswordRequest)
+        val newPasswordApiCall = yrcServices.resetPassword(newPasswordRequest)
         ApiExecutor<NewPasswordResponse>().addCallToQueue(context, newPasswordApiCall, apiCallbacks)
     }
 
     fun signUpApi(context: Context, apiCallbacks: ApiCallbacks, signUpRequest: SignUpRequest) {
-        val signUpApiCall = hambaServices.signUpToHamba(signUpRequest)
+        val signUpApiCall = yrcServices.signUpToHamba(signUpRequest)
         ApiExecutor<SignUpResponse>().addCallToQueue(context, signUpApiCall, apiCallbacks)
     }
 
@@ -91,7 +61,7 @@ object APiManager {
         apiCallbacks: ApiCallbacks,
         verifyOtpRequest: VerifyOtpRequest
     ) {
-        val verifyOtpApiCall = hambaServices.verifyOtpCode(verifyOtpRequest)
+        val verifyOtpApiCall = yrcServices.verifyOtpCode(verifyOtpRequest)
         ApiExecutor<VerifyOtpResponse>().addCallToQueue(context, verifyOtpApiCall, apiCallbacks)
     }
 
@@ -100,12 +70,12 @@ object APiManager {
         apiCallbacks: ApiCallbacks,
         resendOtpRequest: ResendOtpRequest
     ) {
-        val resendOtpApiCall = hambaServices.resendOtpCode(resendOtpRequest)
+        val resendOtpApiCall = yrcServices.resendOtpCode(resendOtpRequest)
         ApiExecutor<ResendOtpResponse>().addCallToQueue(context, resendOtpApiCall, apiCallbacks)
     }
 
     fun getUserProfile(context: Context, apiCallbacks: ApiCallbacks) {
-        val getProfileApiCall = hambaServices.getUserProfile(Session.getAccessToken())
+        val getProfileApiCall = yrcServices.getUserProfile(Session.getAccessToken())
         ApiExecutor<LoginResponse>().addCallToQueue(context, getProfileApiCall, apiCallbacks)
     }
 
@@ -114,7 +84,7 @@ object APiManager {
         apiCallbacks: ApiCallbacks,
         individualProfileEditRequest: IndividualProfileEditRequest
     ) {
-        val editIndividualProfileApiCall = hambaServices.editIndividualProfile(
+        val editIndividualProfileApiCall = yrcServices.editIndividualProfile(
             Session.getAccessToken(),
             individualProfileEditRequest
         )

@@ -35,16 +35,15 @@ object Session {
         return sessionPreferences.getString(
             SessionConstants.Key_AccessToken,
             Constants.EMPTY_STRING
-        ).isNotEmpty()
+        )!!.isNotEmpty()
     }
 
     fun getAccessToken(): String {
         return sessionPreferences.getString(
             SessionConstants.Key_AccessToken,
             Constants.EMPTY_STRING
-        )
+        )!!
     }
-
 
     fun clearSession() {
         val preferenceEditor = sessionPreferences.edit()

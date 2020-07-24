@@ -17,6 +17,8 @@ abstract class YrcBaseFragment : Fragment(), ApiCallbacks {
         ProgressDialogProvider.dismiss()
     }
 
+    override fun onNoNetworkAvailable() {}
+
     override fun onApiFailure(errorCode: Int) {
  //       AlertDialogProvider.showFailureDialog(activity!!, DialogTheme.ThemeWhite)
     }

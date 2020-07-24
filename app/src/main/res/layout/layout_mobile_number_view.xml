@@ -10,14 +10,10 @@
         android:paddingLeft="@dimen/_10sdp"
         android:paddingRight="@dimen/_10sdp">
 
-    <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+    <TextView
             android:id="@+id/countryCodePicker"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:ccp_hideNameCode="true"
-            app:ccp_setCountryByTimeZone="true"
-            app:ccp_textColor="@color/colorWhite"
-            app:ccp_textSize="@dimen/_14sdp" />
+            android:layout_height="match_parent" />
 
     <com.yrc.pos.core.views.YrcEditText
             android:id="@+id/editText_phoneNumber"

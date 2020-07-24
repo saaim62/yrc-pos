@@ -23,7 +23,7 @@ object User {
 
     fun getUserPrice(): LoginResponse.Price {
         val userProfile = userPreferences.getString(SessionConstants.Key_Price, Constants.EMPTY_STRING)
-        if (userProfile.isEmpty()) {
+        if (userProfile!!.isEmpty()) {
             return LoginResponse.Price()
 
         } else {
@@ -46,7 +46,7 @@ object User {
 
     fun getUserProfile(): LoginResponse.Users? {
         val userProfile = userPreferences.getString(UserConstants.Key_User_Profile, Constants.EMPTY_STRING)
-        if (userProfile.isEmpty()) {
+        if (userProfile!!.isEmpty()) {
               return LoginResponse.Users()
 
         } else {

@@ -8,7 +8,6 @@ import com.yrc.pos.core.YrcBaseActivity
 import com.yrc.pos.core.YrcUtils
 import com.yrc.pos.core.enums.DialogTheme
 import com.yrc.pos.core.providers.AlertDialogProvider
-import com.yrc.pos.core.services.APiManager
 import com.yrc.pos.core.services.YrcBaseApiResponse
 import com.yrc.pos.features.forget_password.forget_password_service.ForgetPasswordRequest
 import com.yrc.pos.features.forget_password.forget_password_service.ForgetPasswordResponse
@@ -36,7 +35,7 @@ class ForgetPasswordActivity : YrcBaseActivity() {
                 forgetPasswordRequest.email = editText_emailAddress.getText()
             }
 
-            APiManager.forgetPassword(this, this, forgetPasswordRequest)
+           // APiManager.forgetPassword(this, this, forgetPasswordRequest)
         }
     }
 

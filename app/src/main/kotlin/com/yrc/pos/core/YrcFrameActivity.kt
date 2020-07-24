@@ -8,7 +8,7 @@ import com.yrc.pos.R
 
 class YrcFrameActivity : YrcBaseActivity() {
 
-    private var inflateOptionsMenu = true
+    private var inflateOptionsMenu: Boolean? = true
     private var fragmentName: String? = null
     private var activityTitle: String? = null
 
@@ -24,9 +24,9 @@ class YrcFrameActivity : YrcBaseActivity() {
         setupActionBar()
 
         if (intent.extras != null) {
-            activityTitle = intent.extras.getString(ACTIVITY_TITLE)
-            fragmentName = intent.extras.getString(FRAGMENT_NAME_STRING)
-            inflateOptionsMenu = intent.extras.getBoolean(INFLATE_OPTIONS_MENU)
+            activityTitle = intent.extras?.getString(ACTIVITY_TITLE)
+            fragmentName = intent.extras?.getString(FRAGMENT_NAME_STRING)
+            inflateOptionsMenu = intent.extras?.getBoolean(INFLATE_OPTIONS_MENU)
         }
 
         if (fragmentName != null) {
